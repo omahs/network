@@ -54,30 +54,38 @@ const main = async () => {
         id: '/test1'
     })
 
-    log('Grant permissions')
-    let permissionAssignments = []
-    for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
-        const privateKey = getPublisherPrivateKey(publisherId)
-        permissionAssignments.push({
-            permissions: [StreamPermission.PUBLISH],
-            user: new Wallet(privateKey).address
+    const BATCH_COUNT = 10 
+    for (let batchId = 0; batchId < BATCH_COUNT; batchId++) {
+        log('Grant permissions: batch ' + batchId)
+        let permissionAssignments = []
+        for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
+            const privateKey = getPublisherPrivateKey(publisherId)
+            if (publisherId % BATCH_COUNT === batchId) {
+                permissionAssignments.push({
+                    permissions: [StreamPermission.PUBLISH],
+                    user: new Wallet(privateKey).address
+                })
+            }
+        }
+        await owner.setPermissions({
+            streamId: stream.id,
+            assignments: permissionAssignments
         })
     }
-    await owner.setPermissions({
-        streamId: stream.id,
-        assignments: permissionAssignments
-    })
     
     log('Create ' + publisherCount + ' publishers')
-    let publishers: StreamrClient[] = []
+    let publishers: { id: number, client: StreamrClient }[] = []
     for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
         const privateKey = getPublisherPrivateKey(publisherId)
-        publishers.push(new StreamrClient({
-            ...ConfigTest,
-            auth: {
-                privateKey
-            }
-        }))
+        publishers.push({
+            id: publisherId,
+            client: new StreamrClient({
+                ...ConfigTest,
+                auth: {
+                    privateKey
+                }
+            })
+        })
     }
 
     log('Create subscriber')
@@ -93,8 +101,8 @@ const main = async () => {
     })
 
     let receivedMessageCount = 0
-    await subscriber.subscribe(stream.id, (content: any, msg: StreamMessage) => {
-        log('Received: ' + JSON.stringify(content))
+    await subscriber.subscribe(stream.id, (content: any) => {
+        log('Received ' + receivedMessageCount + '/' + publisherCount + ': ' + JSON.stringify(content))
         receivedMessageCount++
     })
 
@@ -102,9 +110,10 @@ const main = async () => {
     await wait(5000)
 
     const publishStartTime = Date.now()
-    publishers.forEach(p => {
+    publishers.forEach((p) => {
         log('Publish')
-        p.publish(stream.id, {
+        p.client.publish(stream.id, {
+            id: p.id,
             fromPublisher: new Date().toISOString()
         })
     })
