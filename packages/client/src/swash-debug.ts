@@ -31,7 +31,7 @@ export async function fetchPrivateKeyWithGas(): Promise<string> {
     return response.text()
 }
 
-const GRANT_PERMISSIONS = false
+const GRANT_PERMISSIONS = true
 const MIN_PUBLISHER_ID = 100
 
 const getPublisherPrivateKey = (id: number) => '0x' + padStart(String(id), 64, '0')

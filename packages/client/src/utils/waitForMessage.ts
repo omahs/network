@@ -68,13 +68,9 @@ export const publishAndWaitForResponseMessage = async (
         throw err
     } finally {
         destroySignal.onDestroy.unlisten(onDestroy)
-        console.log('WaitForMessage.finally.1')
         if (sub) {
-            console.log('WaitForMessage.finally.2')
             onBeforeUnsubscribe()
-            console.log('WaitForMessage.finally.3')
             await sub.unsubscribe()
-            console.log('WaitForMessage.finally.4')
         }
         await responseTask
     }

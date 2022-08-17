@@ -23,6 +23,7 @@ import { GroupKey, GroupKeyish } from './GroupKey'
 import { publishAndWaitForResponseMessage } from '../utils/waitForMessage'
 import { Authentication, AuthenticationInjectionToken } from '../Authentication'
 import { ConfigInjectionToken, TimeoutsConfig } from '../Config'
+import { NetworkNodeFacade } from '../NetworkNodeFacade'
 
 export type GroupKeyId = string
 export type GroupKeysSerialized = Record<GroupKeyId, GroupKeyish>
@@ -52,6 +53,7 @@ export class KeyExchangeStream implements Context {
         private subscriber: Subscriber,
         private destroySignal: DestroySignal,
         @inject(delay(() => Publisher)) private publisher: Publisher,
+        private node: NetworkNodeFacade,
         @inject(ConfigInjectionToken.Timeouts) private timeoutsConfig: TimeoutsConfig
     ) {
         this.id = instanceId(this)
@@ -65,12 +67,10 @@ export class KeyExchangeStream implements Context {
         const streamPartId = KeyExchangeStreamIDUtils.formStreamPartID(publisherId)
         const sub = await this.subscriber.subscribe(streamPartId)
         const onDestroy = () => {
-            console.log('KES.createSubscription: onDestroy')
             return sub.unsubscribe()
         }
         this.destroySignal.onDestroy.listen(onDestroy)
         sub.onBeforeFinally.listen(() => {
-            console.log('KES.createSubscription: sub.onBeforeFinally')
             this.destroySignal.onDestroy.unlisten(onDestroy)
             this.subscribe.reset()
         })
@@ -101,7 +101,8 @@ export class KeyExchangeStream implements Context {
             this.timeoutsConfig.encryptionKeyRequest
         )
         console.log((await this.authentication.getAddress()) + ' got response from ' + publisherId)
-        console.log(res)
+        ;(await this.node.getNode()).unsubscribe(streamPartId)
+        console.log('Unsubscribed from ' + streamPartId)
         return res
     }
 

@@ -52,7 +52,10 @@ export const createGroupKeyResponse = async (
         if (!groupKey) {
             return null // will be filtered out
         }
+        console.log('encryptWithRSAPublicKey')
+        const startTime = Date.now()
         const key = EncryptionUtil.encryptWithRSAPublicKey(groupKey.data, rsaPublicKey, true)
+        console.log('encryptWithRSAPublicKey took ' + (Date.now() - startTime))
         return new EncryptedGroupKey(id, key)
     }))).filter((item) => item !== null) as EncryptedGroupKey[]
 
