@@ -34,11 +34,14 @@ export async function fetchPrivateKeyWithGas(): Promise<string> {
 
 const MIN_PUBLISHER_ID = 100
 
+const getPublisherPrivateKey = (id: number) => '0x' + padStart(String(id), 64, '0')
+
 const main = async () => {
     const publisherCount = Number(process.argv[2])
     await KeyServer.startIfNotRunning()
 
     const ownerPrivateKey = '0x0000000000000000000000000000000000000000000000000000000000000001'
+    const subscriberPrivateKey = '0x0000000000000000000000000000000000000000000000000000000000000002'
 
     log('Create stream')
     const owner = new StreamrClient({
@@ -47,12 +50,14 @@ const main = async () => {
             privateKey: ownerPrivateKey
         }
     })
-    const stream = await owner.createStream('/test1')
+    const stream = await owner.getOrCreateStream({
+        id: '/test1'
+    })
 
-    console.log(ownerPrivateKey)
+    log('Grant permissions')
     let permissionAssignments = []
     for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
-        const privateKey = '0x' + padStart(String(publisherId), 64, '0')
+        const privateKey = getPublisherPrivateKey(publisherId)
         permissionAssignments.push({
             permissions: [StreamPermission.PUBLISH],
             user: new Wallet(privateKey).address
@@ -62,34 +67,24 @@ const main = async () => {
         streamId: stream.id,
         assignments: permissionAssignments
     })
-    process.exit(0)
     
-    
-    
-    /*log('Create ' + publisherCount + ' publishers')
-    const publishers = await Promise.all(range(publisherCount).map(async () => {
-        return new StreamrClient({
+    log('Create ' + publisherCount + ' publishers')
+    let publishers: StreamrClient[] = []
+    for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
+        const privateKey = getPublisherPrivateKey(publisherId)
+        publishers.push(new StreamrClient({
             ...ConfigTest,
             auth: {
-                privateKey: await fetchPrivateKeyWithGas()
+                privateKey
             }
-        })
-    }))
+        }))
+    }
 
-    log('Grant publish permissions')
-    const permissionAssignments = await Promise.all(publishers.map(async (p, i) => {
-
-    }))
-    await owner.setPermissions({
-        streamId: stream.id, 
-        assignments: permissionAssignments
-    })
-    
     log('Create subscriber')
     const subscriber = new StreamrClient({
         ...ConfigTest,
         auth: {
-            privateKey: await fetchPrivateKeyWithGas()
+            privateKey: subscriberPrivateKey
         }
     })
     await stream.grantPermissions({
@@ -98,7 +93,7 @@ const main = async () => {
     })
 
     let receivedMessageCount = 0
-    const sub = await subscriber.subscribe(stream.id, (content: any, msg: StreamMessage) => {
+    await subscriber.subscribe(stream.id, (content: any, msg: StreamMessage) => {
         log('Received: ' + JSON.stringify(content))
         receivedMessageCount++
     })
@@ -118,7 +113,7 @@ const main = async () => {
     await waitForCondition(() => receivedMessageCount >= publishers.length, 10 * 60 * 1000)
 
     log('Done: all messages received ' + ((Date.now() - publishStartTime) / 1000) + ' seconds after publishers started to publish')
-    await KeyServer.stopIfRunning()*/
+    await KeyServer.stopIfRunning()
 }
 
 /*const main = async () => {
