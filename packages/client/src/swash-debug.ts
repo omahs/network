@@ -31,7 +31,7 @@ export async function fetchPrivateKeyWithGas(): Promise<string> {
     return response.text()
 }
 
-
+const GRANT_PERMISSIONS = false
 const MIN_PUBLISHER_ID = 100
 
 const getPublisherPrivateKey = (id: number) => '0x' + padStart(String(id), 64, '0')
@@ -54,23 +54,25 @@ const main = async () => {
         id: '/test1'
     })
 
-    const BATCH_COUNT = 10 
-    for (let batchId = 0; batchId < BATCH_COUNT; batchId++) {
-        log('Grant permissions: batch ' + batchId)
-        let permissionAssignments = []
-        for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
-            const privateKey = getPublisherPrivateKey(publisherId)
-            if (publisherId % BATCH_COUNT === batchId) {
-                permissionAssignments.push({
-                    permissions: [StreamPermission.PUBLISH],
-                    user: new Wallet(privateKey).address
-                })
+    if (GRANT_PERMISSIONS) {
+        const BATCH_COUNT = 10 
+        for (let batchId = 0; batchId < BATCH_COUNT; batchId++) {
+            log('Grant permissions: batch ' + batchId)
+            let permissionAssignments = []
+            for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
+                const privateKey = getPublisherPrivateKey(publisherId)
+                if (publisherId % BATCH_COUNT === batchId) {
+                    permissionAssignments.push({
+                        permissions: [StreamPermission.PUBLISH],
+                        user: new Wallet(privateKey).address
+                    })
+                }
             }
+            await owner.setPermissions({
+                streamId: stream.id,
+                assignments: permissionAssignments
+            })
         }
-        await owner.setPermissions({
-            streamId: stream.id,
-            assignments: permissionAssignments
-        })
     }
     
     log('Create ' + publisherCount + ' publishers')

@@ -65,10 +65,12 @@ export class KeyExchangeStream implements Context {
         const streamPartId = KeyExchangeStreamIDUtils.formStreamPartID(publisherId)
         const sub = await this.subscriber.subscribe(streamPartId)
         const onDestroy = () => {
+            console.log('KES.createSubscription: onDestroy')
             return sub.unsubscribe()
         }
         this.destroySignal.onDestroy.listen(onDestroy)
         sub.onBeforeFinally.listen(() => {
+            console.log('KES.createSubscription: sub.onBeforeFinally')
             this.destroySignal.onDestroy.unlisten(onDestroy)
             this.subscribe.reset()
         })

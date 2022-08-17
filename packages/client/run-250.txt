@@ -1,0 +1,2855 @@
+starting up keyserver on port 45454...
+keyserver started on port 45454
+2022-08-17T12:22:09.290Z   Create stream
+2022-08-17T12:22:09.534Z   Grant permissions: batch 0
+2022-08-17T12:22:13.970Z   Grant permissions: batch 1
+2022-08-17T12:22:18.200Z   Grant permissions: batch 2
+2022-08-17T12:22:22.499Z   Grant permissions: batch 3
+2022-08-17T12:22:26.749Z   Grant permissions: batch 4
+2022-08-17T12:22:30.956Z   Grant permissions: batch 5
+2022-08-17T12:22:35.173Z   Grant permissions: batch 6
+2022-08-17T12:22:39.392Z   Grant permissions: batch 7
+2022-08-17T12:22:43.594Z   Grant permissions: batch 8
+2022-08-17T12:22:47.812Z   Grant permissions: batch 9
+2022-08-17T12:22:52.036Z   Create 250 publishers
+2022-08-17T12:22:58.882Z   Create subscriber
+2022-08-17T12:23:03.644Z   Wait for subscriber to join
+[32mINFO[39m [2022-08-17T12:23:03.651] (TrackerConnector    ): [36mConnected to tracker T1[39m
+2022-08-17T12:23:08.644Z   Publish
+2022-08-17T12:23:08.648Z   Publish
+2022-08-17T12:23:08.648Z   Publish
+2022-08-17T12:23:08.649Z   Publish
+2022-08-17T12:23:08.650Z   Publish
+2022-08-17T12:23:08.650Z   Publish
+2022-08-17T12:23:08.652Z   Publish
+2022-08-17T12:23:08.652Z   Publish
+2022-08-17T12:23:08.653Z   Publish
+2022-08-17T12:23:08.654Z   Publish
+2022-08-17T12:23:08.655Z   Publish
+2022-08-17T12:23:08.655Z   Publish
+2022-08-17T12:23:08.656Z   Publish
+2022-08-17T12:23:08.656Z   Publish
+2022-08-17T12:23:08.658Z   Publish
+2022-08-17T12:23:08.659Z   Publish
+2022-08-17T12:23:08.659Z   Publish
+2022-08-17T12:23:08.660Z   Publish
+2022-08-17T12:23:08.662Z   Publish
+2022-08-17T12:23:08.663Z   Publish
+2022-08-17T12:23:08.663Z   Publish
+2022-08-17T12:23:08.664Z   Publish
+2022-08-17T12:23:08.664Z   Publish
+2022-08-17T12:23:08.665Z   Publish
+2022-08-17T12:23:08.666Z   Publish
+2022-08-17T12:23:08.666Z   Publish
+2022-08-17T12:23:08.667Z   Publish
+2022-08-17T12:23:08.667Z   Publish
+2022-08-17T12:23:08.668Z   Publish
+2022-08-17T12:23:08.670Z   Publish
+2022-08-17T12:23:08.670Z   Publish
+2022-08-17T12:23:08.671Z   Publish
+2022-08-17T12:23:08.671Z   Publish
+2022-08-17T12:23:08.672Z   Publish
+2022-08-17T12:23:08.672Z   Publish
+2022-08-17T12:23:08.673Z   Publish
+2022-08-17T12:23:08.673Z   Publish
+2022-08-17T12:23:08.674Z   Publish
+2022-08-17T12:23:08.676Z   Publish
+2022-08-17T12:23:08.677Z   Publish
+2022-08-17T12:23:08.677Z   Publish
+2022-08-17T12:23:08.678Z   Publish
+2022-08-17T12:23:08.678Z   Publish
+2022-08-17T12:23:08.679Z   Publish
+2022-08-17T12:23:08.679Z   Publish
+2022-08-17T12:23:08.681Z   Publish
+2022-08-17T12:23:08.682Z   Publish
+2022-08-17T12:23:08.682Z   Publish
+2022-08-17T12:23:08.683Z   Publish
+2022-08-17T12:23:08.683Z   Publish
+2022-08-17T12:23:08.683Z   Publish
+2022-08-17T12:23:08.684Z   Publish
+2022-08-17T12:23:08.684Z   Publish
+2022-08-17T12:23:08.685Z   Publish
+2022-08-17T12:23:08.685Z   Publish
+2022-08-17T12:23:08.686Z   Publish
+2022-08-17T12:23:08.687Z   Publish
+2022-08-17T12:23:08.687Z   Publish
+2022-08-17T12:23:08.688Z   Publish
+2022-08-17T12:23:08.688Z   Publish
+2022-08-17T12:23:08.688Z   Publish
+2022-08-17T12:23:08.689Z   Publish
+2022-08-17T12:23:08.689Z   Publish
+2022-08-17T12:23:08.690Z   Publish
+2022-08-17T12:23:08.690Z   Publish
+2022-08-17T12:23:08.691Z   Publish
+2022-08-17T12:23:08.693Z   Publish
+2022-08-17T12:23:08.693Z   Publish
+2022-08-17T12:23:08.694Z   Publish
+2022-08-17T12:23:08.694Z   Publish
+2022-08-17T12:23:08.695Z   Publish
+2022-08-17T12:23:08.695Z   Publish
+2022-08-17T12:23:08.696Z   Publish
+2022-08-17T12:23:08.696Z   Publish
+2022-08-17T12:23:08.697Z   Publish
+2022-08-17T12:23:08.697Z   Publish
+2022-08-17T12:23:08.698Z   Publish
+2022-08-17T12:23:08.699Z   Publish
+2022-08-17T12:23:08.701Z   Publish
+2022-08-17T12:23:08.702Z   Publish
+2022-08-17T12:23:08.702Z   Publish
+2022-08-17T12:23:08.703Z   Publish
+2022-08-17T12:23:08.703Z   Publish
+2022-08-17T12:23:08.704Z   Publish
+2022-08-17T12:23:08.704Z   Publish
+2022-08-17T12:23:08.705Z   Publish
+2022-08-17T12:23:08.705Z   Publish
+2022-08-17T12:23:08.705Z   Publish
+2022-08-17T12:23:08.706Z   Publish
+2022-08-17T12:23:08.706Z   Publish
+2022-08-17T12:23:08.707Z   Publish
+2022-08-17T12:23:08.707Z   Publish
+2022-08-17T12:23:08.707Z   Publish
+2022-08-17T12:23:08.708Z   Publish
+2022-08-17T12:23:08.708Z   Publish
+2022-08-17T12:23:08.709Z   Publish
+2022-08-17T12:23:08.709Z   Publish
+2022-08-17T12:23:08.709Z   Publish
+2022-08-17T12:23:08.710Z   Publish
+2022-08-17T12:23:08.710Z   Publish
+2022-08-17T12:23:08.711Z   Publish
+2022-08-17T12:23:08.711Z   Publish
+2022-08-17T12:23:08.712Z   Publish
+2022-08-17T12:23:08.712Z   Publish
+2022-08-17T12:23:08.713Z   Publish
+2022-08-17T12:23:08.713Z   Publish
+2022-08-17T12:23:08.714Z   Publish
+2022-08-17T12:23:08.714Z   Publish
+2022-08-17T12:23:08.715Z   Publish
+2022-08-17T12:23:08.715Z   Publish
+2022-08-17T12:23:08.716Z   Publish
+2022-08-17T12:23:08.716Z   Publish
+2022-08-17T12:23:08.716Z   Publish
+2022-08-17T12:23:08.717Z   Publish
+2022-08-17T12:23:08.717Z   Publish
+2022-08-17T12:23:08.718Z   Publish
+2022-08-17T12:23:08.718Z   Publish
+2022-08-17T12:23:08.719Z   Publish
+2022-08-17T12:23:08.719Z   Publish
+2022-08-17T12:23:08.720Z   Publish
+2022-08-17T12:23:08.720Z   Publish
+2022-08-17T12:23:08.721Z   Publish
+2022-08-17T12:23:08.721Z   Publish
+2022-08-17T12:23:08.723Z   Publish
+2022-08-17T12:23:08.724Z   Publish
+2022-08-17T12:23:08.725Z   Publish
+2022-08-17T12:23:08.725Z   Publish
+2022-08-17T12:23:08.726Z   Publish
+2022-08-17T12:23:08.726Z   Publish
+2022-08-17T12:23:08.727Z   Publish
+2022-08-17T12:23:08.727Z   Publish
+2022-08-17T12:23:08.747Z   Publish
+2022-08-17T12:23:08.747Z   Publish
+2022-08-17T12:23:08.770Z   Publish
+2022-08-17T12:23:08.771Z   Publish
+2022-08-17T12:23:08.771Z   Publish
+2022-08-17T12:23:08.772Z   Publish
+2022-08-17T12:23:08.772Z   Publish
+2022-08-17T12:23:08.773Z   Publish
+2022-08-17T12:23:08.773Z   Publish
+2022-08-17T12:23:08.774Z   Publish
+2022-08-17T12:23:08.774Z   Publish
+2022-08-17T12:23:08.775Z   Publish
+2022-08-17T12:23:08.776Z   Publish
+2022-08-17T12:23:08.776Z   Publish
+2022-08-17T12:23:08.777Z   Publish
+2022-08-17T12:23:08.779Z   Publish
+2022-08-17T12:23:08.780Z   Publish
+2022-08-17T12:23:08.780Z   Publish
+2022-08-17T12:23:08.781Z   Publish
+2022-08-17T12:23:08.781Z   Publish
+2022-08-17T12:23:08.781Z   Publish
+2022-08-17T12:23:08.782Z   Publish
+2022-08-17T12:23:08.782Z   Publish
+2022-08-17T12:23:08.783Z   Publish
+2022-08-17T12:23:08.783Z   Publish
+2022-08-17T12:23:08.783Z   Publish
+2022-08-17T12:23:08.784Z   Publish
+2022-08-17T12:23:08.784Z   Publish
+2022-08-17T12:23:08.785Z   Publish
+2022-08-17T12:23:08.785Z   Publish
+2022-08-17T12:23:08.785Z   Publish
+2022-08-17T12:23:08.786Z   Publish
+2022-08-17T12:23:08.786Z   Publish
+2022-08-17T12:23:08.787Z   Publish
+2022-08-17T12:23:08.787Z   Publish
+2022-08-17T12:23:08.787Z   Publish
+2022-08-17T12:23:08.788Z   Publish
+2022-08-17T12:23:08.788Z   Publish
+2022-08-17T12:23:08.789Z   Publish
+2022-08-17T12:23:08.789Z   Publish
+2022-08-17T12:23:08.789Z   Publish
+2022-08-17T12:23:08.790Z   Publish
+2022-08-17T12:23:08.790Z   Publish
+2022-08-17T12:23:08.790Z   Publish
+2022-08-17T12:23:08.791Z   Publish
+2022-08-17T12:23:08.791Z   Publish
+2022-08-17T12:23:08.792Z   Publish
+2022-08-17T12:23:08.792Z   Publish
+2022-08-17T12:23:08.792Z   Publish
+2022-08-17T12:23:08.793Z   Publish
+2022-08-17T12:23:08.793Z   Publish
+2022-08-17T12:23:08.794Z   Publish
+2022-08-17T12:23:08.794Z   Publish
+2022-08-17T12:23:08.794Z   Publish
+2022-08-17T12:23:08.795Z   Publish
+2022-08-17T12:23:08.795Z   Publish
+2022-08-17T12:23:08.796Z   Publish
+2022-08-17T12:23:08.796Z   Publish
+2022-08-17T12:23:08.797Z   Publish
+2022-08-17T12:23:08.797Z   Publish
+2022-08-17T12:23:08.797Z   Publish
+2022-08-17T12:23:08.798Z   Publish
+2022-08-17T12:23:08.798Z   Publish
+2022-08-17T12:23:08.799Z   Publish
+2022-08-17T12:23:08.799Z   Publish
+2022-08-17T12:23:08.800Z   Publish
+2022-08-17T12:23:08.800Z   Publish
+2022-08-17T12:23:08.800Z   Publish
+2022-08-17T12:23:08.801Z   Publish
+2022-08-17T12:23:08.801Z   Publish
+2022-08-17T12:23:08.802Z   Publish
+2022-08-17T12:23:08.802Z   Publish
+2022-08-17T12:23:08.803Z   Publish
+2022-08-17T12:23:08.803Z   Publish
+2022-08-17T12:23:08.803Z   Publish
+2022-08-17T12:23:08.804Z   Publish
+2022-08-17T12:23:08.805Z   Publish
+2022-08-17T12:23:08.806Z   Publish
+2022-08-17T12:23:08.806Z   Publish
+2022-08-17T12:23:08.807Z   Publish
+2022-08-17T12:23:08.807Z   Publish
+2022-08-17T12:23:08.808Z   Publish
+2022-08-17T12:23:08.808Z   Publish
+2022-08-17T12:23:08.809Z   Publish
+2022-08-17T12:23:08.809Z   Publish
+2022-08-17T12:23:08.810Z   Publish
+2022-08-17T12:23:08.810Z   Publish
+2022-08-17T12:23:08.811Z   Publish
+2022-08-17T12:23:08.811Z   Publish
+2022-08-17T12:23:08.812Z   Publish
+2022-08-17T12:23:08.812Z   Publish
+2022-08-17T12:23:08.812Z   Publish
+2022-08-17T12:23:08.813Z   Publish
+2022-08-17T12:23:08.813Z   Publish
+2022-08-17T12:23:08.814Z   Publish
+2022-08-17T12:23:08.814Z   Publish
+2022-08-17T12:23:08.815Z   Publish
+2022-08-17T12:23:08.815Z   Publish
+2022-08-17T12:23:08.816Z   Publish
+2022-08-17T12:23:08.817Z   Publish
+2022-08-17T12:23:08.817Z   Publish
+2022-08-17T12:23:08.818Z   Publish
+2022-08-17T12:23:08.818Z   Publish
+2022-08-17T12:23:08.818Z   Publish
+2022-08-17T12:23:08.819Z   Publish
+2022-08-17T12:23:08.823Z   Publish
+2022-08-17T12:23:08.823Z   Publish
+2022-08-17T12:23:08.824Z   Publish
+2022-08-17T12:23:08.824Z   Publish
+2022-08-17T12:23:08.824Z   Publish
+2022-08-17T12:23:08.825Z   Publish
+2022-08-17T12:23:08.825Z   Publish
+2022-08-17T12:23:08.826Z   Publish
+2022-08-17T12:23:08.826Z   Publish
+2022-08-17T12:23:08.827Z   Publish
+2022-08-17T12:23:08.827Z   Publish
+2022-08-17T12:23:08.828Z   Publish
+2022-08-17T12:23:08.828Z   Publish
+2022-08-17T12:23:08.829Z   Publish
+2022-08-17T12:23:08.829Z   Wait for 250 message
+[32mINFO[39m [2022-08-17T12:23:10.308] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.312] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.313] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.314] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.315] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.316] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.323] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.323] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.325] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.326] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.327] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.328] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.329] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.330] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.330] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.331] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.332] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.333] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.334] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.334] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.338] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.338] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.339] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.340] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.340] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.341] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.342] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.342] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.343] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.344] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.344] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.345] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.346] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.346] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.347] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.347] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.348] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.349] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.349] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.350] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.350] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.351] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.352] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.352] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.366] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.366] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.367] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.368] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.375] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.375] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.378] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.380] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.383] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.384] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.384] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.385] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.385] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.388] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.391] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.392] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.392] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.393] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.397] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.398] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.399] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.486] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.487] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.488] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.489] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.490] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.491] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.491] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.492] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.493] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.494] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.494] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.495] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.495] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.496] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.497] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.497] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.498] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.499] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.499] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.500] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.501] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.501] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.502] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.503] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.503] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.504] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.505] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.505] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.506] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.507] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.513] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.514] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.515] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.515] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.516] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.517] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.517] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.518] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.518] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.519] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.520] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.521] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.521] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.522] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.523] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.523] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.524] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.525] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.525] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.526] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.527] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.527] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.528] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.529] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.529] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.530] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.530] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.531] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.532] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.532] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.533] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.533] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.534] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.534] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.535] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.536] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.536] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.537] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.538] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.538] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.540] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.541] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.542] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.554] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.555] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.556] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.557] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.557] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.558] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.559] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.560] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.560] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.561] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.562] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.563] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.563] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.564] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.564] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.565] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.566] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.566] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.567] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.567] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.568] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.569] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.569] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.570] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.570] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.571] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.572] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.572] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.573] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.573] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.574] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.574] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.575] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.576] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.576] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.577] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.577] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.578] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.579] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.579] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.580] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.580] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.581] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.582] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.582] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.583] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.583] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.584] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.585] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.585] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.586] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.586] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.587] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.588] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.588] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.589] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.589] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.590] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.590] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.591] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.594] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.594] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.595] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.596] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.597] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.597] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.598] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.598] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.599] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.600] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.600] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.601] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.601] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.602] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.603] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.603] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.604] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.605] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.605] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.606] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.606] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.620] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.621] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.621] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.622] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.623] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.623] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.624] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.625] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.625] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.626] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.627] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.627] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.628] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.628] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.629] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.630] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.630] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.631] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.632] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.632] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.633] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.633] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.634] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.635] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.635] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:10.636] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.636] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:10.637] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.638] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.638] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:10.639] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:11.227] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.227] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.228] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.229] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.229] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.230] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.230] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.231] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.232] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.232] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.233] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.299] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.303] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.308] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.309] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.314] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.369] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.370] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.370] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.371] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.372] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.372] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.373] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.378] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.379] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.379] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.382] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.383] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.384] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.384] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.435] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.436] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.436] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.437] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.438] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.483] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.490] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.491] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.491] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.493] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.494] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.495] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.500] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.501] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.502] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.505] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.506] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.506] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.507] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.509] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.509] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.510] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.511] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.511] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.512] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.525] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.526] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.526] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.527] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.528] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.528] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.529] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.530] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.530] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.531] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.531] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.532] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.533] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.533] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.534] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.534] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.535] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.536] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.537] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.537] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.538] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.538] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.539] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.540] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.543] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.547] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.548] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.549] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.549] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.550] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.550] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.551] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.552] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.552] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.553] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.554] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.555] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.556] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.557] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.558] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.558] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.559] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.559] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.560] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.560] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.561] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.561] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.562] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.562] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.563] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.564] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.564] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.565] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.566] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.566] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.567] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.568] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.568] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.569] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.570] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.571] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.571] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.572] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.572] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.573] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.573] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.574] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.575] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.575] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.576] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.577] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.577] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.578] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.578] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.579] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.579] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.580] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.581] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.582] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.583] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.583] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.584] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.584] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.585] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.587] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.588] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.588] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.589] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.590] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.590] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.591] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.591] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.593] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.593] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.594] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.594] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:11.595] (TrackerConnector    ): [36mConnected to tracker T1[39m
+[32mINFO[39m [2022-08-17T12:23:24.513] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:24.715] (TrackerConnector    ): [36mConnected to tracker T2[39m
+[32mINFO[39m [2022-08-17T12:23:24.867] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:24.917] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:24.920] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:25.163Z   Received 0/250: {"id":171,"fromPublisher":"2022-08-17T12:23:08.696Z"}
+2022-08-17T12:23:25.163Z   Received 1/250: {"id":293,"fromPublisher":"2022-08-17T12:23:08.798Z"}
+2022-08-17T12:23:25.163Z   Received 2/250: {"id":303,"fromPublisher":"2022-08-17T12:23:08.803Z"}
+2022-08-17T12:23:25.163Z   Received 3/250: {"id":316,"fromPublisher":"2022-08-17T12:23:08.810Z"}
+[32mINFO[39m [2022-08-17T12:23:25.863] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:25.873] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:25.929] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:25.979] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:25.981] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:25.982] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:26.049] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:26.049] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:26.050] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:26.055] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:26.077] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:26.082] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:26.082] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:26.085] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:26.356Z   Received 4/250: {"id":125,"fromPublisher":"2022-08-17T12:23:08.666Z"}
+2022-08-17T12:23:26.356Z   Received 5/250: {"id":232,"fromPublisher":"2022-08-17T12:23:08.770Z"}
+2022-08-17T12:23:26.363Z   Received 6/250: {"id":119,"fromPublisher":"2022-08-17T12:23:08.663Z"}
+[32mINFO[39m [2022-08-17T12:23:26.390] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:26.399] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:26.400] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:26.400] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:26.555Z   Received 7/250: {"id":309,"fromPublisher":"2022-08-17T12:23:08.806Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:27.445Z   Received 8/250: {"id":248,"fromPublisher":"2022-08-17T12:23:08.780Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:27.569Z   Received 9/250: {"id":345,"fromPublisher":"2022-08-17T12:23:08.827Z"}
+2022-08-17T12:23:27.592Z   Received 10/250: {"id":331,"fromPublisher":"2022-08-17T12:23:08.817Z"}
+2022-08-17T12:23:27.592Z   Received 11/250: {"id":197,"fromPublisher":"2022-08-17T12:23:08.709Z"}
+2022-08-17T12:23:27.592Z   Received 12/250: {"id":127,"fromPublisher":"2022-08-17T12:23:08.667Z"}
+2022-08-17T12:23:27.592Z   Received 13/250: {"id":237,"fromPublisher":"2022-08-17T12:23:08.772Z"}
+2022-08-17T12:23:27.615Z   Received 14/250: {"id":156,"fromPublisher":"2022-08-17T12:23:08.687Z"}
+2022-08-17T12:23:27.615Z   Received 15/250: {"id":135,"fromPublisher":"2022-08-17T12:23:08.673Z"}
+2022-08-17T12:23:27.616Z   Received 16/250: {"id":314,"fromPublisher":"2022-08-17T12:23:08.809Z"}
+2022-08-17T12:23:27.616Z   Received 17/250: {"id":254,"fromPublisher":"2022-08-17T12:23:08.783Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:27.640Z   Received 18/250: {"id":319,"fromPublisher":"2022-08-17T12:23:08.811Z"}
+2022-08-17T12:23:27.640Z   Received 19/250: {"id":191,"fromPublisher":"2022-08-17T12:23:08.707Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:27.713Z   Received 20/250: {"id":210,"fromPublisher":"2022-08-17T12:23:08.716Z"}
+2022-08-17T12:23:27.718Z   Received 21/250: {"id":193,"fromPublisher":"2022-08-17T12:23:08.708Z"}
+2022-08-17T12:23:27.720Z   Received 22/250: {"id":180,"fromPublisher":"2022-08-17T12:23:08.702Z"}
+2022-08-17T12:23:27.720Z   Received 23/250: {"id":195,"fromPublisher":"2022-08-17T12:23:08.709Z"}
+[32mINFO[39m [2022-08-17T12:23:27.722] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:27.722] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:27.736] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.630] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.642] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.657] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.671] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.674] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.687] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.687] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.749] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.759] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.788] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.819] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:28.832] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:29.058Z   Received 24/250: {"id":121,"fromPublisher":"2022-08-17T12:23:08.664Z"}
+2022-08-17T12:23:29.117Z   Received 25/250: {"id":322,"fromPublisher":"2022-08-17T12:23:08.813Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:29.181Z   Received 26/250: {"id":131,"fromPublisher":"2022-08-17T12:23:08.671Z"}
+2022-08-17T12:23:29.181Z   Received 27/250: {"id":208,"fromPublisher":"2022-08-17T12:23:08.715Z"}
+2022-08-17T12:23:29.191Z   Received 28/250: {"id":317,"fromPublisher":"2022-08-17T12:23:08.810Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:29.218Z   Received 29/250: {"id":205,"fromPublisher":"2022-08-17T12:23:08.713Z"}
+[32mINFO[39m [2022-08-17T12:23:29.247] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:29.247] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:29.393Z   Received 30/250: {"id":112,"fromPublisher":"2022-08-17T12:23:08.656Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:30.319Z   Received 31/250: {"id":258,"fromPublisher":"2022-08-17T12:23:08.784Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:30.497Z   Received 32/250: {"id":338,"fromPublisher":"2022-08-17T12:23:08.824Z"}
+2022-08-17T12:23:30.497Z   Received 33/250: {"id":196,"fromPublisher":"2022-08-17T12:23:08.709Z"}
+2022-08-17T12:23:30.497Z   Received 34/250: {"id":117,"fromPublisher":"2022-08-17T12:23:08.660Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:30.536Z   Received 35/250: {"id":219,"fromPublisher":"2022-08-17T12:23:08.720Z"}
+2022-08-17T12:23:30.536Z   Received 36/250: {"id":173,"fromPublisher":"2022-08-17T12:23:08.696Z"}
+2022-08-17T12:23:30.536Z   Received 37/250: {"id":251,"fromPublisher":"2022-08-17T12:23:08.782Z"}
+2022-08-17T12:23:30.550Z   Received 38/250: {"id":133,"fromPublisher":"2022-08-17T12:23:08.672Z"}
+2022-08-17T12:23:30.550Z   Received 39/250: {"id":111,"fromPublisher":"2022-08-17T12:23:08.655Z"}
+2022-08-17T12:23:30.551Z   Received 40/250: {"id":225,"fromPublisher":"2022-08-17T12:23:08.725Z"}
+2022-08-17T12:23:30.563Z   Received 41/250: {"id":236,"fromPublisher":"2022-08-17T12:23:08.772Z"}
+2022-08-17T12:23:30.563Z   Received 42/250: {"id":291,"fromPublisher":"2022-08-17T12:23:08.797Z"}
+2022-08-17T12:23:30.563Z   Received 43/250: {"id":201,"fromPublisher":"2022-08-17T12:23:08.711Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:30.585Z   Received 44/250: {"id":170,"fromPublisher":"2022-08-17T12:23:08.695Z"}
+[32mINFO[39m [2022-08-17T12:23:30.601] (TrackerConnector    ): [36mConnected to tracker T3[39m
+2022-08-17T12:23:30.608Z   Received 45/250: {"id":198,"fromPublisher":"2022-08-17T12:23:08.710Z"}
+[32mINFO[39m [2022-08-17T12:23:30.611] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:30.613] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:30.626] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:31.512] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:31.517] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:31.518] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:31.588] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:31.591] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:31.619] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:31.621] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:31.633] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:31.663] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:31.978Z   Received 46/250: {"id":259,"fromPublisher":"2022-08-17T12:23:08.785Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:32.042Z   Received 47/250: {"id":311,"fromPublisher":"2022-08-17T12:23:08.807Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:32.126Z   Received 48/250: {"id":129,"fromPublisher":"2022-08-17T12:23:08.670Z"}
+2022-08-17T12:23:32.129Z   Received 49/250: {"id":294,"fromPublisher":"2022-08-17T12:23:08.799Z"}
+2022-08-17T12:23:32.129Z   Received 50/250: {"id":147,"fromPublisher":"2022-08-17T12:23:08.682Z"}
+2022-08-17T12:23:32.129Z   Received 51/250: {"id":264,"fromPublisher":"2022-08-17T12:23:08.787Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:33.037Z   Received 52/250: {"id":104,"fromPublisher":"2022-08-17T12:23:08.650Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:33.417Z   Received 53/250: {"id":152,"fromPublisher":"2022-08-17T12:23:08.684Z"}
+2022-08-17T12:23:33.418Z   Received 54/250: {"id":306,"fromPublisher":"2022-08-17T12:23:08.804Z"}
+2022-08-17T12:23:33.418Z   Received 55/250: {"id":288,"fromPublisher":"2022-08-17T12:23:08.796Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:33.458Z   Received 56/250: {"id":174,"fromPublisher":"2022-08-17T12:23:08.697Z"}
+2022-08-17T12:23:33.458Z   Received 57/250: {"id":154,"fromPublisher":"2022-08-17T12:23:08.685Z"}
+2022-08-17T12:23:33.459Z   Received 58/250: {"id":240,"fromPublisher":"2022-08-17T12:23:08.774Z"}
+2022-08-17T12:23:33.471Z   Received 59/250: {"id":305,"fromPublisher":"2022-08-17T12:23:08.804Z"}
+2022-08-17T12:23:33.472Z   Received 60/250: {"id":150,"fromPublisher":"2022-08-17T12:23:08.684Z"}
+2022-08-17T12:23:33.472Z   Received 61/250: {"id":181,"fromPublisher":"2022-08-17T12:23:08.703Z"}
+2022-08-17T12:23:33.472Z   Received 62/250: {"id":130,"fromPublisher":"2022-08-17T12:23:08.670Z"}
+2022-08-17T12:23:33.482Z   Received 63/250: {"id":263,"fromPublisher":"2022-08-17T12:23:08.786Z"}
+2022-08-17T12:23:33.483Z   Received 64/250: {"id":307,"fromPublisher":"2022-08-17T12:23:08.805Z"}
+2022-08-17T12:23:33.489Z   Received 65/250: {"id":123,"fromPublisher":"2022-08-17T12:23:08.665Z"}
+[32mINFO[39m [2022-08-17T12:23:33.515] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:33.515] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:33.516] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:33.517] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:33.701Z   Received 66/250: {"id":234,"fromPublisher":"2022-08-17T12:23:08.771Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:33.748Z   Received 67/250: {"id":286,"fromPublisher":"2022-08-17T12:23:08.795Z"}
+[32mINFO[39m [2022-08-17T12:23:34.512] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:34.518] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:34.550] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:34.550] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:34.551] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:34.553] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:34.883Z   Received 68/250: {"id":137,"fromPublisher":"2022-08-17T12:23:08.674Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:34.985Z   Received 69/250: {"id":116,"fromPublisher":"2022-08-17T12:23:08.659Z"}
+2022-08-17T12:23:34.985Z   Received 70/250: {"id":162,"fromPublisher":"2022-08-17T12:23:08.689Z"}
+2022-08-17T12:23:34.990Z   Received 71/250: {"id":348,"fromPublisher":"2022-08-17T12:23:08.828Z"}
+[32mINFO[39m [2022-08-17T12:23:34.993] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:36.069Z   Received 72/250: {"id":212,"fromPublisher":"2022-08-17T12:23:08.716Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:36.330Z   Received 73/250: {"id":347,"fromPublisher":"2022-08-17T12:23:08.828Z"}
+2022-08-17T12:23:36.330Z   Received 74/250: {"id":344,"fromPublisher":"2022-08-17T12:23:08.826Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:36.411Z   Received 75/250: {"id":290,"fromPublisher":"2022-08-17T12:23:08.797Z"}
+2022-08-17T12:23:36.412Z   Received 76/250: {"id":295,"fromPublisher":"2022-08-17T12:23:08.799Z"}
+2022-08-17T12:23:36.412Z   Received 77/250: {"id":284,"fromPublisher":"2022-08-17T12:23:08.794Z"}
+2022-08-17T12:23:36.412Z   Received 78/250: {"id":120,"fromPublisher":"2022-08-17T12:23:08.663Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:36.454Z   Received 79/250: {"id":167,"fromPublisher":"2022-08-17T12:23:08.693Z"}
+2022-08-17T12:23:36.454Z   Received 80/250: {"id":278,"fromPublisher":"2022-08-17T12:23:08.792Z"}
+2022-08-17T12:23:36.454Z   Received 81/250: {"id":297,"fromPublisher":"2022-08-17T12:23:08.800Z"}
+2022-08-17T12:23:36.455Z   Received 82/250: {"id":260,"fromPublisher":"2022-08-17T12:23:08.785Z"}
+2022-08-17T12:23:36.473Z   Received 83/250: {"id":103,"fromPublisher":"2022-08-17T12:23:08.649Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:36.514Z   Received 84/250: {"id":342,"fromPublisher":"2022-08-17T12:23:08.826Z"}
+2022-08-17T12:23:36.514Z   Received 85/250: {"id":245,"fromPublisher":"2022-08-17T12:23:08.777Z"}
+2022-08-17T12:23:36.532Z   Received 86/250: {"id":330,"fromPublisher":"2022-08-17T12:23:08.817Z"}
+2022-08-17T12:23:36.546Z   Received 87/250: {"id":252,"fromPublisher":"2022-08-17T12:23:08.782Z"}
+[32mINFO[39m [2022-08-17T12:23:36.549] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:36.550] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:37.292] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:37.305] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:37.306] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:37.449] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:37.521] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:37.522] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:37.525] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:37.525] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:37.526] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:37.593] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:37.628] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:38.013Z   Received 88/250: {"id":313,"fromPublisher":"2022-08-17T12:23:08.808Z"}
+2022-08-17T12:23:38.013Z   Received 89/250: {"id":145,"fromPublisher":"2022-08-17T12:23:08.681Z"}
+2022-08-17T12:23:38.013Z   Received 90/250: {"id":277,"fromPublisher":"2022-08-17T12:23:08.792Z"}
+2022-08-17T12:23:38.013Z   Received 91/250: {"id":228,"fromPublisher":"2022-08-17T12:23:08.727Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:38.086Z   Received 92/250: {"id":253,"fromPublisher":"2022-08-17T12:23:08.782Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:38.624Z   Received 93/250: {"id":199,"fromPublisher":"2022-08-17T12:23:08.710Z"}
+2022-08-17T12:23:38.653Z   Received 94/250: {"id":177,"fromPublisher":"2022-08-17T12:23:08.699Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:38.717Z   Received 95/250: {"id":315,"fromPublisher":"2022-08-17T12:23:08.809Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:39.144Z   Received 96/250: {"id":186,"fromPublisher":"2022-08-17T12:23:08.705Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:39.615Z   Received 97/250: {"id":144,"fromPublisher":"2022-08-17T12:23:08.679Z"}
+2022-08-17T12:23:39.615Z   Received 98/250: {"id":246,"fromPublisher":"2022-08-17T12:23:08.780Z"}
+2022-08-17T12:23:39.654Z   Received 99/250: {"id":168,"fromPublisher":"2022-08-17T12:23:08.694Z"}
+2022-08-17T12:23:39.655Z   Received 100/250: {"id":159,"fromPublisher":"2022-08-17T12:23:08.688Z"}
+2022-08-17T12:23:39.655Z   Received 101/250: {"id":187,"fromPublisher":"2022-08-17T12:23:08.705Z"}
+2022-08-17T12:23:39.655Z   Received 102/250: {"id":194,"fromPublisher":"2022-08-17T12:23:08.708Z"}
+2022-08-17T12:23:39.674Z   Received 103/250: {"id":160,"fromPublisher":"2022-08-17T12:23:08.689Z"}
+2022-08-17T12:23:39.674Z   Received 104/250: {"id":215,"fromPublisher":"2022-08-17T12:23:08.718Z"}
+2022-08-17T12:23:39.690Z   Received 105/250: {"id":255,"fromPublisher":"2022-08-17T12:23:08.783Z"}
+2022-08-17T12:23:39.690Z   Received 106/250: {"id":327,"fromPublisher":"2022-08-17T12:23:08.815Z"}
+2022-08-17T12:23:39.690Z   Received 107/250: {"id":346,"fromPublisher":"2022-08-17T12:23:08.827Z"}
+[32mINFO[39m [2022-08-17T12:23:39.705] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:39.706] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:39.706] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:39.710] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:39.735] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:39.765] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:39.829] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:40.050Z   Received 108/250: {"id":141,"fromPublisher":"2022-08-17T12:23:08.678Z"}
+[32mINFO[39m [2022-08-17T12:23:40.471] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:40.624] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:40.708] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:40.719] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:40.750] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:40.751] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:40.756] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:40.774] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:40.775] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:40.780] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:40.789] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:40.790] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:41.308Z   Received 109/250: {"id":339,"fromPublisher":"2022-08-17T12:23:08.824Z"}
+2022-08-17T12:23:41.308Z   Received 110/250: {"id":165,"fromPublisher":"2022-08-17T12:23:08.691Z"}
+2022-08-17T12:23:41.358Z   Received 111/250: {"id":190,"fromPublisher":"2022-08-17T12:23:08.707Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:41.516Z   Received 112/250: {"id":320,"fromPublisher":"2022-08-17T12:23:08.812Z"}
+2022-08-17T12:23:41.539Z   Received 113/250: {"id":334,"fromPublisher":"2022-08-17T12:23:08.818Z"}
+2022-08-17T12:23:41.539Z   Received 114/250: {"id":164,"fromPublisher":"2022-08-17T12:23:08.690Z"}
+2022-08-17T12:23:41.539Z   Received 115/250: {"id":207,"fromPublisher":"2022-08-17T12:23:08.714Z"}
+[32mINFO[39m [2022-08-17T12:23:41.551] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:41.691Z   Received 116/250: {"id":113,"fromPublisher":"2022-08-17T12:23:08.656Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:42.052Z   Received 117/250: {"id":204,"fromPublisher":"2022-08-17T12:23:08.713Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:42.354Z   Received 118/250: {"id":182,"fromPublisher":"2022-08-17T12:23:08.703Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:42.601Z   Received 119/250: {"id":272,"fromPublisher":"2022-08-17T12:23:08.790Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:42.695Z   Received 120/250: {"id":184,"fromPublisher":"2022-08-17T12:23:08.704Z"}
+2022-08-17T12:23:42.696Z   Received 121/250: {"id":107,"fromPublisher":"2022-08-17T12:23:08.652Z"}
+2022-08-17T12:23:42.721Z   Received 122/250: {"id":142,"fromPublisher":"2022-08-17T12:23:08.678Z"}
+2022-08-17T12:23:42.721Z   Received 123/250: {"id":283,"fromPublisher":"2022-08-17T12:23:08.794Z"}
+2022-08-17T12:23:42.721Z   Received 124/250: {"id":224,"fromPublisher":"2022-08-17T12:23:08.724Z"}
+2022-08-17T12:23:42.721Z   Received 125/250: {"id":158,"fromPublisher":"2022-08-17T12:23:08.688Z"}
+2022-08-17T12:23:42.766Z   Received 126/250: {"id":256,"fromPublisher":"2022-08-17T12:23:08.783Z"}
+2022-08-17T12:23:42.772Z   Received 127/250: {"id":169,"fromPublisher":"2022-08-17T12:23:08.694Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+[32mINFO[39m [2022-08-17T12:23:42.864] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:42.865] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:42.866] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:42.871] (TrackerConnector    ): [36mConnected to tracker T3[39m
+2022-08-17T12:23:42.872Z   Received 128/250: {"id":235,"fromPublisher":"2022-08-17T12:23:08.771Z"}
+[32mINFO[39m [2022-08-17T12:23:42.874] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:42.875] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:42.884] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:43.349] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:43.607] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:43.703] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:43.732] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:43.771] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:43.795] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:43.815] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:43.830] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:43.846] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:44.239Z   Received 129/250: {"id":126,"fromPublisher":"2022-08-17T12:23:08.667Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:44.673Z   Received 130/250: {"id":175,"fromPublisher":"2022-08-17T12:23:08.697Z"}
+2022-08-17T12:23:44.740Z   Received 131/250: {"id":324,"fromPublisher":"2022-08-17T12:23:08.813Z"}
+2022-08-17T12:23:44.740Z   Received 132/250: {"id":273,"fromPublisher":"2022-08-17T12:23:08.790Z"}
+2022-08-17T12:23:44.740Z   Received 133/250: {"id":302,"fromPublisher":"2022-08-17T12:23:08.802Z"}
+2022-08-17T12:23:44.769Z   Received 134/250: {"id":134,"fromPublisher":"2022-08-17T12:23:08.672Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:44.796Z   Received 135/250: {"id":148,"fromPublisher":"2022-08-17T12:23:08.683Z"}
+2022-08-17T12:23:44.797Z   Received 136/250: {"id":109,"fromPublisher":"2022-08-17T12:23:08.654Z"}
+2022-08-17T12:23:44.797Z   Received 137/250: {"id":108,"fromPublisher":"2022-08-17T12:23:08.653Z"}
+2022-08-17T12:23:44.837Z   Received 138/250: {"id":213,"fromPublisher":"2022-08-17T12:23:08.717Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:45.239Z   Received 139/250: {"id":298,"fromPublisher":"2022-08-17T12:23:08.800Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:45.445Z   Received 140/250: {"id":155,"fromPublisher":"2022-08-17T12:23:08.686Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:45.568Z   Received 141/250: {"id":282,"fromPublisher":"2022-08-17T12:23:08.794Z"}
+2022-08-17T12:23:45.713Z   Received 142/250: {"id":250,"fromPublisher":"2022-08-17T12:23:08.781Z"}
+2022-08-17T12:23:45.713Z   Received 143/250: {"id":200,"fromPublisher":"2022-08-17T12:23:08.711Z"}
+2022-08-17T12:23:45.715Z   Received 144/250: {"id":238,"fromPublisher":"2022-08-17T12:23:08.773Z"}
+2022-08-17T12:23:45.715Z   Received 145/250: {"id":343,"fromPublisher":"2022-08-17T12:23:08.826Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:45.753Z   Received 146/250: {"id":189,"fromPublisher":"2022-08-17T12:23:08.706Z"}
+2022-08-17T12:23:45.753Z   Received 147/250: {"id":262,"fromPublisher":"2022-08-17T12:23:08.786Z"}
+2022-08-17T12:23:45.771Z   Received 148/250: {"id":149,"fromPublisher":"2022-08-17T12:23:08.683Z"}
+[32mINFO[39m [2022-08-17T12:23:45.850] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:45.854] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:45.855] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:45.884] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:45.892] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:45.937] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:46.187Z   Received 149/250: {"id":276,"fromPublisher":"2022-08-17T12:23:08.791Z"}
+2022-08-17T12:23:46.195Z   Received 150/250: {"id":270,"fromPublisher":"2022-08-17T12:23:08.789Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:46.386Z   Received 151/250: {"id":239,"fromPublisher":"2022-08-17T12:23:08.773Z"}
+[32mINFO[39m [2022-08-17T12:23:46.558] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:46.686] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:46.709] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:46.710] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:46.765] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:46.818] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:46.825] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:46.904] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:47.516Z   Received 152/250: {"id":296,"fromPublisher":"2022-08-17T12:23:08.800Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:47.682Z   Received 153/250: {"id":146,"fromPublisher":"2022-08-17T12:23:08.682Z"}
+2022-08-17T12:23:47.682Z   Received 154/250: {"id":153,"fromPublisher":"2022-08-17T12:23:08.685Z"}
+2022-08-17T12:23:47.733Z   Received 155/250: {"id":217,"fromPublisher":"2022-08-17T12:23:08.719Z"}
+2022-08-17T12:23:47.768Z   Received 156/250: {"id":185,"fromPublisher":"2022-08-17T12:23:08.705Z"}
+2022-08-17T12:23:47.768Z   Received 157/250: {"id":325,"fromPublisher":"2022-08-17T12:23:08.814Z"}
+2022-08-17T12:23:47.768Z   Received 158/250: {"id":203,"fromPublisher":"2022-08-17T12:23:08.712Z"}
+[32mINFO[39m [2022-08-17T12:23:47.810] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:47.983Z   Received 159/250: {"id":114,"fromPublisher":"2022-08-17T12:23:08.658Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:48.029Z   Received 160/250: {"id":102,"fromPublisher":"2022-08-17T12:23:08.648Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:48.547Z   Received 161/250: {"id":124,"fromPublisher":"2022-08-17T12:23:08.666Z"}
+2022-08-17T12:23:48.648Z   Received 162/250: {"id":318,"fromPublisher":"2022-08-17T12:23:08.811Z"}
+2022-08-17T12:23:48.648Z   Received 163/250: {"id":289,"fromPublisher":"2022-08-17T12:23:08.797Z"}
+2022-08-17T12:23:48.702Z   Received 164/250: {"id":323,"fromPublisher":"2022-08-17T12:23:08.813Z"}
+2022-08-17T12:23:48.702Z   Received 165/250: {"id":139,"fromPublisher":"2022-08-17T12:23:08.677Z"}
+2022-08-17T12:23:48.703Z   Received 166/250: {"id":249,"fromPublisher":"2022-08-17T12:23:08.781Z"}
+2022-08-17T12:23:48.703Z   Received 167/250: {"id":285,"fromPublisher":"2022-08-17T12:23:08.795Z"}
+2022-08-17T12:23:48.703Z   Received 168/250: {"id":172,"fromPublisher":"2022-08-17T12:23:08.696Z"}
+[32mINFO[39m [2022-08-17T12:23:48.771] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:48.829] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:48.865] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:48.869] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:48.870] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:49.167Z   Received 169/250: {"id":179,"fromPublisher":"2022-08-17T12:23:08.702Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:49.353Z   Received 170/250: {"id":229,"fromPublisher":"2022-08-17T12:23:08.727Z"}
+2022-08-17T12:23:49.376Z   Received 171/250: {"id":202,"fromPublisher":"2022-08-17T12:23:08.712Z"}
+2022-08-17T12:23:49.377Z   Received 172/250: {"id":274,"fromPublisher":"2022-08-17T12:23:08.791Z"}
+[32mINFO[39m [2022-08-17T12:23:49.393] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:49.581Z   Received 173/250: {"id":138,"fromPublisher":"2022-08-17T12:23:08.676Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:49.655Z   Received 174/250: {"id":218,"fromPublisher":"2022-08-17T12:23:08.719Z"}
+[32mINFO[39m [2022-08-17T12:23:49.684] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:49.784] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:49.789] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:49.790] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:50.554Z   Received 175/250: {"id":329,"fromPublisher":"2022-08-17T12:23:08.816Z"}
+2022-08-17T12:23:50.554Z   Received 176/250: {"id":151,"fromPublisher":"2022-08-17T12:23:08.684Z"}
+2022-08-17T12:23:50.601Z   Received 177/250: {"id":221,"fromPublisher":"2022-08-17T12:23:08.721Z"}
+2022-08-17T12:23:50.621Z   Received 178/250: {"id":143,"fromPublisher":"2022-08-17T12:23:08.679Z"}
+2022-08-17T12:23:50.621Z   Received 179/250: {"id":326,"fromPublisher":"2022-08-17T12:23:08.814Z"}
+2022-08-17T12:23:50.639Z   Received 180/250: {"id":115,"fromPublisher":"2022-08-17T12:23:08.659Z"}
+[32mINFO[39m [2022-08-17T12:23:50.667] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:50.668] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:50.668] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:50.706] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:50.770] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:51.289Z   Received 181/250: {"id":226,"fromPublisher":"2022-08-17T12:23:08.725Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:51.885Z   Received 182/250: {"id":110,"fromPublisher":"2022-08-17T12:23:08.655Z"}
+2022-08-17T12:23:51.904Z   Received 183/250: {"id":220,"fromPublisher":"2022-08-17T12:23:08.720Z"}
+2022-08-17T12:23:51.904Z   Received 184/250: {"id":118,"fromPublisher":"2022-08-17T12:23:08.662Z"}
+2022-08-17T12:23:51.904Z   Received 185/250: {"id":166,"fromPublisher":"2022-08-17T12:23:08.693Z"}
+2022-08-17T12:23:51.911Z   Received 186/250: {"id":292,"fromPublisher":"2022-08-17T12:23:08.798Z"}
+2022-08-17T12:23:51.911Z   Received 187/250: {"id":268,"fromPublisher":"2022-08-17T12:23:08.788Z"}
+2022-08-17T12:23:51.911Z   Received 188/250: {"id":178,"fromPublisher":"2022-08-17T12:23:08.702Z"}
+[32mINFO[39m [2022-08-17T12:23:51.949] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:51.950] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:51.951] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:52.469Z   Received 189/250: {"id":161,"fromPublisher":"2022-08-17T12:23:08.689Z"}
+2022-08-17T12:23:52.470Z   Received 190/250: {"id":304,"fromPublisher":"2022-08-17T12:23:08.803Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:52.585Z   Received 191/250: {"id":300,"fromPublisher":"2022-08-17T12:23:08.801Z"}
+2022-08-17T12:23:52.585Z   Received 192/250: {"id":216,"fromPublisher":"2022-08-17T12:23:08.718Z"}
+2022-08-17T12:23:52.585Z   Received 193/250: {"id":188,"fromPublisher":"2022-08-17T12:23:08.706Z"}
+2022-08-17T12:23:52.606Z   Received 194/250: {"id":242,"fromPublisher":"2022-08-17T12:23:08.775Z"}
+2022-08-17T12:23:52.620Z   Received 195/250: {"id":308,"fromPublisher":"2022-08-17T12:23:08.806Z"}
+[32mINFO[39m [2022-08-17T12:23:52.922] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:53.001] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:53.013] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:53.014] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:53.220Z   Received 196/250: {"id":163,"fromPublisher":"2022-08-17T12:23:08.690Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:53.666Z   Received 197/250: {"id":299,"fromPublisher":"2022-08-17T12:23:08.801Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:53.806Z   Received 198/250: {"id":233,"fromPublisher":"2022-08-17T12:23:08.771Z"}
+2022-08-17T12:23:53.880Z   Received 199/250: {"id":244,"fromPublisher":"2022-08-17T12:23:08.776Z"}
+2022-08-17T12:23:53.909Z   Received 200/250: {"id":122,"fromPublisher":"2022-08-17T12:23:08.664Z"}
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+[32mINFO[39m [2022-08-17T12:23:53.980] (TrackerConnector    ): [36mConnected to tracker T3[39m
+2022-08-17T12:23:53.986Z   Received 201/250: {"id":183,"fromPublisher":"2022-08-17T12:23:08.704Z"}
+[32mINFO[39m [2022-08-17T12:23:53.989] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:54.002] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:54.009] (TrackerConnector    ): [36mConnected to tracker T3[39m
+[32mINFO[39m [2022-08-17T12:23:54.010] (TrackerConnector    ): [36mConnected to tracker T3[39m
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+WaitForMessage.finally.1
+WaitForMessage.finally.2
+WaitForMessage.finally.3
+Pipeline.return
+PipeLine.return: NO this.onBeforeFinally.trigger()
+KES.createSubscription: sub.onBeforeFinally
+WaitForMessage.finally.4
+2022-08-17T12:23:54.102Z   Received 202/250: {"id":214,"fromPublisher":"2022-08-17T12:23:08.717Z"}
