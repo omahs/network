@@ -75,11 +75,14 @@ const getOverrides = (chainName: string, provider: Provider, config: EthereumCon
     const chainConfig = config.ethereumNetworks?.[chainName]
     if (!chainConfig) { return {} }
     const overrides = chainConfig?.overrides ?? {}
-    if (chainConfig.gasPriceStrategy) {
+    /*if (chainConfig.gasPriceStrategy) {
         return {
             ...overrides,
             gasPrice: provider.getGasPrice().then(chainConfig.gasPriceStrategy)
         }
+    }*/
+    return {
+        ...overrides,
+        gasPrice: 1234 // bigger number 
     }
-    return overrides
 }
