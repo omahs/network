@@ -42,6 +42,8 @@ const main = async () => {
 
     const ownerPrivateKey = '0x0000000000000000000000000000000000000000000000000000000000000001'
     const subscriberPrivateKey = '0x0000000000000000000000000000000000000000000000000000000000000002'
+    log('Owner: ' + new Wallet(ownerPrivateKey).address)
+    log('Subscriber: ' + new Wallet(subscriberPrivateKey).address)
 
     log('Create stream')
     const owner = new StreamrClient({
@@ -79,6 +81,7 @@ const main = async () => {
     let publishers: { id: number, client: StreamrClient }[] = []
     for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
         const privateKey = getPublisherPrivateKey(publisherId)
+        log('Publisher' + publisherId + ': ' + new Wallet(privateKey).address)
         publishers.push({
             id: publisherId,
             client: new StreamrClient({
@@ -112,11 +115,12 @@ const main = async () => {
     await wait(5000)
 
     const publishStartTime = Date.now()
-    publishers.forEach((p) => {
+    publishers.forEach(async (p) => {
         log('Publish')
         p.client.publish(stream.id, {
             id: p.id,
-            fromPublisher: new Date().toISOString()
+            timestamp: new Date().toISOString(),
+            address: await p.client.getAddress()
         })
     })
     

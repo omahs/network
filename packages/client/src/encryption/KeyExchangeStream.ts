@@ -89,7 +89,8 @@ export class KeyExchangeStream implements Context {
             return GroupKeyResponse.fromArray(content).requestId === request.requestId
         }
 
-        return publishAndWaitForResponseMessage(
+        console.log((await this.authentication.getAddress()) + ' does a request to publisher ' + publisherId + '(stream=' + streamPartId + ')')
+        const res = await publishAndWaitForResponseMessage(
             () => this.publisher.publish(streamPartId, request.toArray(), {
                 messageType: request.messageType
             }),
@@ -99,6 +100,9 @@ export class KeyExchangeStream implements Context {
             this.destroySignal,
             this.timeoutsConfig.encryptionKeyRequest
         )
+        console.log((await this.authentication.getAddress()) + ' got response from ' + publisherId)
+        console.log(res)
+        return res
     }
 
     async response(

@@ -100,7 +100,7 @@ export class SubscriptionSession<T> implements Context {
     }
 
     private async unsubscribe(node: NetworkNodeStub) {
-        console.log('Unsubscribe: ' + this.streamPartId)
+        console.log('Unsubscribe: ' + this.streamPartId + ' by node ' + node.getNodeId())
         this.debug('unsubscribe')
         this.pipeline.end()
         this.pipeline.return()
