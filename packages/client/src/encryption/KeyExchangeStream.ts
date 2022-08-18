@@ -25,6 +25,7 @@ import { Authentication, AuthenticationInjectionToken } from '../Authentication'
 import { ConfigInjectionToken, TimeoutsConfig } from '../Config'
 import { NetworkNodeFacade } from '../NetworkNodeFacade'
 import { log } from '../utils/timedLog'
+import { wait } from '@streamr/utils'
 
 export type GroupKeyId = string
 export type GroupKeysSerialized = Record<GroupKeyId, GroupKeyish>
@@ -102,7 +103,12 @@ export class KeyExchangeStream implements Context {
             this.timeoutsConfig.encryptionKeyRequest
         )
         log((await this.authentication.getAddress()) + ' got response from ' + publisherId)
-        ;(await this.node.getNode()).unsubscribe(streamPartId)
+        ;
+        setTimeout(async () => {
+            await wait(10000 + 20000 * Math.random())
+            // TODO we can't be sure that nobody needs the subscription anymore
+            ;(await this.node.getNode()).unsubscribe(streamPartId)
+        })
         log('Unsubscribed from ' + streamPartId)
         return res
     }

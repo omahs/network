@@ -113,7 +113,7 @@ const main = async () => {
 
     log('Wait for joins (the subscriber, and trigger publishers to join)')
     publishers.forEach(async (p) => {
-        log('Publish')
+        log('Warmup: ' + p.id)
         p.client.publish(stream.id, {
             warmUpTrigger: 'to-trigger-topology-join'
         })
@@ -122,7 +122,7 @@ const main = async () => {
         const topologySize = await getTopologySize(stream.id)
         log('Topology size: ' + topologySize)
         return topologySize === publishers.length + 1
-    }, 10 * 60 * 1000)
+    }, 10 * 60 * 1000, 2000)
 
     const publishStartTime = Date.now()
     publishers.forEach(async (p) => {
