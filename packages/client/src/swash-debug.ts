@@ -14,6 +14,15 @@ const MIN_PUBLISHER_ID = 100
 
 const getPublisherPrivateKey = (id: number) => '0x' + padStart(String(id), 64, '0')
 
+const createClient = (privateKey: string): StreamrClient => {
+    return new StreamrClient({
+        ...ConfigTest,
+        auth: {
+            privateKey
+        }
+    })
+}
+
 const main = async () => {
     const publisherCount = Number(process.argv[2])
     await KeyServer.startIfNotRunning()
@@ -24,12 +33,7 @@ const main = async () => {
     log('Subscriber: ' + new Wallet(subscriberPrivateKey).address)
 
     log('Create stream')
-    const owner = new StreamrClient({
-        ...ConfigTest,
-        auth: {
-            privateKey: ownerPrivateKey
-        }
-    })
+    const owner = createClient(ownerPrivateKey)
     const stream = await owner.getOrCreateStream({
         id: '/test1'
     })
@@ -62,22 +66,12 @@ const main = async () => {
         log('Publisher' + publisherId + ': ' + new Wallet(privateKey).address)
         publishers.push({
             id: publisherId,
-            client: new StreamrClient({
-                ...ConfigTest,
-                auth: {
-                    privateKey
-                }
-            })
+            client: createClient(privateKey)
         })
     }
 
     log('Create subscriber')
-    const subscriber = new StreamrClient({
-        ...ConfigTest,
-        auth: {
-            privateKey: subscriberPrivateKey
-        }
-    })
+    const subscriber = createClient(subscriberPrivateKey)
     await stream.grantPermissions({
         permissions: [StreamPermission.SUBSCRIBE],
         user: await subscriber.getAddress()
