@@ -311,16 +311,16 @@ export class Pipeline<InType, OutType = InType> implements IPipeline<InType, Out
 
     /** @internal */
     async return(v?: OutType): Promise<IteratorResult<OutType, any>> {
-        console.log('Pipeline.return')
+        //console.log('Pipeline.return')
         if (this.isCleaningUp) {
             return Promise.resolve({ done: true, value: v } as IteratorReturnResult<OutType>)
         }
 
         if (!this.onBeforeFinally.triggerCount) {
-            console.log('PipeLine.return: this.onBeforeFinally.trigger()')
+            //console.log('PipeLine.return: this.onBeforeFinally.trigger()')
             await this.onBeforeFinally.trigger()
         } else {
-            console.log('PipeLine.return: NO this.onBeforeFinally.trigger()')
+            //console.log('PipeLine.return: NO this.onBeforeFinally.trigger()')
         }
 
         await this.definition.source.return(undefined)
