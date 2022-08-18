@@ -24,6 +24,7 @@ import { publishAndWaitForResponseMessage } from '../utils/waitForMessage'
 import { Authentication, AuthenticationInjectionToken } from '../Authentication'
 import { ConfigInjectionToken, TimeoutsConfig } from '../Config'
 import { NetworkNodeFacade } from '../NetworkNodeFacade'
+import { log } from '../utils/timedLog'
 
 export type GroupKeyId = string
 export type GroupKeysSerialized = Record<GroupKeyId, GroupKeyish>
@@ -89,7 +90,7 @@ export class KeyExchangeStream implements Context {
             return GroupKeyResponse.fromArray(content).requestId === request.requestId
         }
 
-        console.log((await this.authentication.getAddress()) + ' does a request to publisher ' + publisherId + '(stream=' + streamPartId + ')')
+        log((await this.authentication.getAddress()) + ' does a request to publisher ' + publisherId + '(stream=' + streamPartId + ')')
         const res = await publishAndWaitForResponseMessage(
             () => this.publisher.publish(streamPartId, request.toArray(), {
                 messageType: request.messageType
@@ -100,9 +101,9 @@ export class KeyExchangeStream implements Context {
             this.destroySignal,
             this.timeoutsConfig.encryptionKeyRequest
         )
-        console.log((await this.authentication.getAddress()) + ' got response from ' + publisherId)
+        log((await this.authentication.getAddress()) + ' got response from ' + publisherId)
         ;(await this.node.getNode()).unsubscribe(streamPartId)
-        console.log('Unsubscribed from ' + streamPartId)
+        log('Unsubscribed from ' + streamPartId)
         return res
     }
 

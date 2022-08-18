@@ -13,6 +13,7 @@ import { Subscription } from './Subscription'
 import { SubscribePipeline } from './SubscribePipeline'
 import { BrubeckContainer } from '../Container'
 import { NetworkNodeFacade, NetworkNodeStub } from '../NetworkNodeFacade'
+import { log } from '../utils/timedLog'
 
 /**
  * Manages adding & removing subscriptions to node as needed.
@@ -100,7 +101,7 @@ export class SubscriptionSession<T> implements Context {
     }
 
     private async unsubscribe(node: NetworkNodeStub) {
-        console.log('Unsubscribe: ' + this.streamPartId + ' by node ' + node.getNodeId())
+        log('Unsubscribe: ' + this.streamPartId + ' by node ' + node.getNodeId())
         this.debug('unsubscribe')
         this.pipeline.end()
         this.pipeline.return()

@@ -7,8 +7,7 @@ import { StreamPermission } from './permission'
 import { ConfigTest } from './ConfigTest'
 import { Wallet } from 'ethers'
 import { ClientFactory, createClientFactory } from '../test/test-utils/fake/fakeEnvironment'
-
-const log = (msg: string) => console.log(new Date().toISOString() + '   ' + msg)
+import { log } from './utils/timedLog'
 
 const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
 const GRANT_PERMISSIONS = (ENVIRONMENT === 'fake')
