@@ -11,7 +11,7 @@ import { ClientFactory, createClientFactory } from '../test/test-utils/fake/fake
 const log = (msg: string) => console.log(new Date().toISOString() + '   ' + msg)
 
 const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
-const GRANT_PERMISSIONS = true
+const GRANT_PERMISSIONS = (ENVIRONMENT === 'fake')
 const MIN_PUBLISHER_ID = 100
 
 let fakeClientFactory: ClientFactory
