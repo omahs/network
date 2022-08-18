@@ -158,11 +158,14 @@ export class FakeStreamRegistry implements Omit<Methods<StreamRegistry>, 'debug'
     }
 
     // eslint-disable-next-line class-methods-use-this
-    async setPermissions(..._streams: {
+    async setPermissions(...streams: {
         streamId: string
         assignments: PermissionAssignment[]
     }[]): Promise<void> {
-        throw new Error('not implemented')
+        for (let stream of streams) {
+            // TODO revoke previous
+            await this.grantPermissions(stream.streamId, ...stream.assignments)
+        }
     }
 
     async isStreamPublisher(streamIdOrPath: string, user: EthereumAddress): Promise<boolean> {

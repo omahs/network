@@ -1,4 +1,4 @@
-// run with: npx ts-node src/swash-debug.ts 5
+// run with: npx ts-node src/swash-debug.ts 5 docker-dev
 import { padStart } from 'lodash'
 import { KeyServer, waitForCondition } from 'streamr-test-utils'
 import { wait } from '@streamr/utils'
@@ -6,26 +6,41 @@ import { StreamrClient } from './StreamrClient'
 import { StreamPermission } from './permission'
 import { ConfigTest } from './ConfigTest'
 import { Wallet } from 'ethers'
+import { ClientFactory, createClientFactory } from '../test/test-utils/fake/fakeEnvironment'
 
 const log = (msg: string) => console.log(new Date().toISOString() + '   ' + msg)
 
+const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
 const GRANT_PERMISSIONS = true
 const MIN_PUBLISHER_ID = 100
+
+let fakeClientFactory: ClientFactory
+if (ENVIRONMENT === 'fake') fakeClientFactory = createClientFactory()
 
 const getPublisherPrivateKey = (id: number) => '0x' + padStart(String(id), 64, '0')
 
 const createClient = (privateKey: string): StreamrClient => {
-    return new StreamrClient({
-        ...ConfigTest,
-        auth: {
-            privateKey
-        }
-    })
+    if (ENVIRONMENT === 'docker-dev') {
+        return new StreamrClient({
+            ...ConfigTest,
+            auth: {
+                privateKey
+            }
+        })
+    } else if (ENVIRONMENT === 'fake') {
+        return fakeClientFactory!.createClient({
+            auth: {
+                privateKey
+            }
+        })
+    }
+    throw new Error('assertion failed')
 }
 
 const main = async () => {
+    log('Init')
     const publisherCount = Number(process.argv[2])
-    await KeyServer.startIfNotRunning()
+    if (ENVIRONMENT === 'docker-dev') await KeyServer.startIfNotRunning()
 
     const ownerPrivateKey = '0x0000000000000000000000000000000000000000000000000000000000000001'
     const subscriberPrivateKey = '0x0000000000000000000000000000000000000000000000000000000000000002'
@@ -34,12 +49,12 @@ const main = async () => {
 
     log('Create stream')
     const owner = createClient(ownerPrivateKey)
-    const stream = await owner.getOrCreateStream({
+    const stream = await owner.createStream({ // getOrCreateStream in docker-dev
         id: '/test1'
     })
 
     if (GRANT_PERMISSIONS) {
-        const BATCH_COUNT = 10 
+        const BATCH_COUNT = 1 
         for (let batchId = 0; batchId < BATCH_COUNT; batchId++) {
             log('Grant permissions: batch ' + batchId)
             let permissionAssignments = []
@@ -100,7 +115,7 @@ const main = async () => {
     await waitForCondition(() => receivedMessageCount >= publishers.length, 10 * 60 * 1000)
 
     log('Done: all messages received ' + ((Date.now() - publishStartTime) / 1000) + ' seconds after publishers started to publish')
-    await KeyServer.stopIfRunning()
+    if (ENVIRONMENT === 'docker-dev') await KeyServer.stopIfRunning()
 }
 
 main()
