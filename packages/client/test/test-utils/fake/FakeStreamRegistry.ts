@@ -176,9 +176,9 @@ export class FakeStreamRegistry implements Omit<Methods<StreamRegistry>, 'debug'
         return this.hasPermission({ streamId: streamIdOrPath, user, permission: StreamPermission.SUBSCRIBE, allowPublic: true })
     }
 
-    // eslint-disable-next-line class-methods-use-this
-    getOrCreateStream(_props: { id: string, partitions?: number }): Promise<Stream> {
-        throw new Error('not implemented')
+    getOrCreateStream(props: { id: string, partitions?: number }): Promise<Stream> {
+        // TODO or get
+        return this.createStream(props)
     }
 
     // eslint-disable-next-line class-methods-use-this

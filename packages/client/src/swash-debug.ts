@@ -49,7 +49,7 @@ const main = async () => {
 
     log('Create stream')
     const owner = createClient(ownerPrivateKey)
-    const stream = await owner.createStream({ // getOrCreateStream in docker-dev
+    const stream = await owner.getOrCreateStream({
         id: '/test1'
     })
 
