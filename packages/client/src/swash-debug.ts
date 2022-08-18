@@ -1,13 +1,14 @@
 // run with: npx ts-node src/swash-debug.ts 5 docker-dev
 import { padStart } from 'lodash'
 import { KeyServer, waitForCondition } from 'streamr-test-utils'
-import { wait } from '@streamr/utils'
+import fetch from 'node-fetch'
 import { StreamrClient } from './StreamrClient'
 import { StreamPermission } from './permission'
 import { ConfigTest } from './ConfigTest'
 import { Wallet } from 'ethers'
 import { ClientFactory, createClientFactory } from '../test/test-utils/fake/fakeEnvironment'
 import { log } from './utils/timedLog'
+import { StreamID, StreamIDUtils, StreamPartIDUtils, toStreamPartID } from 'streamr-client-protocol'
 
 const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
 const GRANT_PERMISSIONS = (ENVIRONMENT === 'fake')
@@ -17,6 +18,17 @@ let fakeClientFactory: ClientFactory
 if (ENVIRONMENT === 'fake') fakeClientFactory = createClientFactory()
 
 const getPublisherPrivateKey = (id: number) => '0x' + padStart(String(id), 64, '0')
+
+const getTopologySize = async (streamId: StreamID): Promise<number> => {
+    const url = `http://localhost:30301/topology/${encodeURIComponent(streamId)}`
+    const topology = await (await fetch(url)).json()
+    const nodes = topology[toStreamPartID(streamId, 0)]
+    if (nodes !== undefined) {
+        return Object.keys(nodes).length
+    } else {
+        return 0
+    }
+}
 
 const createClient = (privateKey: string): StreamrClient => {
     if (ENVIRONMENT === 'docker-dev') {
@@ -93,12 +105,24 @@ const main = async () => {
 
     let receivedMessageCount = 0
     await subscriber.subscribe(stream.id, (content: any) => {
-        log('Received ' + receivedMessageCount + '/' + publisherCount + ': ' + JSON.stringify(content))
-        receivedMessageCount++
+        if (content.warmUpTrigger === undefined) {
+            log('Received ' + receivedMessageCount + '/' + publisherCount + ': ' + JSON.stringify(content))
+            receivedMessageCount++
+        }
     })
 
-    log('Wait for subscriber to join')
-    await wait(5000)
+    log('Wait for joins (the subscriber, and trigger publishers to join)')
+    publishers.forEach(async (p) => {
+        log('Publish')
+        p.client.publish(stream.id, {
+            warmUpTrigger: 'to-trigger-topology-join'
+        })
+    })
+    await waitForCondition(async () => {
+        const topologySize = await getTopologySize(stream.id)
+        log('Topology size: ' + topologySize)
+        return topologySize === publishers.length + 1
+    }, 10 * 60 * 1000)
 
     const publishStartTime = Date.now()
     publishers.forEach(async (p) => {
@@ -111,10 +135,12 @@ const main = async () => {
     })
     
     log('Wait for ' + publishers.length + ' message')
-    await waitForCondition(() => receivedMessageCount >= publishers.length, 10 * 60 * 1000)
+    await waitForCondition(() => receivedMessageCount >= publishers.length, 60 * 60 * 1000)
 
     log('Done: all messages received ' + ((Date.now() - publishStartTime) / 1000) + ' seconds after publishers started to publish')
     if (ENVIRONMENT === 'docker-dev') await KeyServer.stopIfRunning()
+
+    process.exit(0)
 }
 
 main()
