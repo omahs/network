@@ -18,7 +18,7 @@ import { StreamPermission } from '../../src/permission'
 import { getGroupKeysFromStreamMessage } from '../../src/encryption/SubscriberKeyExchange'
 import { addFakeNode, createFakeContainer } from '../test-utils/fake/fakeEnvironment'
 import { FakeNetworkNode } from '../test-utils/fake/FakeNetworkNode'
-import { addSubscriber, createMockMessage } from '../test-utils/utils'
+import { addSubscriber, createMockMessage, createRelativeTestStreamId } from '../test-utils/utils'
 import { nextValue } from '../../src/utils/iterators'
 import { fastWallet } from 'streamr-test-utils'
 
@@ -38,7 +38,7 @@ describe('PublisherKeyExchange', () => {
 
     const createStream = async () => {
         const streamRegistry = fakeContainer.resolve(StreamRegistry)
-        const stream = await streamRegistry.createStream(StreamPartIDUtils.parse('stream#0'))
+        const stream = await streamRegistry.createStream(createRelativeTestStreamId(module))
         await streamRegistry.grantPermissions(stream.id, {
             permissions: [StreamPermission.SUBSCRIBE],
             user: subscriberWallet.address
@@ -132,7 +132,7 @@ describe('PublisherKeyExchange', () => {
          */
         it('happy path', async () => {
             const key = GroupKey.generate()
-            const store = await (await fakeContainer.resolve(GroupKeyStoreFactory)).getStore(mockStream.id)
+            const store = await (fakeContainer.resolve(GroupKeyStoreFactory)).getStore(mockStream.id)
             await store.add(key)
 
             const receivedResponses = addSubscriber(subscriberNode, KeyExchangeStreamIDUtils.formStreamPartID(subscriberWallet.address))
