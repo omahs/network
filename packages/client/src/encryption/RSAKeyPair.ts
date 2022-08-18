@@ -86,12 +86,12 @@ export class RSAKeyPair {
 
     private async generateKeyPair(): Promise<void> {
         if (!this._generateKeyPairPromise) {
-            console.log('GenerateKeyPair')
-            const startTime = Date.now()
+            //console.log('GenerateKeyPair')
+            //const startTime = Date.now()
             this._generateKeyPairPromise = (typeof window !== 'undefined')
                 ? this.keyPairBrowser()
                 : this.keyPairServer()
-            console.log('GenerateKeyPair took ' + (Date.now() - startTime))
+            //console.log('GenerateKeyPair took ' + (Date.now() - startTime))
         }
         return this._generateKeyPairPromise
     }
