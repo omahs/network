@@ -91,7 +91,7 @@ export class KeyExchangeStream implements Context {
             return GroupKeyResponse.fromArray(content).requestId === request.requestId
         }
 
-        log((await this.authentication.getAddress()) + ' does a request to publisher ' + publisherId + '(stream=' + streamPartId + ')')
+        log((await this.authentication.getAddress()) + ' does a request to publisher ' + publisherId)
         const res = await publishAndWaitForResponseMessage(
             () => this.publisher.publish(streamPartId, request.toArray(), {
                 messageType: request.messageType
