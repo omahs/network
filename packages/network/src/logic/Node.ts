@@ -2,10 +2,12 @@ import { EventEmitter } from 'events'
 import {
     StreamPartID,
     StreamMessage,
-    ProxyDirection
+    ProxyDirection,
+    UnicastMessage,
+    MulticastMessage
 } from 'streamr-client-protocol'
 import { NodeToNode, Event as NodeToNodeEvent } from '../protocol/NodeToNode'
-import { NodeToTracker } from '../protocol/NodeToTracker'
+import { NodeToTracker, Event as NodeToTrackerEvent } from '../protocol/NodeToTracker'
 import { Metric, MetricsContext, MetricsDefinition, RateMetric } from '../helpers/Metric'
 import { StreamPartManager } from './StreamPartManager'
 import { GapMisMatchError, InvalidNumberingError } from './DuplicateMessageDetector'
@@ -17,6 +19,7 @@ import { TrackerManager, TrackerManagerOptions } from './TrackerManager'
 import { Propagation } from './propagation/Propagation'
 import { DisconnectionManager } from './DisconnectionManager'
 import { ProxyStreamConnectionManager } from './ProxyStreamConnectionManager'
+import { UserId } from '../logic/UserId'
 
 const logger = new Logger(module)
 
@@ -79,7 +82,7 @@ export class Node extends EventEmitter {
     protected readonly streamPartManager: StreamPartManager
     private readonly disconnectionManager: DisconnectionManager
     private readonly propagation: Propagation
-    private readonly trackerManager: TrackerManager
+    protected readonly trackerManager: TrackerManager
     private readonly consecutiveDeliveryFailures: Record<NodeId, number> // id => counter
     private readonly metricsContext: MetricsContext
     private readonly metrics: Metrics
@@ -191,9 +194,14 @@ export class Node extends EventEmitter {
         this.nodeToNode.on(NodeToNodeEvent.PROXY_CONNECTION_RESPONSE_RECEIVED, (message, nodeId) => {
             this.proxyStreamConnectionManager.processProxyConnectionResponse(message, nodeId)
         })
-
         this.nodeToNode.on(NodeToNodeEvent.LEAVE_REQUEST_RECEIVED, (message, nodeId) => {
             this.proxyStreamConnectionManager.processLeaveRequest(message, nodeId)
+        })
+        opts.protocols.nodeToTracker.on(NodeToTrackerEvent.UNICAST_MESSAGE_RECEIVED, (msg: UnicastMessage) => {
+            this.on
+        })
+        opts.protocols.nodeToTracker.on(NodeToTrackerEvent.MULTICAST_MESSAGE_RECEIVED, (msg: MulticastMessage) => {
+            console.log('Multicast message received!')
         })
     }
 

@@ -1,6 +1,7 @@
 import { StreamMessage, StreamPartID, ProxyDirection } from 'streamr-client-protocol'
 import { Event as NodeEvent, Node, NodeOptions } from './Node'
 import { NodeId } from '../identifiers'
+import { UserId } from './UserId'
 
 /*
 Convenience wrapper for building client-facing functionality. Used by client.
@@ -91,5 +92,19 @@ export class NetworkNode extends Node {
 
     getRtt(nodeId: NodeId): number | undefined {
         return this.nodeToNode.getRtts()[nodeId]
+    }
+
+    async sendUnicastMessage(streamMessage: StreamMessage, recipient: NodeId): Promise<void> {
+        await this.trackerManager.sendUnicastMessage(streamMessage, this.peerInfo.peerId, recipient)
+    }
+
+    onUnicastMessage(listener: (streamMessage: StreamMessage) => void): void {
+    }
+
+    async sendMulticastMessage(streamMessage: StreamMessage, recipient: UserId): Promise<void> {
+        await this.trackerManager.sendMulticastMessage(streamMessage, this.peerInfo.peerId, recipient)
+    }
+
+    onMulticastMessage(listener: (streamMessage: StreamMessage) => void): void {
     }
 }
