@@ -70,7 +70,7 @@ describe('unicast and multicast', () => {
     })
 
     afterEach(async () => {
-        await Promise.all([sender, recipient1, recipient2].map((node) => node.stop()))
+        await Promise.all([sender, recipient1, recipient2, nonRecipient].map((node) => node.stop()))
         await tracker.stop()
     })
 
