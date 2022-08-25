@@ -197,12 +197,6 @@ export class Node extends EventEmitter {
         this.nodeToNode.on(NodeToNodeEvent.LEAVE_REQUEST_RECEIVED, (message, nodeId) => {
             this.proxyStreamConnectionManager.processLeaveRequest(message, nodeId)
         })
-        opts.protocols.nodeToTracker.on(NodeToTrackerEvent.UNICAST_MESSAGE_RECEIVED, (msg: UnicastMessage) => {
-            this.on
-        })
-        opts.protocols.nodeToTracker.on(NodeToTrackerEvent.MULTICAST_MESSAGE_RECEIVED, (msg: MulticastMessage) => {
-            console.log('Multicast message received!')
-        })
     }
 
     start(): void {
