@@ -2,12 +2,10 @@ import { EventEmitter } from 'events'
 import {
     StreamPartID,
     StreamMessage,
-    ProxyDirection,
-    UnicastMessage,
-    MulticastMessage
+    ProxyDirection
 } from 'streamr-client-protocol'
 import { NodeToNode, Event as NodeToNodeEvent } from '../protocol/NodeToNode'
-import { NodeToTracker, Event as NodeToTrackerEvent } from '../protocol/NodeToTracker'
+import { NodeToTracker } from '../protocol/NodeToTracker'
 import { Metric, MetricsContext, MetricsDefinition, RateMetric } from '../helpers/Metric'
 import { StreamPartManager } from './StreamPartManager'
 import { GapMisMatchError, InvalidNumberingError } from './DuplicateMessageDetector'
@@ -19,7 +17,6 @@ import { TrackerManager, TrackerManagerOptions } from './TrackerManager'
 import { Propagation } from './propagation/Propagation'
 import { DisconnectionManager } from './DisconnectionManager'
 import { ProxyStreamConnectionManager } from './ProxyStreamConnectionManager'
-import { UserId } from '../logic/UserId'
 
 const logger = new Logger(module)
 

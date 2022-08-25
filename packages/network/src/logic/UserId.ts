@@ -8,7 +8,7 @@ import { NodeId } from '../identifiers'
 
 export type UserId = string // typically an Ethereum address
 
-export const parseUserIdFromNodeId = (nodeId: NodeId) => {
+export const parseUserIdFromNodeId = (nodeId: NodeId): UserId => {
     const parts = nodeId.split('#')
     return parts[0]
 }

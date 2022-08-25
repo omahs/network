@@ -174,7 +174,7 @@ export class Tracker extends EventEmitter {
             const recipientNodeIds = overlay.getNodeIds((nodeId: NodeId) => {
                 return parseUserIdFromNodeId(nodeId) === message.recipientUserId 
             })
-            for (let recipientNodeId of recipientNodeIds) {
+            for (const recipientNodeId of recipientNodeIds) {
                 try {
                     await this.trackerServer.send(recipientNodeId, message)
                 } catch (e) {
