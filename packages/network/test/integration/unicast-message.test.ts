@@ -27,7 +27,7 @@ describe('unicast message', () => {
         const streamPartId = StreamPartIDUtils.parse('mock-stream#3')
         await recipientNode.subscribeAndWaitForJoin(streamPartId)
         const onUnicastMessage = jest.fn()
-        recipientNode.onUnicastMessage(onUnicastMessage)
+        recipientNode.addUnicastMessageListener(onUnicastMessage)
 
         const message = new StreamMessage({
             messageId: new MessageID(
@@ -46,6 +46,9 @@ describe('unicast message', () => {
 
         await waitForCondition(() => onUnicastMessage.mock.calls.length > 0)
         expect(onUnicastMessage).toBeCalledTimes(1)
-        expect(onUnicastMessage).toBeCalledWith(message)
+        const receivedMessage: StreamMessage = onUnicastMessage.mock.calls[0][0]
+        expect(receivedMessage.getParsedContent()).toEqual({
+            foo: 'bar'
+        })
     })
 })

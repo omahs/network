@@ -1,7 +1,8 @@
-import { StreamMessage, StreamPartID, ProxyDirection } from 'streamr-client-protocol'
+import { StreamMessage, StreamPartID, ProxyDirection, UnicastMessage, MulticastMessage } from 'streamr-client-protocol'
 import { Event as NodeEvent, Node, NodeOptions } from './Node'
 import { NodeId } from '../identifiers'
 import { UserId } from './UserId'
+import { Event as NodeToTrackerEvent } from '../protocol/NodeToTracker'
 
 /*
 Convenience wrapper for building client-facing functionality. Used by client.
@@ -34,10 +35,12 @@ export class NetworkNode extends Node {
         await this.removeProxyConnection(streamPartId, contactNodeId, direction)
     }
 
+    // TODO rename to addBroadcastMessageListener?
     addMessageListener<T>(cb: (msg: StreamMessage<T>) => void): void {
         this.on(NodeEvent.UNSEEN_MESSAGE_RECEIVED, cb)
     }
 
+    // TODO rename to removeBroadcastMessageListener?
     removeMessageListener<T>(cb: (msg: StreamMessage<T>) => void): void {
         this.off(NodeEvent.UNSEEN_MESSAGE_RECEIVED, cb)
     }
@@ -98,13 +101,17 @@ export class NetworkNode extends Node {
         await this.trackerManager.sendUnicastMessage(streamMessage, this.peerInfo.peerId, recipient)
     }
 
-    onUnicastMessage(listener: (streamMessage: StreamMessage) => void): void {
+    addUnicastMessageListener(listener: (streamMessage: StreamMessage) => void): void {
+        const wrappedListener = (from: UnicastMessage) => listener(from.payload)
+        this.trackerManager.nodeToTracker.on(NodeToTrackerEvent.UNICAST_MESSAGE_RECEIVED, wrappedListener)
     }
 
     async sendMulticastMessage(streamMessage: StreamMessage, recipient: UserId): Promise<void> {
         await this.trackerManager.sendMulticastMessage(streamMessage, this.peerInfo.peerId, recipient)
     }
 
-    onMulticastMessage(listener: (streamMessage: StreamMessage) => void): void {
+    addMulticastMessageListener(listener: (streamMessage: StreamMessage) => void): void {
+        const wrappedListener = (from: MulticastMessage) => listener(from.payload)
+        this.trackerManager.nodeToTracker.on(NodeToTrackerEvent.MULTICAST_MESSAGE_RECEIVED, wrappedListener)
     }
 }

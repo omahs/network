@@ -51,7 +51,7 @@ export class TrackerManager {
     private readonly rttUpdateTimeoutsOnTrackers: Record<TrackerId, NodeJS.Timeout> = {}
     private readonly trackerRegistry: TrackerRegistry<SmartContractRecord>
     private readonly trackerConnector: TrackerConnector
-    private readonly nodeToTracker: NodeToTracker
+    public readonly nodeToTracker: NodeToTracker // TODO private
     private readonly streamPartManager: StreamPartManager
     private readonly rttUpdateInterval: number
     private readonly instructionThrottler: InstructionThrottler
