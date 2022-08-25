@@ -45,6 +45,7 @@
     "@streamr/utils": "^0.0.1",
     "cancelable-promise": "^3.2.3",
     "commander": "^8.3.0",
+    "eventemitter3": "^4.0.7",
     "heap": "^0.2.6",
     "ipaddr.js": "^2.0.1",
     "lodash": "^4.17.21",

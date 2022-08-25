@@ -1,11 +1,10 @@
 import { Tracker, startTracker, TrackerServerEvent } from '@streamr/network-tracker'
 import { NetworkNode } from '../../src/logic/NetworkNode'
 
-import { runAndWaitForEvents } from 'streamr-test-utils'
+import { runAndWaitForEvents } from '../../src/helpers/waitForEvent3'
 import { wait } from '@streamr/utils'
 
 import { createNetworkNode } from '../../src/composition'
-import { Event as NodeEvent } from '../../src/logic/Node'
 import { StreamPartIDUtils } from 'streamr-client-protocol'
 
 /**
@@ -131,8 +130,8 @@ describe('check status message flow between tracker and two nodes', () => {
             await runAndWaitForEvents([
                 () => { nodeOne.subscribe(streamPartIdOne) },
                 () => { nodeTwo.subscribe(streamPartIdOne) } ], [
-                [nodeOne, NodeEvent.NODE_SUBSCRIBED],
-                [nodeTwo, NodeEvent.NODE_SUBSCRIBED],
+                [nodeOne.eventEmitter, 'nodeSubscribed'],
+                [nodeTwo.eventEmitter, 'nodeSubscribed'],
             ])
 
             await wait(2000)

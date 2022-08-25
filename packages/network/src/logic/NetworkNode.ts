@@ -1,5 +1,5 @@
 import { StreamMessage, StreamPartID, ProxyDirection } from 'streamr-client-protocol'
-import { Event as NodeEvent, Node, NodeOptions } from './Node'
+import { Events as NodeEvents, Node, NodeOptions } from './Node'
 import { NodeId } from '../identifiers'
 
 /*
@@ -34,11 +34,11 @@ export class NetworkNode extends Node {
     }
 
     addMessageListener<T>(cb: (msg: StreamMessage<T>) => void): void {
-        this.on(NodeEvent.UNSEEN_MESSAGE_RECEIVED, cb)
+        this.eventEmitter.on('unseenMessageReceived', cb as any) // TODO is it possible to avoid casting?
     }
 
     removeMessageListener<T>(cb: (msg: StreamMessage<T>) => void): void {
-        this.off(NodeEvent.UNSEEN_MESSAGE_RECEIVED, cb)
+        this.eventEmitter.off('unseenMessageReceived', cb as any) // TODO is it possible to avoid casting?
     }
 
     subscribe(streamPartId: StreamPartID): void {
@@ -91,5 +91,17 @@ export class NetworkNode extends Node {
 
     getRtt(nodeId: NodeId): number | undefined {
         return this.nodeToNode.getRtts()[nodeId]
+    }
+
+    on<T extends keyof NodeEvents>(eventName: T, listener: NodeEvents[T]): void {
+        this.eventEmitter.on(eventName, listener as any)
+    }
+
+    once<T extends keyof NodeEvents>(eventName: T, listener: NodeEvents[T]): void {
+        this.eventEmitter.once(eventName, listener as any)
+    }
+
+    off<T extends keyof NodeEvents>(eventName: T, listener: NodeEvents[T]): void {
+        this.eventEmitter.off(eventName, listener as any)
     }
 }

@@ -1,9 +1,8 @@
 import { Tracker, startTracker, TrackerServerEvent } from '@streamr/network-tracker'
 import { NetworkNode } from '../../src/logic/NetworkNode'
-import { runAndWaitForEvents } from 'streamr-test-utils'
+import { runAndWaitForEvents } from '../../src/helpers/waitForEvent3'
 import { InstructionMessage, toStreamID, toStreamPartID } from 'streamr-client-protocol'
 import { createNetworkNode } from '../../src/composition'
-import { Event as NodeEvent } from '../../src/logic/Node'
 
 /**
  * This test verifies that tracker can send instructions to node and node will connect and disconnect based on the instructions
@@ -69,8 +68,8 @@ describe('Check tracker instructions to node', () => {
         await runAndWaitForEvents([
             () => { nodeOne.subscribe(streamPartId)},
             () => { nodeTwo.subscribe(streamPartId)}], [
-            [nodeOne, NodeEvent.NODE_SUBSCRIBED],
-            [nodeTwo, NodeEvent.NODE_SUBSCRIBED]
+            [nodeOne.eventEmitter, 'nodeSubscribed'],
+            [nodeTwo.eventEmitter, 'nodeSubscribed']
         ])
 
         // @ts-expect-error private field
@@ -93,8 +92,8 @@ describe('Check tracker instructions to node', () => {
                     }).serialize()
                 )
             }], [
-            [nodeOne, NodeEvent.NODE_UNSUBSCRIBED],
-            [nodeTwo, NodeEvent.NODE_DISCONNECTED]
+            [nodeOne.eventEmitter, 'nodeUnsubscribed'],
+            [nodeTwo.eventEmitter, 'nodeDisconnected']
         ])
 
         // @ts-expect-error private field

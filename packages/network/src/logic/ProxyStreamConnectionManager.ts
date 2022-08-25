@@ -2,7 +2,7 @@ import { TrackerManager } from './TrackerManager'
 import { StreamPartManager } from './StreamPartManager'
 import { NodeToNode } from '../protocol/NodeToNode'
 import { NodeId } from '../identifiers'
-import { Event, Node } from './Node'
+import { Node } from './Node'
 import {
     ProxyConnectionRequest,
     ProxyConnectionResponse,
@@ -107,12 +107,12 @@ export class ProxyStreamConnectionManager {
             } else if (!this.streamPartManager.isBehindProxy(streamPartId)) {
                 const reason = `Could not open a proxy ${direction} stream connection ${streamPartId}, bidirectional stream already exists`
                 logger.warn(reason)
-                this.node.emit( Event.PROXY_CONNECTION_REJECTED, targetNodeId, streamPartId, direction, reason)
+                this.node.eventEmitter.emit('proxyConnectionRejected', targetNodeId, streamPartId, direction, reason)
                 return
             } else if (this.streamPartManager.hasOnewayConnection(streamPartId, targetNodeId)) {
                 const reason = `Could not open a proxy ${direction} stream connection ${streamPartId}, proxy stream connection already exists`
                 logger.warn(reason)
-                this.node.emit( Event.PROXY_CONNECTION_REJECTED, targetNodeId, streamPartId, direction, reason)
+                this.node.eventEmitter.emit('proxyConnectionRejected', targetNodeId, streamPartId, direction, reason)
                 return
             } else if (this.hasConnection(targetNodeId, streamPartId)) {
                 const reason = `Could not open a proxy ${direction} stream connection ${streamPartId}, a connection already exists`
@@ -124,7 +124,7 @@ export class ProxyStreamConnectionManager {
         } catch (err) {
             logger.warn(`Failed to create a proxy ${direction} stream connection to ${targetNodeId} for stream ${streamPartId}:\n${err}`)
             this.removeConnection(streamPartId, targetNodeId)
-            this.node.emit( Event.PROXY_CONNECTION_REJECTED, targetNodeId, streamPartId, direction, err)
+            this.node.eventEmitter.emit('proxyConnectionRejected', targetNodeId, streamPartId, direction, err)
         } finally {
             this.trackerManager.disconnectFromSignallingOnlyTracker(trackerId)
         }
@@ -147,7 +147,7 @@ export class ProxyStreamConnectionManager {
             clearTimeout(this.getConnection(targetNodeId, streamPartId)!.reconnectionTimer!)
             this.removeConnection(streamPartId, targetNodeId)
             await this.nodeToNode.leaveStreamOnNode(targetNodeId, streamPartId)
-            this.node.emit(Event.ONE_WAY_CONNECTION_CLOSED, targetNodeId, streamPartId)
+            this.node.eventEmitter.emit('oneWayConnectionClosed', targetNodeId, streamPartId)
         } else {
             const reason = `A proxy ${direction} stream connection for ${streamPartId} on node ${targetNodeId} does not exist`
             logger.warn(reason)
@@ -159,11 +159,11 @@ export class ProxyStreamConnectionManager {
         const streamPartId = message.getStreamPartID()
         if (this.streamPartManager.isSetUp(streamPartId) && this.streamPartManager.hasInOnlyConnection(streamPartId, nodeId)) {
             this.removeConnection(streamPartId, nodeId)
-            this.node.emit(Event.ONE_WAY_CONNECTION_CLOSED, nodeId, streamPartId)
+            this.node.eventEmitter.emit('oneWayConnectionClosed', nodeId, streamPartId)
         }
         if (this.streamPartManager.isSetUp(streamPartId) && this.streamPartManager.hasOutOnlyConnection(streamPartId, nodeId)) {
             this.removeConnection(streamPartId, nodeId)
-            this.node.emit(Event.ONE_WAY_CONNECTION_CLOSED, nodeId, streamPartId)
+            this.node.eventEmitter.emit('oneWayConnectionClosed', nodeId, streamPartId)
             logger.info(`Proxy node ${nodeId} closed one-way stream connection for ${streamPartId}`)
         }
     }
@@ -194,12 +194,12 @@ export class ProxyStreamConnectionManager {
             } else {
                 this.streamPartManager.addInOnlyNeighbor(streamPartId, nodeId)
             }
-            this.node.emit(Event.PROXY_CONNECTION_ACCEPTED, nodeId, streamPartId, message.direction)
+            this.node.eventEmitter.emit('proxyConnectionAccepted', nodeId, streamPartId, message.direction)
 
         } else {
             this.removeConnection(streamPartId, nodeId)
-            this.node.emit(
-                Event.PROXY_CONNECTION_REJECTED,
+            this.node.eventEmitter.emit(
+                'proxyConnectionRejected',
                 nodeId,
                 streamPartId,
                 message.direction,

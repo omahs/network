@@ -26,7 +26,7 @@ export {
     DEFAULT_MAX_NEIGHBOR_COUNT
 } from './constants'
 export { NetworkNode } from './logic/NetworkNode'
-export { Event as NodeEvent } from './logic/Node'
+export { Events as NodeEvents } from './logic/Node'
 export { NameDirectory } from './NameDirectory'
 export { createNetworkNode, NetworkNodeOptions } from './createNetworkNode'
 export { PeerId, PeerInfo } from './connection/PeerInfo'

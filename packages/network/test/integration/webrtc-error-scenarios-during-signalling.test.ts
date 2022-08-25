@@ -1,9 +1,8 @@
-import { runAndWaitForEvents } from 'streamr-test-utils'
+import { runAndWaitForEvents } from '../../src/helpers/waitForEvent3'
 
 import { Tracker, startTracker } from '@streamr/network-tracker'
 import { NetworkNode } from '../../src/logic/NetworkNode'
 import { createNetworkNode } from '../../src/composition'
-import { Event as NodeEvent } from '../../src/logic/Node'
 import { Event as NodeToTrackerEvent } from '../../src/protocol/NodeToTracker'
 import { toStreamID, toStreamPartID } from 'streamr-client-protocol'
 
@@ -84,8 +83,8 @@ describe('Signalling error scenarios', () => {
         await runAndWaitForEvents([
             () => { nodeOne.subscribe(toStreamPartID(streamId, 0)) },
             () => { nodeTwo.subscribe(toStreamPartID(streamId, 0)) }], [
-            [nodeOne, NodeEvent.NODE_CONNECTED],
-            [nodeTwo, NodeEvent.NODE_CONNECTED]
+            [nodeOne.eventEmitter, 'nodeConnected'],
+            [nodeTwo.eventEmitter, 'nodeConnected']
         ], 30000)
 
         expect(closed).toBe(true)
@@ -143,8 +142,8 @@ describe('Signalling error scenarios', () => {
         await runAndWaitForEvents([
             () => { nodeOne.subscribe(toStreamPartID(streamId, 0)) },
             () => { nodeTwo.subscribe(toStreamPartID(streamId, 0)) }], [
-            [nodeOne, NodeEvent.NODE_CONNECTED],
-            [nodeTwo, NodeEvent.NODE_CONNECTED]
+            [nodeOne.eventEmitter, 'nodeConnected'],
+            [nodeTwo.eventEmitter, 'nodeConnected']
         ], 30000)
 
         expect(closedOne).toBe(true)
@@ -203,8 +202,8 @@ describe('Signalling error scenarios', () => {
             // @ts-expect-error private field
             [nodeTwo.trackerManager.nodeToTracker, NodeToTrackerEvent.TRACKER_DISCONNECTED],
 
-            [nodeOne, NodeEvent.NODE_CONNECTED],
-            [nodeTwo, NodeEvent.NODE_CONNECTED]
+            [nodeOne.eventEmitter, 'nodeConnected'],
+            [nodeTwo.eventEmitter, 'nodeConnected']
 
         ], 120000)
 
@@ -244,8 +243,8 @@ describe('Signalling error scenarios', () => {
             // @ts-expect-error private field
             [nodeOne.trackerManager.nodeToTracker, NodeToTrackerEvent.TRACKER_DISCONNECTED],
            
-            [nodeOne, NodeEvent.NODE_CONNECTED],
-            [nodeTwo, NodeEvent.NODE_CONNECTED]
+            [nodeOne.eventEmitter, 'nodeConnected'],
+            [nodeTwo.eventEmitter, 'nodeConnected']
 
         ], 120000)
 

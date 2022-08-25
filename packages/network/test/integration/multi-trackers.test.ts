@@ -1,13 +1,12 @@
 import { Tracker, startTracker } from '@streamr/network-tracker'
 import { NetworkNode } from '../../src/logic/NetworkNode'
 import { eventsWithArgsToArray } from 'streamr-test-utils'
-import { waitForEvent } from '@streamr/utils'
+import { waitForEvent } from '../../src/helpers/waitForEvent3'
 import { wait } from '@streamr/utils'
 import { InstructionMessage, toStreamID, toStreamPartID } from 'streamr-client-protocol'
 
 import { createNetworkNode } from '../../src/composition'
 import { Event as NodeToTrackerEvent } from '../../src/protocol/NodeToTracker'
-import { Event as NodeEvent } from '../../src/logic/Node'
 import { getStreamParts } from '../utils'
 
 // TODO: maybe worth re-designing this in a way that isn't this arbitrary?
@@ -116,8 +115,8 @@ describe('multi trackers', () => {
     test('only one specific tracker sends instructions about stream', async () => {
         
         const nodePromise = Promise.all([
-            waitForEvent(nodeOne, NodeEvent.NODE_SUBSCRIBED),
-            waitForEvent(nodeTwo, NodeEvent.NODE_SUBSCRIBED)
+            waitForEvent(nodeOne.eventEmitter, 'nodeSubscribed'),
+            waitForEvent(nodeTwo.eventEmitter, 'nodeSubscribed')
         ])
 
         // @ts-expect-error private field
@@ -137,8 +136,8 @@ describe('multi trackers', () => {
         expect(nodeTwoEvents[1][2]).toEqual(trackerOne.getTrackerId())
 
         const nodePromise2 = Promise.all([
-            waitForEvent(nodeOne, NodeEvent.NODE_SUBSCRIBED),
-            waitForEvent(nodeTwo, NodeEvent.NODE_SUBSCRIBED)
+            waitForEvent(nodeOne.eventEmitter, 'nodeSubscribed'),
+            waitForEvent(nodeTwo.eventEmitter, 'nodeSubscribed')
         ])
 
         // @ts-expect-error private field
@@ -158,8 +157,8 @@ describe('multi trackers', () => {
         expect(nodeTwoEvents[1][2]).toEqual(trackerTwo.getTrackerId())
 
         const nodePromise3 = Promise.all([
-            waitForEvent(nodeOne, NodeEvent.NODE_SUBSCRIBED),
-            waitForEvent(nodeTwo, NodeEvent.NODE_SUBSCRIBED)
+            waitForEvent(nodeOne.eventEmitter, 'nodeSubscribed'),
+            waitForEvent(nodeTwo.eventEmitter, 'nodeSubscribed')
         ])
 
         // @ts-expect-error private field

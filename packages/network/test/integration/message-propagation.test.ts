@@ -2,9 +2,8 @@ import { Tracker, startTracker } from '@streamr/network-tracker'
 import { NetworkNode } from '../../src/logic/NetworkNode'
 import { MessageID, MessageRef, StreamMessage, StreamPartIDUtils, toStreamID } from 'streamr-client-protocol'
 import { waitForCondition } from 'streamr-test-utils'
-import { waitForEvent } from '@streamr/utils'
+import { waitForEvent } from '../../src/helpers/waitForEvent3'
 
-import { Event as NodeEvent } from '../../src/logic/Node'
 import { createNetworkNode } from '../../src/composition'
 
 describe('message propagation in network', () => {
@@ -93,8 +92,8 @@ describe('message propagation in network', () => {
         n3.subscribe(streamPartId)
 
         await Promise.all([
-            waitForEvent(n2, NodeEvent.NODE_SUBSCRIBED),
-            waitForEvent(n3, NodeEvent.NODE_SUBSCRIBED)
+            waitForEvent(n2.eventEmitter, 'nodeSubscribed'),
+            waitForEvent(n3.eventEmitter, 'nodeSubscribed')
         ])
 
         for (let i = 1; i <= 5; ++i) {

@@ -9,10 +9,9 @@ import {
     toStreamID
 } from 'streamr-client-protocol'
 import { waitForCondition } from 'streamr-test-utils'
-import { waitForEvent } from '@streamr/utils'
+import { waitForEvent } from '../../src/helpers/waitForEvent3'
 
 import { createNetworkNode } from '../../src/composition'
-import { Event as NodeEvent } from '../../src/logic/Node'
 
 const defaultStreamPartId = StreamPartIDUtils.parse('stream-0#0')
 
@@ -52,8 +51,8 @@ describe('Proxy connection tests', () => {
         await Promise.all([
             contactNode.subscribe(defaultStreamPartId),
             contactNode2.subscribe(defaultStreamPartId),
-            waitForEvent(contactNode, NodeEvent.NODE_SUBSCRIBED),
-            waitForEvent(contactNode2, NodeEvent.NODE_SUBSCRIBED),
+            waitForEvent(contactNode.eventEmitter, 'nodeSubscribed'),
+            waitForEvent(contactNode2.eventEmitter, 'nodeSubscribed'),
         ])
 
         onewayNode = createNetworkNode({
@@ -101,7 +100,7 @@ describe('Proxy connection tests', () => {
         expect(onewayNode.streamPartManager.getNeighborsForStreamPart(defaultStreamPartId)).toBeArrayOfSize(0)
 
         await Promise.all([
-            waitForEvent(contactNode, NodeEvent.ONE_WAY_CONNECTION_CLOSED),
+            waitForEvent(contactNode.eventEmitter, 'oneWayConnectionClosed'),
             onewayNode.closeProxyConnection(defaultStreamPartId, 'contact-node', ProxyDirection.PUBLISH),
         ])
 
@@ -110,7 +109,7 @@ describe('Proxy connection tests', () => {
         // @ts-expect-error private
         expect(onewayNode.streamPartManager.hasOutOnlyConnection(defaultStreamPartId, 'contact-node-2')).toBeTrue()
         await Promise.all([
-            waitForEvent(contactNode2, NodeEvent.ONE_WAY_CONNECTION_CLOSED),
+            waitForEvent(contactNode2.eventEmitter, 'oneWayConnectionClosed'),
             onewayNode.closeProxyConnection(defaultStreamPartId, 'contact-node-2', ProxyDirection.PUBLISH),
         ])
 
@@ -131,7 +130,7 @@ describe('Proxy connection tests', () => {
         expect(onewayNode.streamPartManager.getNeighborsForStreamPart(defaultStreamPartId)).toBeArrayOfSize(0)
 
         await Promise.all([
-            waitForEvent(contactNode, NodeEvent.ONE_WAY_CONNECTION_CLOSED),
+            waitForEvent(contactNode.eventEmitter, 'oneWayConnectionClosed'),
             onewayNode.closeProxyConnection(defaultStreamPartId, 'contact-node', ProxyDirection.SUBSCRIBE),
         ])
 
@@ -140,7 +139,7 @@ describe('Proxy connection tests', () => {
         // @ts-expect-error private
         expect(onewayNode.streamPartManager.hasInOnlyConnection(defaultStreamPartId, 'contact-node-2')).toBeTrue()
         await Promise.all([
-            waitForEvent(contactNode2, NodeEvent.ONE_WAY_CONNECTION_CLOSED),
+            waitForEvent(contactNode2.eventEmitter, 'oneWayConnectionClosed'),
             onewayNode.closeProxyConnection(defaultStreamPartId, 'contact-node-2', ProxyDirection.SUBSCRIBE),
         ])
 
@@ -169,7 +168,7 @@ describe('Proxy connection tests', () => {
         await nonContactNode.start()
 
         await Promise.all([
-            waitForEvent(nonContactNode, NodeEvent.NODE_SUBSCRIBED),
+            waitForEvent(nonContactNode.eventEmitter, 'nodeSubscribed'),
             nonContactNode.subscribe(defaultStreamPartId)
         ])
 
@@ -187,7 +186,7 @@ describe('Proxy connection tests', () => {
 
     it('Multiple calls to joinStreamPartAsProxyPublisher do not cancel the first call', async () => {
         await Promise.all([
-            waitForEvent(onewayNode, NodeEvent.PROXY_CONNECTION_ACCEPTED),
+            waitForEvent(onewayNode.eventEmitter, 'proxyConnectionAccepted'),
             onewayNode.openProxyConnection(defaultStreamPartId, 'contact-node', ProxyDirection.PUBLISH),
             onewayNode.openProxyConnection(defaultStreamPartId, 'contact-node', ProxyDirection.PUBLISH),
             onewayNode.openProxyConnection(defaultStreamPartId, 'contact-node', ProxyDirection.PUBLISH),
@@ -200,8 +199,8 @@ describe('Proxy connection tests', () => {
     it('Published data is received using proxy publish stream connections', async () => {
         await onewayNode.openProxyConnection(defaultStreamPartId, 'contact-node', ProxyDirection.PUBLISH)
         await Promise.all([
-            waitForEvent(contactNode, NodeEvent.MESSAGE_RECEIVED),
-            waitForEvent(contactNode2, NodeEvent.MESSAGE_RECEIVED),
+            waitForEvent(contactNode.eventEmitter, 'messageReceived'),
+            waitForEvent(contactNode2.eventEmitter, 'messageReceived'),
             onewayNode.publish(new StreamMessage({
                 messageId: new MessageID(toStreamID('stream-0'), 0, 120, 0, 'publisher', 'session'),
                 content: {
@@ -214,7 +213,7 @@ describe('Proxy connection tests', () => {
     it('proxied subscribers receive data', async () => {
         await onewayNode.openProxyConnection(defaultStreamPartId, 'contact-node', ProxyDirection.SUBSCRIBE)
         await Promise.all([
-            waitForEvent(onewayNode, NodeEvent.MESSAGE_RECEIVED),
+            waitForEvent(onewayNode.eventEmitter, 'messageReceived'),
             contactNode.publish(new StreamMessage({
                 messageId: new MessageID(toStreamID('stream-0'), 0, 120, 0, 'publisher', 'session'),
                 content: {
@@ -274,12 +273,12 @@ describe('Proxy connection tests', () => {
 
     it('If publish only connection is the only stream connection on contact node it will not unsubscribe', async () => {
         await Promise.all([
-            waitForEvent(contactNode, NodeEvent.NODE_UNSUBSCRIBED),
+            waitForEvent(contactNode.eventEmitter, 'nodeUnsubscribed'),
             contactNode2.unsubscribe(defaultStreamPartId)
         ])
         await onewayNode.openProxyConnection(defaultStreamPartId, 'contact-node', ProxyDirection.PUBLISH)
         await Promise.all([
-            waitForEvent(contactNode, NodeEvent.ONE_WAY_CONNECTION_CLOSED),
+            waitForEvent(contactNode.eventEmitter, 'oneWayConnectionClosed'),
             onewayNode.closeProxyConnection(defaultStreamPartId, 'contact-node', ProxyDirection.PUBLISH),
         ])
         // @ts-expect-error private
@@ -290,14 +289,14 @@ describe('Proxy connection tests', () => {
         await onewayNode.openProxyConnection(defaultStreamPartId, 'contact-node', ProxyDirection.PUBLISH)
 
         await Promise.all([
-            waitForEvent(onewayNode, NodeEvent.NODE_CONNECTED, 20000),
+            waitForEvent(onewayNode.eventEmitter, 'nodeConnected', 20000),
             // @ts-expect-error private
             contactNode.nodeToNode.disconnectFromNode('publisher', 'testing')
         ])
 
         await Promise.all([
-            waitForEvent(contactNode, NodeEvent.MESSAGE_RECEIVED),
-            waitForEvent(contactNode2, NodeEvent.MESSAGE_RECEIVED),
+            waitForEvent(contactNode.eventEmitter, 'messageReceived'),
+            waitForEvent(contactNode2.eventEmitter, 'messageReceived'),
             onewayNode.publish(new StreamMessage({
                 messageId: new MessageID(toStreamID('stream-0'), 0, 120, 0, 'publisher', 'session'),
                 content: {
@@ -309,11 +308,11 @@ describe('Proxy connection tests', () => {
 
     it('will receive messages after lost connectivity', async () => {
         let receivedMessages = 0
-        contactNode.on(NodeEvent.MESSAGE_RECEIVED, (_message) => {
+        contactNode.eventEmitter.on('messageReceived', (_message) => {
             receivedMessages += 1
         })
         await Promise.all([
-            waitForEvent(contactNode, NodeEvent.NODE_UNSUBSCRIBED),
+            waitForEvent(contactNode.eventEmitter, 'nodeUnsubscribed'),
             contactNode2.unsubscribe(defaultStreamPartId)
         ])
         await onewayNode.openProxyConnection(defaultStreamPartId, 'contact-node', ProxyDirection.PUBLISH)
@@ -321,9 +320,9 @@ describe('Proxy connection tests', () => {
         // @ts-expect-error private
         contactNode.nodeToNode.disconnectFromNode('publisher', 'testing')
 
-        await waitForEvent(onewayNode, NodeEvent.NODE_DISCONNECTED)
+        await waitForEvent(onewayNode.eventEmitter, 'nodeDisconnected')
         await Promise.all([
-            waitForEvent(onewayNode, NodeEvent.NODE_CONNECTED),
+            waitForEvent(onewayNode.eventEmitter, 'nodeConnected'),
             onewayNode.publish(new StreamMessage({
                 messageId: new MessageID(toStreamID('stream-0'), 0, 120, 0, 'publisher', 'session'),
                 content: {

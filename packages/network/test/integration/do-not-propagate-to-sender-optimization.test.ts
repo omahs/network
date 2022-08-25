@@ -3,7 +3,7 @@ import { Tracker, startTracker } from '@streamr/network-tracker'
 import { MessageID, MessageRef, StreamMessage, StreamPartIDUtils, toStreamID } from 'streamr-client-protocol'
 import { waitForCondition } from 'streamr-test-utils'
 
-import { createNetworkNode, NodeEvent } from '../../src/composition'
+import { createNetworkNode } from '../../src/composition'
 
 /**
  * This test verifies that on receiving a message, the receiver will not propagate the message to the sender as they
@@ -72,7 +72,7 @@ describe('optimization: do not propagate to sender', () => {
         const onDuplicateMessage = jest.fn()
         const nodes = [n1, n2, n3]
         nodes.forEach((n) => {
-            n.on(NodeEvent.DUPLICATE_MESSAGE_RECEIVED, onDuplicateMessage)
+            n.eventEmitter.on('duplicateMessageReceived', onDuplicateMessage)
         })
 
         n1.publish(new StreamMessage({

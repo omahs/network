@@ -2,10 +2,9 @@ import { Tracker, startTracker } from '@streamr/network-tracker'
 import { NetworkNode } from '../../src/logic/NetworkNode'
 
 import { StreamPartID, toStreamID, StreamPartIDUtils, StreamMessage, MessageID } from 'streamr-client-protocol'
-import { waitForEvent } from '@streamr/utils'
+import { waitForEvent } from '../../src/helpers/waitForEvent3'
 
 import { createNetworkNode } from '../../src/composition'
-import { Event as NodeEvent } from '../../src/logic/Node'
 
 const streamPartOne = StreamPartIDUtils.parse('s#1')
 const streamPartTwo = StreamPartIDUtils.parse('s#2')
@@ -43,15 +42,15 @@ describe('node unsubscribing from a stream', () => {
         nodeA.subscribe(streamPartTwo)
         nodeB.subscribe(streamPartTwo)
         await Promise.all([
-            waitForEvent(nodeA, NodeEvent.NODE_SUBSCRIBED),
-            waitForEvent(nodeB, NodeEvent.NODE_SUBSCRIBED),
+            waitForEvent(nodeA.eventEmitter, 'nodeSubscribed'),
+            waitForEvent(nodeB.eventEmitter, 'nodeSubscribed'),
         ])
 
         nodeA.subscribe(streamPartOne)
         nodeB.subscribe(streamPartOne)
         await Promise.all([
-            waitForEvent(nodeA, NodeEvent.NODE_SUBSCRIBED),
-            waitForEvent(nodeB, NodeEvent.NODE_SUBSCRIBED),
+            waitForEvent(nodeA.eventEmitter, 'nodeSubscribed'),
+            waitForEvent(nodeB.eventEmitter, 'nodeSubscribed'),
         ])
     })
 
@@ -68,7 +67,7 @@ describe('node unsubscribing from a stream', () => {
         })
 
         nodeB.unsubscribe(streamPartTwo)
-        await waitForEvent(nodeA, NodeEvent.NODE_UNSUBSCRIBED)
+        await waitForEvent(nodeA.eventEmitter, 'nodeUnsubscribed')
 
         nodeA.publish(new StreamMessage({
             messageId: new MessageID(toStreamID('s'), 2, 0, 0, 'publisherId', 'msgChainId'),
@@ -78,20 +77,20 @@ describe('node unsubscribing from a stream', () => {
             messageId: new MessageID(toStreamID('s'), 1, 0, 0, 'publisherId', 'msgChainId'),
             content: {},
         }))
-        await waitForEvent(nodeB, NodeEvent.UNSEEN_MESSAGE_RECEIVED)
+        await waitForEvent(nodeB.eventEmitter, 'unseenMessageReceived')
         expect(actual).toEqual(['s#1'])
     })
 
     test('connection between nodes is not kept if no shared streams', async () => {
         nodeB.unsubscribe(streamPartTwo)
-        await waitForEvent(nodeA, NodeEvent.NODE_UNSUBSCRIBED)
+        await waitForEvent(nodeA.eventEmitter, 'nodeUnsubscribed')
 
         nodeA.unsubscribe(streamPartOne)
-        await waitForEvent(nodeB, NodeEvent.NODE_UNSUBSCRIBED)
+        await waitForEvent(nodeB.eventEmitter, 'nodeUnsubscribed')
 
         const [aEventArgs, bEventArgs] = await Promise.all([
-            waitForEvent(nodeA, NodeEvent.NODE_DISCONNECTED),
-            waitForEvent(nodeB, NodeEvent.NODE_DISCONNECTED)
+            waitForEvent(nodeA.eventEmitter, 'nodeDisconnected'),
+            waitForEvent(nodeB.eventEmitter, 'nodeDisconnected')
         ])
 
         expect(aEventArgs).toEqual(['b'])
