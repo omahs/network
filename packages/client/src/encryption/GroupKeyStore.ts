@@ -21,7 +21,7 @@ export class GroupKeyStore implements Context {
     readonly debug
     private persistence: Persistence<string, string>
     private currentGroupKeyId: GroupKeyId | undefined // current key id if any
-    private nextGroupKeys: GroupKey[] = [] // the keys to use next, disappears if not actually used. Max queue size 2
+    private nextGroupKeys: GroupKey[] = []
 
     constructor({ context, clientId, streamId, groupKeys }: GroupKeyStoreOptions) {
         this.id = instanceId(this)
@@ -80,10 +80,15 @@ export class GroupKeyStore implements Context {
         if (this.currentGroupKeyId === undefined && nextGroupKey !== undefined) {
             // First use of group key on this stream, no current key. Make next key current.
             this.currentGroupKeyId = nextGroupKey.id
-            return [
+            const nextNext = this.nextGroupKeys.pop()
+            const usablePair = [
                 await this.get(this.currentGroupKeyId!),
-                undefined,
+                nextNext
             ]
+            if (nextNext !== undefined) {
+                this.currentGroupKeyId = nextNext.id
+            }
+            return usablePair as any
         } else if (this.currentGroupKeyId !== undefined && nextGroupKey === undefined) {
             // Keep using current key (empty next)
             return [
@@ -133,7 +138,6 @@ export class GroupKeyStore implements Context {
 
     async setNextGroupKey(newKey: GroupKey): Promise<void> {
         this.nextGroupKeys.unshift(newKey)
-        this.nextGroupKeys.length = Math.min(this.nextGroupKeys.length, 2)
         await this.storeKey(newKey)
     }
 
