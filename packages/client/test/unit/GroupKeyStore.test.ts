@@ -95,4 +95,62 @@ describeRepeats('GroupKeyStore', () => {
         ])
         expect(await store.useGroupKey()).toEqual([groupKey, undefined])
     })
+
+    describe('can set multiple times', () => {
+        describe('the behaviour before the changes in this branch', () => {
+            it('rotate before any messages published', async () => {
+                const key1 = GroupKey.generate('key1')
+                const key2 = GroupKey.generate('key2')
+                const key3 = GroupKey.generate('key3')
+                await store.setNextGroupKey(key1)
+                await store.setNextGroupKey(key2)
+                await store.setNextGroupKey(key3)
+                expect(await store.useGroupKey()).toEqual([key2, undefined])
+                expect(await store.useGroupKey()).toEqual([key2, key3])
+                expect(await store.useGroupKey()).toEqual([key3, undefined])
+            })
+        
+            it('rotate after some messages published', async () => {
+                const [key0] = await store.useGroupKey()
+                const key1 = GroupKey.generate('key1')
+                const key2 = GroupKey.generate('key2')
+                const key3 = GroupKey.generate('key3')
+                await store.setNextGroupKey(key1)
+                await store.setNextGroupKey(key2)
+                await store.setNextGroupKey(key3)
+                expect(await store.useGroupKey()).toEqual([key0, key2])
+                expect(await store.useGroupKey()).toEqual([key2, key3])
+                expect(await store.useGroupKey()).toEqual([key3, undefined])
+            })    
+        })
+    
+        describe('the behavior if we don\'t have a limit of max 2 nextGroupKeys and change the first if block in useGroupKey', () => {
+            it('rotate before any messages published', async () => {
+                const key1 = GroupKey.generate('key1')
+                const key2 = GroupKey.generate('key2')
+                const key3 = GroupKey.generate('key3')
+                await store.setNextGroupKey(key1)
+                await store.setNextGroupKey(key2)
+                await store.setNextGroupKey(key3)
+                expect(await store.useGroupKey()).toEqual([key1, key2])
+                expect(await store.useGroupKey()).toEqual([key2, key3])
+                expect(await store.useGroupKey()).toEqual([key3, undefined])
+            })
+        
+            it('rotate after some messages published', async () => {
+                const [key0] = await store.useGroupKey()
+                const key1 = GroupKey.generate('key1')
+                const key2 = GroupKey.generate('key2')
+                const key3 = GroupKey.generate('key3')
+                await store.setNextGroupKey(key1)
+                await store.setNextGroupKey(key2)
+                await store.setNextGroupKey(key3)
+                expect(await store.useGroupKey()).toEqual([key0, key1])
+                expect(await store.useGroupKey()).toEqual([key1, key2])
+                expect(await store.useGroupKey()).toEqual([key2, key3])
+                expect(await store.useGroupKey()).toEqual([key3, undefined])
+            })    
+        })
+    
+    })
 })
