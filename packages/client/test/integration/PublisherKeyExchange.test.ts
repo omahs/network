@@ -25,6 +25,7 @@ import { FakeNetworkNode } from '../test-utils/fake/FakeNetworkNode'
 import { nextValue } from '../../src/utils/iterators'
 import { fastWallet, waitForCondition } from 'streamr-test-utils'
 import { StreamrClient } from '../../src/StreamrClient'
+import { waitForResponse } from '../test-utils/fake/FakeNetwork'
 
 describe('PublisherKeyExchange', () => {
 
@@ -107,16 +108,6 @@ describe('PublisherKeyExchange', () => {
         })
     }
 
-    const waitForResponse = async (messageType: StreamMessageType): Promise<StreamMessage> => { // TODO could use iterables (like addSubcriber)
-        const predicate = (msg: StreamMessage) => msg.messageType === messageType
-        await waitForCondition(() => {
-            const messages = environment.getNetwork().getSentMessages()
-            return messages.find(predicate) !== undefined
-        })
-        return environment.getNetwork().getSentMessages().find(predicate)!
-    }
-
-
     beforeEach(async () => {
         publisherWallet = fastWallet()
         subscriberWallet = fastWallet()
@@ -144,17 +135,17 @@ describe('PublisherKeyExchange', () => {
             await getGroupKeyStore(StreamPartIDUtils.getStreamID(streamPartId), publisherWallet.address).add(key)
 
             const request = createGroupKeyRequest(key.id)
-            subscriberNode.sendMulticastMessage(request, publisherWallet.address.toLowerCase()) // TODO toLowerCase() suoraan fake sendMulticastMessage-toteutukseen?
+            subscriberNode.sendMulticastMessage(request, publisherWallet.address)
 
-            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE)
+            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE, environment.getNetwork())
             await testSuccessResponse(response!, [key])
         })
 
         it('no group key in store', async () => {
             const request = createGroupKeyRequest(GroupKey.generate().id)
-            subscriberNode.sendMulticastMessage(request, publisherWallet.address.toLowerCase()) // TODO toLowerCase() suoraan fake sendMulticastMessage-toteutukseen?
+            subscriberNode.sendMulticastMessage(request, publisherWallet.address)
 
-            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE)
+            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE, environment.getNetwork())
             await testSuccessResponse(response!, [])
         })
 
@@ -164,9 +155,9 @@ describe('PublisherKeyExchange', () => {
             const otherNode = environment.startNode(otherWallet.address)
 
             const request = createGroupKeyRequest(groupKey.id, otherWallet, (await RSAKeyPair.create()).getPublicKey())
-            otherNode.sendMulticastMessage(request, publisherWallet.address.toLowerCase()) // TODO toLowerCase() suoraan fake sendMulticastMessage-toteutukseen?
+            otherNode.sendMulticastMessage(request, publisherWallet.address)
 
-            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_ERROR_RESPONSE)
+            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_ERROR_RESPONSE, environment.getNetwork())
             await testErrorResponse(response!, [ groupKey.id ], otherWallet.address)
         })
 
@@ -175,9 +166,9 @@ describe('PublisherKeyExchange', () => {
 
             const request: any = createGroupKeyRequest(groupKey.id)
             delete request.signature
-            subscriberNode.sendMulticastMessage(request, publisherWallet.address.toLowerCase()) // TODO toLowerCase() suoraan fake sendMulticastMessage-toteutukseen?
+            subscriberNode.sendMulticastMessage(request, publisherWallet.address)
 
-            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_ERROR_RESPONSE)
+            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_ERROR_RESPONSE, environment.getNetwork())
             await testErrorResponse(response!, [ groupKey.id ])
         })
     })

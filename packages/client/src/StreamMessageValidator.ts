@@ -8,6 +8,7 @@ import {
     StreamMessageError,
     ValidationError
 } from "streamr-client-protocol"
+import { debuglog } from '../test/test-utils/utils'
 import { verify as verifyImpl } from './utils/signingUtils'
 
 export interface StreamMetadata {
@@ -193,7 +194,7 @@ export default class StreamMessageValidator {
         }
 
         if (!KeyExchangeStreamIDUtils.isKeyExchangeStream(streamMessage.getStreamId())) {
-            console.log('TGTEST TODO2')
+            debuglog('TGTEST TODO2')
             throw new StreamMessageError(
                 `${streamMessage.messageType} can only occur on stream ids of form ${`${KeyExchangeStreamIDUtils.STREAM_ID_PREFIX}{address}`}.`,
                 streamMessage

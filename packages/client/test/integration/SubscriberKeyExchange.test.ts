@@ -21,6 +21,7 @@ import {
 } from '../test-utils/utils'
 import { StreamrClient } from '../../src/StreamrClient'
 import { NetworkNodeStub } from '../../src'
+import { waitForResponse } from '../test-utils/fake/FakeNetwork'
 
 describe('SubscriberKeyExchange', () => {
 
@@ -29,6 +30,10 @@ describe('SubscriberKeyExchange', () => {
     let subscriber: StreamrClient
     let streamPartId: StreamPartID
     let environment: FakeEnvironment
+
+    beforeEach(() => { // TGTEST pois
+        global.console = require('console'); 
+      });
 
     const createStream = async (): Promise<Stream> => {
         const s = await subscriber.createStream(createRelativeTestStreamId(module))
@@ -48,11 +53,10 @@ describe('SubscriberKeyExchange', () => {
     }
 
     const assertGroupKeyRequest = async (request: StreamMessage, expectedRequestedKeyIds: string[]): Promise<void> => {
-        const publisherKeyExchangeStreamPartId = KeyExchangeStreamIDUtils.formStreamPartID(publisherWallet.address)
         expect(request).toMatchObject({
             messageId: {
-                streamId: StreamPartIDUtils.getStreamID(publisherKeyExchangeStreamPartId),
-                streamPartition:  StreamPartIDUtils.getStreamPartition(publisherKeyExchangeStreamPartId),
+                streamId: StreamPartIDUtils.getStreamID(streamPartId),
+                streamPartition:  StreamPartIDUtils.getStreamPartition(streamPartId),
                 publisherId: subscriberWallet.address.toLowerCase()
             },
             messageType: StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST,
@@ -103,15 +107,14 @@ describe('SubscriberKeyExchange', () => {
             })
             await startPublisherKeyExchangeSubscription(publisher)
             const publisherNode = await publisher.getNode()
-            const groupKeyRequests = addSubscriber(publisherNode, KeyExchangeStreamIDUtils.formStreamPartID(publisherWallet.address))
             await subscriber.subscribe(streamPartId, () => {})
 
             triggerGroupKeyRequest(groupKey, publisherNode)
             
-            const request = await nextValue(groupKeyRequests)
-            assertGroupKeyRequest(request!, [groupKey.id])
+            const request = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST, environment.getNetwork())
+            await assertGroupKeyRequest(request!, [groupKey.id])
             const keyPersistence = getGroupKeyStore(StreamPartIDUtils.getStreamID(streamPartId), subscriberWallet.address)
             await waitForCondition(async () => (await keyPersistence.get(groupKey.id)) !== undefined)
-        })
+        }) 
     })
 })

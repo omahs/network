@@ -17,7 +17,7 @@ import { Authentication, AuthenticationInjectionToken } from './Authentication'
 
 export type NodeID = string // TODO from network package
 export type UserID = string // TODO from network package
-export const parseUserIdFromNodeId = (nodeId: NodeID): UserID => nodeId.split('#')[0] // TODO from network package
+export const parseUserIdFromNodeId = (nodeId: NodeID): UserID => nodeId.split('#')[0].toLowerCase() // TODO from network package (TODO we need to decide if userId is case-sensitive -> if it is, we keep this lowercase)
 
 // TODO should we make getNode() an internal method, and provide these all these services as client methods?
 export interface NetworkNodeStub {
@@ -37,8 +37,8 @@ export interface NetworkNodeStub {
     getMetricsContext: () => MetricsContext
     hasStreamPart: (streamPartId: StreamPartID) => boolean
     hasProxyConnection: (streamPartId: StreamPartID, contactNodeId: string, direction: ProxyDirection) => boolean
-    sendUnicastMessage: (streamMessage: StreamMessage, recipient: NodeID) => void
-    sendMulticastMessage: (streamMessage: StreamMessage, recipient: UserID) => void
+    sendUnicastMessage: (streamMessage: StreamMessage, recipient: NodeID) => void // TODO void or Promise<void>?
+    sendMulticastMessage: (streamMessage: StreamMessage, recipient: UserID) => void // TODO void or Promise<void>?
     /** @internal */
     start: () => void
     /** @internal */
