@@ -192,15 +192,6 @@ export default class StreamMessageValidator {
         if (!streamMessage.signature) {
             throw new StreamMessageError(`Received unsigned ${streamMessage.messageType} (it must be signed to avoid MitM attacks).`, streamMessage)
         }
-
-        if (!KeyExchangeStreamIDUtils.isKeyExchangeStream(streamMessage.getStreamId())) {
-            debuglog('TGTEST TODO2')
-            throw new StreamMessageError(
-                `${streamMessage.messageType} can only occur on stream ids of form ${`${KeyExchangeStreamIDUtils.STREAM_ID_PREFIX}{address}`}.`,
-                streamMessage
-            )
-        }
-
         await StreamMessageValidator.assertSignatureIsValid(streamMessage, this.verify)
 
         const groupKeyMessage = GroupKeyMessage.fromStreamMessage(streamMessage) // only streamId is read
@@ -217,6 +208,7 @@ export default class StreamMessageValidator {
 
         if (streamMessage.messageType !== StreamMessage.MESSAGE_TYPES.GROUP_KEY_ERROR_RESPONSE) {
             // permit publishers to send error responses to invalid subscribers
+            /* TODO TODO TODO takaisin 
             const recipient = KeyExchangeStreamIDUtils.getRecipient(streamMessage.getStreamId())
             // Check that the recipient of the request is a valid subscriber of the stream
             const recipientIsSubscriber = await this.isSubscriber(recipient!, groupKeyMessage.streamId)
@@ -225,7 +217,7 @@ export default class StreamMessageValidator {
                     `${recipient} is not a subscriber on stream ${groupKeyMessage.streamId}. ${streamMessage.messageType}`,
                     streamMessage
                 )
-            }
+            }*/
         }
     }
 }
