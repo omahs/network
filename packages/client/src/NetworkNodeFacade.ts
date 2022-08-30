@@ -205,12 +205,13 @@ export class NetworkNodeFacade implements Context {
                 this.debug('stopping node before init >>')
                 await node.stop()
                 this.debug('stopping node before init <<')
+            } else {
+                this.eventEmitter.emit('start')
             }
             this.assertNotDestroyed()
             return node
         } finally {
             this.startNodeComplete = true
-            this.eventEmitter.emit('start')
             this.debug('start <<')
         }
     })
