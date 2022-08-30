@@ -144,7 +144,7 @@ describe('PublisherKeyExchange', () => {
             await getGroupKeyStore(StreamPartIDUtils.getStreamID(streamPartId), publisherWallet.address).add(key)
 
             const request = createGroupKeyRequest(key.id)
-            subscriberNode.publish(request)
+            subscriberNode.sendMulticastMessage(request, publisherWallet.address.toLowerCase()) // TODO toLowerCase() suoraan fake sendMulticastMessage-toteutukseen?
 
             const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE)
             await testSuccessResponse(response!, [key])
@@ -152,7 +152,7 @@ describe('PublisherKeyExchange', () => {
 
         it('no group key in store', async () => {
             const request = createGroupKeyRequest(GroupKey.generate().id)
-            subscriberNode.publish(request)
+            subscriberNode.sendMulticastMessage(request, publisherWallet.address.toLowerCase()) // TODO toLowerCase() suoraan fake sendMulticastMessage-toteutukseen?
 
             const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE)
             await testSuccessResponse(response!, [])
@@ -164,7 +164,7 @@ describe('PublisherKeyExchange', () => {
             const otherNode = environment.startNode(otherWallet.address)
 
             const request = createGroupKeyRequest(groupKey.id, otherWallet, (await RSAKeyPair.create()).getPublicKey())
-            otherNode.publish(request)
+            otherNode.sendMulticastMessage(request, publisherWallet.address.toLowerCase()) // TODO toLowerCase() suoraan fake sendMulticastMessage-toteutukseen?
 
             const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_ERROR_RESPONSE)
             await testErrorResponse(response!, [ groupKey.id ], otherWallet.address)
@@ -175,7 +175,7 @@ describe('PublisherKeyExchange', () => {
 
             const request: any = createGroupKeyRequest(groupKey.id)
             delete request.signature
-            subscriberNode.publish(request)
+            subscriberNode.sendMulticastMessage(request, publisherWallet.address.toLowerCase()) // TODO toLowerCase() suoraan fake sendMulticastMessage-toteutukseen?
 
             const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_ERROR_RESPONSE)
             await testErrorResponse(response!, [ groupKey.id ])

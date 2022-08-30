@@ -168,26 +168,17 @@ export default class StreamMessageValidator {
         if (!streamMessage.signature) {
             throw new StreamMessageError(`Received unsigned group key request (the public key must be signed to avoid MitM attacks).`, streamMessage)
         }
-
-        if (!KeyExchangeStreamIDUtils.isKeyExchangeStream(streamMessage.getStreamId())) {
-            console.log('TODO TGTEST DEBUG')
-            throw new StreamMessageError(
-                `Group key requests can only occur on stream ids of form ${`${KeyExchangeStreamIDUtils.STREAM_ID_PREFIX}{address}`}.`,
-                streamMessage
-            )
-        }
-
         const groupKeyRequest = GroupKeyRequest.fromStreamMessage(streamMessage)
         const sender = streamMessage.getPublisherId()
-        const recipient = KeyExchangeStreamIDUtils.getRecipient(streamMessage.getStreamId())
+        // TODO TODO TODO takaisin const recipient = KeyExchangeStreamIDUtils.getRecipient(streamMessage.getStreamId())
 
         await StreamMessageValidator.assertSignatureIsValid(streamMessage, this.verify)
 
         // Check that the recipient of the request is a valid publisher of the stream
-        const recipientIsPublisher = await this.isPublisher(recipient!, groupKeyRequest.streamId)
+        /* TODO TODO TODO takaisin const recipientIsPublisher = await this.isPublisher(recipient!, groupKeyRequest.streamId)
         if (!recipientIsPublisher) {
             throw new StreamMessageError(`${recipient} is not a publisher on stream ${groupKeyRequest.streamId}.`, streamMessage)
-        }
+        }*/
 
         // Check that the sender of the request is a valid subscriber of the stream
         const senderIsSubscriber = await this.isSubscriber(sender, groupKeyRequest.streamId)
@@ -202,6 +193,7 @@ export default class StreamMessageValidator {
         }
 
         if (!KeyExchangeStreamIDUtils.isKeyExchangeStream(streamMessage.getStreamId())) {
+            console.log('TGTEST TODO2')
             throw new StreamMessageError(
                 `${streamMessage.messageType} can only occur on stream ids of form ${`${KeyExchangeStreamIDUtils.STREAM_ID_PREFIX}{address}`}.`,
                 streamMessage
