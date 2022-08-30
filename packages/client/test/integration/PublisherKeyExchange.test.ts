@@ -4,6 +4,7 @@ import {
     GroupKeyErrorResponse,
     KeyExchangeStreamIDUtils,
     StreamMessage,
+    StreamMessageType,
     StreamPartID,
     StreamPartIDUtils,
 } from 'streamr-client-protocol'
@@ -22,7 +23,7 @@ import { getGroupKeysFromStreamMessage } from '../../src/encryption/SubscriberKe
 import { FakeEnvironment } from '../test-utils/fake/FakeEnvironment'
 import { FakeNetworkNode } from '../test-utils/fake/FakeNetworkNode'
 import { nextValue } from '../../src/utils/iterators'
-import { fastWallet } from 'streamr-test-utils'
+import { fastWallet, waitForCondition } from 'streamr-test-utils'
 import { StreamrClient } from '../../src/StreamrClient'
 
 describe('PublisherKeyExchange', () => {
@@ -50,7 +51,7 @@ describe('PublisherKeyExchange', () => {
         rsaPublicKey = subscriberRSAKeyPair.getPublicKey()
     ): StreamMessage => {
         return createMockMessage({
-            streamPartId: KeyExchangeStreamIDUtils.formStreamPartID(publisherWallet.address),
+            streamPartId,
             publisher,
             content: JSON.stringify([
                 uuid(),
@@ -65,11 +66,10 @@ describe('PublisherKeyExchange', () => {
     }
 
     const testSuccessResponse = async (actualResponse: StreamMessage, expectedGroupKeys: GroupKey[]): Promise<void> => {
-        const subscriberKeyExchangeStreamPartId = KeyExchangeStreamIDUtils.formStreamPartID(subscriberWallet.address)
         expect(actualResponse).toMatchObject({
             messageId: {
-                streamId: StreamPartIDUtils.getStreamID(subscriberKeyExchangeStreamPartId),
-                streamPartition: StreamPartIDUtils.getStreamPartition(subscriberKeyExchangeStreamPartId),
+                streamId: StreamPartIDUtils.getStreamID(streamPartId),
+                streamPartition: StreamPartIDUtils.getStreamPartition(streamPartId),
                 publisherId: publisherWallet.address.toLowerCase(),
             },
             messageType: StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE,
@@ -87,11 +87,10 @@ describe('PublisherKeyExchange', () => {
         expectedGroupKeyIds: string[],
         expectedRecipientAddress = subscriberWallet.address
     ): Promise<void> => {
-        const subscriberKeyExchangeStreamPartId = KeyExchangeStreamIDUtils.formStreamPartID(expectedRecipientAddress)
         expect(actualResponse).toMatchObject({
             messageId: {
-                streamId: StreamPartIDUtils.getStreamID(subscriberKeyExchangeStreamPartId),
-                streamPartition: StreamPartIDUtils.getStreamPartition(subscriberKeyExchangeStreamPartId),
+                streamId: StreamPartIDUtils.getStreamID(streamPartId),
+                streamPartition: StreamPartIDUtils.getStreamPartition(streamPartId),
                 publisherId: publisherWallet.address.toLowerCase(),
             },
             messageType: StreamMessage.MESSAGE_TYPES.GROUP_KEY_ERROR_RESPONSE,
@@ -107,6 +106,16 @@ describe('PublisherKeyExchange', () => {
             groupKeyIds: expectedGroupKeyIds
         })
     }
+
+    const waitForResponse = async (messageType: StreamMessageType): Promise<StreamMessage> => { // TODO could use iterables (like addSubcriber)
+        const predicate = (msg: StreamMessage) => msg.messageType === messageType
+        await waitForCondition(() => {
+            const messages = environment.getNetwork().getSentMessages()
+            return messages.find(predicate) !== undefined
+        })
+        return environment.getNetwork().getSentMessages().find(predicate)!
+    }
+
 
     beforeEach(async () => {
         publisherWallet = fastWallet()
@@ -134,22 +143,18 @@ describe('PublisherKeyExchange', () => {
             const key = GroupKey.generate()
             await getGroupKeyStore(StreamPartIDUtils.getStreamID(streamPartId), publisherWallet.address).add(key)
 
-            const receivedResponses = addSubscriber(subscriberNode, KeyExchangeStreamIDUtils.formStreamPartID(subscriberWallet.address))
-
             const request = createGroupKeyRequest(key.id)
             subscriberNode.publish(request)
 
-            const response = await nextValue(receivedResponses)
+            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE)
             await testSuccessResponse(response!, [key])
         })
 
         it('no group key in store', async () => {
-            const receivedResponses = addSubscriber(subscriberNode, KeyExchangeStreamIDUtils.formStreamPartID(subscriberWallet.address))
-
             const request = createGroupKeyRequest(GroupKey.generate().id)
             subscriberNode.publish(request)
 
-            const response = await nextValue(receivedResponses)
+            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE)
             await testSuccessResponse(response!, [])
         })
 
@@ -157,24 +162,22 @@ describe('PublisherKeyExchange', () => {
             const groupKey = GroupKey.generate()
             const otherWallet = fastWallet()
             const otherNode = environment.startNode(otherWallet.address)
-            const receivedResponses = addSubscriber(otherNode, KeyExchangeStreamIDUtils.formStreamPartID(otherWallet.address))
 
             const request = createGroupKeyRequest(groupKey.id, otherWallet, (await RSAKeyPair.create()).getPublicKey())
             otherNode.publish(request)
 
-            const response = await nextValue(receivedResponses)
+            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_ERROR_RESPONSE)
             await testErrorResponse(response!, [ groupKey.id ], otherWallet.address)
         })
 
         it('invalid request', async () => {
             const groupKey = GroupKey.generate()
-            const receivedResponses = addSubscriber(subscriberNode, KeyExchangeStreamIDUtils.formStreamPartID(subscriberWallet.address))
 
             const request: any = createGroupKeyRequest(groupKey.id)
             delete request.signature
             subscriberNode.publish(request)
 
-            const response = await nextValue(receivedResponses)
+            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_ERROR_RESPONSE)
             await testErrorResponse(response!, [ groupKey.id ])
         })
     })

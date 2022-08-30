@@ -170,6 +170,7 @@ export default class StreamMessageValidator {
         }
 
         if (!KeyExchangeStreamIDUtils.isKeyExchangeStream(streamMessage.getStreamId())) {
+            console.log('TODO TGTEST DEBUG')
             throw new StreamMessageError(
                 `Group key requests can only occur on stream ids of form ${`${KeyExchangeStreamIDUtils.STREAM_ID_PREFIX}{address}`}.`,
                 streamMessage
