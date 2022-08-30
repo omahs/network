@@ -38,7 +38,7 @@ export async function getGroupKeysFromStreamMessage(streamMessage: StreamMessage
 }
 
 @scoped(Lifecycle.ContainerScoped)
-export class SubscriberKeyExchange implements Context {
+export class SubscriberKeyExchange implements Context { // TODO remove this class
     readonly id
     readonly debug
     private rsaKeyPair: RSAKeyPair

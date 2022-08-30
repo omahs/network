@@ -70,7 +70,7 @@ export const createGroupKeyResponse = async (
 }
 
 @scoped(Lifecycle.ContainerScoped)
-export class PublisherKeyExchange implements Context {
+export class PublisherKeyExchange implements Context {  // TODO remove this class
     private enabled = true
     readonly id
     readonly debug

@@ -4,11 +4,11 @@
 import { StreamMessage } from 'streamr-client-protocol'
 
 import { EncryptionUtil, UnableToDecryptError } from '../encryption/EncryptionUtil'
-import { SubscriberKeyExchange } from '../encryption/SubscriberKeyExchange'
 import { StreamRegistryCached } from '../registry/StreamRegistryCached'
 import { Context } from '../utils/Context'
 import { DestroySignal } from '../DestroySignal'
 import { instanceId } from '../utils/utils'
+import { GroupKeyRequester } from '../encryption/GroupKeyRequester'
 
 export class Decrypt<T> implements Context {
     readonly id
@@ -17,8 +17,8 @@ export class Decrypt<T> implements Context {
 
     constructor(
         context: Context,
+        private groupKeyRequester: GroupKeyRequester,
         private streamRegistryCached: StreamRegistryCached,
-        private keyExchange: SubscriberKeyExchange,
         private destroySignal: DestroySignal,
     ) {
         this.id = instanceId(this)
@@ -45,7 +45,11 @@ export class Decrypt<T> implements Context {
         }
 
         try {
-            const groupKey = await this.keyExchange.getGroupKey(streamMessage).catch((err) => {
+            const groupKey = await this.groupKeyRequester.getGroupKey(
+                streamMessage.groupKeyId,
+                streamMessage.getPublisherId(),
+                streamMessage.getStreamPartID()
+            ).catch((err) => {
                 throw new UnableToDecryptError(streamMessage, `Could not get GroupKey: ${streamMessage.groupKeyId} – ${err.stack}`)
             })
 
@@ -61,7 +65,6 @@ export class Decrypt<T> implements Context {
             }
             const clone = StreamMessage.deserialize(streamMessage.serialize())
             EncryptionUtil.decryptStreamMessage(clone, groupKey)
-            await this.keyExchange.addNewKey(clone)
             return clone as StreamMessage<T>
         } catch (err) {
             if (this.isStopped) { 
