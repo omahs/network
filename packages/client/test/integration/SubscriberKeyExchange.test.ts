@@ -1,6 +1,5 @@
 import 'reflect-metadata'
 import {
-    KeyExchangeStreamIDUtils,
     StreamMessage,
     StreamPartID,
     StreamPartIDUtils,
@@ -10,10 +9,8 @@ import { Wallet } from 'ethers'
 import { Stream } from '../../src/Stream'
 import { StreamPermission } from '../../src/permission'
 import { FakeEnvironment } from '../test-utils/fake/FakeEnvironment'
-import { nextValue } from '../../src/utils/iterators'
 import { fastWallet, waitForCondition } from 'streamr-test-utils'
 import { 
-    addSubscriber,
     createMockMessage,
     createRelativeTestStreamId,
     getGroupKeyStore,
@@ -108,7 +105,7 @@ describe('SubscriberKeyExchange', () => {
             })
             // TODO this hack istores the initial keys
             // @ts-expect-error private
-            ;await ((await publisher.groupKeyStoreFactory.getStore(StreamPartIDUtils.getStreamID(streamPartId)))).persistence.init()
+            await ((await publisher.groupKeyStoreFactory.getStore(StreamPartIDUtils.getStreamID(streamPartId)))).persistence.init()
             await startPublisherKeyExchangeSubscription(publisher)
             const publisherNode = await publisher.getNode()
             debuglog('SKEtest.subscribe ' + await subscriber.getAddress() + ' '  + streamPartId)

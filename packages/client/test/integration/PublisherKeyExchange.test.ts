@@ -2,9 +2,7 @@ import 'reflect-metadata'
 import { v4 as uuid } from 'uuid'
 import {
     GroupKeyErrorResponse,
-    KeyExchangeStreamIDUtils,
     StreamMessage,
-    StreamMessageType,
     StreamPartID,
     StreamPartIDUtils,
 } from 'streamr-client-protocol'
@@ -13,7 +11,6 @@ import { Wallet } from 'ethers'
 import { RSAKeyPair } from '../../src/encryption/RSAKeyPair'
 import { StreamPermission } from '../../src/permission'
 import { 
-    addSubscriber,
     createMockMessage,
     createRelativeTestStreamId,
     getGroupKeyStore,
@@ -22,8 +19,7 @@ import {
 import { getGroupKeysFromStreamMessage } from '../../src/encryption/SubscriberKeyExchange'
 import { FakeEnvironment } from '../test-utils/fake/FakeEnvironment'
 import { FakeNetworkNode } from '../test-utils/fake/FakeNetworkNode'
-import { nextValue } from '../../src/utils/iterators'
-import { fastWallet, waitForCondition } from 'streamr-test-utils'
+import { fastWallet } from 'streamr-test-utils'
 import { StreamrClient } from '../../src/StreamrClient'
 import { waitForResponse } from '../test-utils/fake/FakeNetwork'
 

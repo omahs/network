@@ -2,9 +2,8 @@
  * Encrypt StreamMessages in-place.
  */
 import { StreamMessage } from 'streamr-client-protocol'
-import { PublisherKeyExchange } from '../encryption/PublisherKeyExchange'
 import { StreamRegistryCached } from '../registry/StreamRegistryCached'
-import { scoped, Lifecycle, inject, delay } from 'tsyringe'
+import { scoped, Lifecycle } from 'tsyringe'
 import { EncryptionUtil } from '../encryption/EncryptionUtil'
 import { GroupKeyStoreFactory } from '../encryption/GroupKeyStoreFactory'
 

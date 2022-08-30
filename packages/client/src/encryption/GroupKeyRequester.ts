@@ -54,7 +54,6 @@ export class GroupKeyRequester {
         }
     }
 
-
     async requestGroupKey(groupKeyId: string, publisherId: EthereumAddress, streamPartId: StreamPartID): Promise<void> {
         debuglog('Request group key ' + groupKeyId + ' (p=' + publisherId + ', s=' + streamPartId)
         const node = await this.networkNodeFacade.getNode()

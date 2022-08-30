@@ -1,7 +1,6 @@
 import { StreamPartIDUtils } from 'streamr-client-protocol'
 import { fastWallet } from 'streamr-test-utils'
 import { GroupKey } from '../../src/encryption/GroupKey'
-import { SubscriberKeyExchange } from '../../src/encryption/SubscriberKeyExchange'
 import { Decrypt } from '../../src/subscribe/Decrypt'
 import { Signal } from '../../src/utils/Signal'
 import { createMockMessage, mockContext } from '../test-utils/utils'

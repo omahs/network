@@ -32,9 +32,9 @@ const waitForCondition = async ( // TODO remove this when we implement the non-p
                 let result
                 try {
                     result = await conditionFn()
-                } catch (err) {
+                } catch (e) {
                     clearPoller()
-                    reject(err)
+                    reject(e)
                 }
                 if (result) {
                     clearPoller()
