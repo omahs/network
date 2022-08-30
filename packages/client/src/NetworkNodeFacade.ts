@@ -15,6 +15,9 @@ import { EthereumConfig, generateEthereumAccount, getMainnetProvider } from './E
 import { getTrackerRegistryFromContract } from './registry/getTrackerRegistryFromContract'
 import { Authentication, AuthenticationInjectionToken } from './Authentication'
 
+// TODO maybe we should rename addMessageListener and removeMessageListener to on('messageReceived') and off('messageReceived')
+// so that it is more clear that the functionality has changed: it will now receive also unicast/multicast messages (that is, non-27 type messages)
+
 export type NodeID = string // TODO from network package
 export type UserID = string // TODO from network package
 export const parseUserIdFromNodeId = (nodeId: NodeID): UserID => nodeId.split('#')[0].toLowerCase() // TODO from network package (TODO we need to decide if userId is case-sensitive -> if it is, we keep this lowercase)
