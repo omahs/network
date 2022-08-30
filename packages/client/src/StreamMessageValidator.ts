@@ -2,13 +2,12 @@ import {
     EthereumAddress,
     GroupKeyRequest,
     GroupKeyMessage,
-    KeyExchangeStreamIDUtils,
     StreamID,
     StreamMessage,
     StreamMessageError,
     ValidationError
 } from "streamr-client-protocol"
-import { debuglog } from '../test/test-utils/utils'
+import { debuglog } from './utils/debuglog'
 import { verify as verifyImpl } from './utils/signingUtils'
 
 export interface StreamMetadata {

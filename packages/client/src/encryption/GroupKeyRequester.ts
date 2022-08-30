@@ -1,6 +1,6 @@
 import { EthereumAddress, GroupKeyRequest, MessageID, StreamMessage, StreamMessageType, StreamPartID, StreamPartIDUtils } from 'streamr-client-protocol'
 import { inject, Lifecycle, scoped } from 'tsyringe'
-import { debuglog } from '../../test/test-utils/utils'
+import { debuglog } from '../utils/debuglog'
 import { Authentication, AuthenticationInjectionToken } from '../Authentication'
 import { NetworkNodeFacade } from '../NetworkNodeFacade'
 import { createRandomMsgChainId } from '../publish/MessageChain'

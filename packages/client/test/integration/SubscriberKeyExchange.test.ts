@@ -32,9 +32,9 @@ describe('SubscriberKeyExchange', () => {
     let streamPartId: StreamPartID
     let environment: FakeEnvironment
 
-    beforeEach(() => { // TGTEST pois
+    /*beforeEach(() => { // TGTEST TODO pois
         global.console = require('console'); 
-      });
+      });*/
 
     const createStream = async (): Promise<Stream> => {
         const s = await subscriber.createStream(createRelativeTestStreamId(module))

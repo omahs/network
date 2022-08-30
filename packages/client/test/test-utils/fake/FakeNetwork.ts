@@ -1,7 +1,7 @@
 import { EthereumAddress, StreamMessage, StreamMessageType } from 'streamr-client-protocol'
 import { waitForCondition } from 'streamr-test-utils'
 import { NodeID } from '../../../src/NetworkNodeFacade'
-import { debuglog } from '../utils'
+import { debuglog } from '../../../src/utils/debuglog'
 import { FakeNetworkNode } from './FakeNetworkNode'
 
 export const waitForResponse = async (messageType: StreamMessageType, network: FakeNetwork): Promise<StreamMessage> => { // TODO could use iterables (like addSubcriber)

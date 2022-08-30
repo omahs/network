@@ -10,7 +10,7 @@ import { Context } from '../Context'
 
 import { Persistence } from './Persistence'
 import { StreamID } from 'streamr-client-protocol'
-import { debuglog } from '../../../test/test-utils/utils'
+import { debuglog } from '../debuglog'
 
 // eslint-disable-next-line promise/param-names
 const wait = (ms: number) => new Promise((resolveFn) => setTimeout(resolveFn, ms))

@@ -1,7 +1,7 @@
 import debug from 'debug'
 import { EthereumAddress, MessageID, StreamID, StreamMessage, StreamMessageType } from 'streamr-client-protocol'
 import { inject, Lifecycle, scoped } from 'tsyringe'
-import { debuglog } from 'util'
+import { debuglog } from '../utils/debuglog'
 import { Authentication, AuthenticationInjectionToken } from '../Authentication'
 import { NetworkNodeFacade, NodeID } from '../NetworkNodeFacade'
 import { createRandomMsgChainId } from '../publish/MessageChain'
