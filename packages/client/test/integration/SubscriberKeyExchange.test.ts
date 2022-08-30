@@ -16,6 +16,7 @@ import {
     addSubscriber,
     createMockMessage,
     createRelativeTestStreamId,
+    debuglog,
     getGroupKeyStore,
     startPublisherKeyExchangeSubscription
 } from '../test-utils/utils'
@@ -107,10 +108,13 @@ describe('SubscriberKeyExchange', () => {
             })
             await startPublisherKeyExchangeSubscription(publisher)
             const publisherNode = await publisher.getNode()
+            debuglog('SKEtest.subscribe ' + await subscriber.getAddress() + ' '  + streamPartId)
             await subscriber.subscribe(streamPartId, () => {})
 
+            debuglog('SKEtest.trigger')
             triggerGroupKeyRequest(groupKey, publisherNode)
             
+            debuglog('SKEtest.wait')
             const request = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST, environment.getNetwork())
             await assertGroupKeyRequest(request!, [groupKey.id])
             const keyPersistence = getGroupKeyStore(StreamPartIDUtils.getStreamID(streamPartId), subscriberWallet.address)

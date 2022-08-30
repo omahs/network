@@ -61,7 +61,7 @@ export class FakeNetworkNode implements NetworkNodeStub {
     }
 
     sendMulticastMessage(msg: StreamMessage, recipient: UserID): void {
-        this.network.sendMessage(msg, this.id, (node: FakeNetworkNode) => parseUserIdFromNodeId(node.id) === recipient)
+        this.network.sendMessage(msg, this.id, (node: FakeNetworkNode) => parseUserIdFromNodeId(node.id) === recipient.toLowerCase()) // TODO if we decide that userIds are case-sensitive, remove this toLowerCase()
     }
 
     // eslint-disable-next-line class-methods-use-this
