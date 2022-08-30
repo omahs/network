@@ -27,7 +27,6 @@ import { addAfterFn } from './jest-utils'
 import { TransformStream } from 'node:stream/web'
 import { NetworkNodeStub } from '../../src/NetworkNodeFacade'
 import { GroupKeyStore } from '../../src/encryption/GroupKeyStore'
-import { PublisherKeyExchange } from '../../src/encryption/PublisherKeyExchange'
 
 const testDebugRoot = Debug('test')
 const testDebug = testDebugRoot.extend.bind(testDebugRoot)
@@ -162,8 +161,7 @@ export const getGroupKeyStore = (streamId: StreamID, userAddress: EthereumAddres
     })
 }
 
-export const startPublisherKeyExchangeSubscription = async (publisherClient: StreamrClient): Promise<void> => {
-    // @ts-expect-error private
-    const publisherKeyExchange = publisherClient.container.resolve(PublisherKeyExchange)
-    await publisherKeyExchange.useGroupKey(`mock-${Date.now()}` as StreamID)
+export const startPublisherKeyExchangeSubscription = async (publisherClient: StreamrClient): Promise<void> => { // TODO remove this method (should we have a public method to start the group key responded)
+    // start the node
+    await publisherClient.getNode()
 }

@@ -89,6 +89,7 @@ export class Decrypt<T> implements Context {
         }
 
         try {
+            // TODO TODO TODO ! first we must check whether we have the key in the store (and only if we don't have, we request the key)
             await this.groupKeyRequester.requestGroupKey(
                 streamMessage.groupKeyId,
                 streamMessage.getPublisherId(),
