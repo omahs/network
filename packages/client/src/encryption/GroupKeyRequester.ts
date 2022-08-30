@@ -45,7 +45,7 @@ export class GroupKeyRequester {
                 const rsaKeyPair = await this.getRsaKeyPair()
                 const keys = await getGroupKeysFromStreamMessage(msg, rsaKeyPair.getPrivateKey())
                 const store = await this.groupKeyStoreFactory.getStore(msg.getStreamId())
-                debuglog('Storing keys: ' + keys.map((k) => k.id).join(', '))
+                debuglog('Storing ' + keys.length + ' keys: ' + keys.map((k) => k.id).join(', '))
                 await Promise.all(keys.map((key) => store.add(key))) // TODO we could have a test to check that GroupKeyStore supports concurrency?
             } catch (e) {
                 debuglog('TODO error', e)

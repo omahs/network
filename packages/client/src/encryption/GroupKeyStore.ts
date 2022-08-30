@@ -6,6 +6,7 @@ import { GroupKey } from './GroupKey'
 import { Persistence } from '../utils/persistence/Persistence'
 import ServerPersistence from '../utils/persistence/ServerPersistence'
 import { StreamID } from 'streamr-client-protocol'
+import { debuglog } from '../../test/test-utils/utils'
 
 type GroupKeyId = string
 
@@ -64,8 +65,10 @@ export class GroupKeyStore implements Context {
     }
 
     async has(id: GroupKeyId): Promise<boolean> {
+        debuglog('GKS.has? ' + id)
         if (this.currentGroupKeyId === id) { return true }
         if (this.nextGroupKeys.some((nextKey) => nextKey.id === id)) { return true }
+        debuglog('GKS.persistence.has? ' + id)
         return this.persistence.has(id)
     }
 
