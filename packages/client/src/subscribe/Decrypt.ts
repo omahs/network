@@ -89,13 +89,13 @@ export class Decrypt<T> implements Context {
         }
 
         try {
-            await this.groupKeyRequester.getGroupKey(
+            await this.groupKeyRequester.requestGroupKey(
                 streamMessage.groupKeyId,
                 streamMessage.getPublisherId(),
                 streamMessage.getStreamPartID()
-            ).catch((err) => {
+            )/*TODO .catch((err) => {
                 throw new UnableToDecryptError(streamMessage, `Could not get GroupKey: ${streamMessage.groupKeyId} – ${err.stack}`)
-            })
+            })*/
             const store = await this.groupKeyStoreFactory.getStore(streamMessage.getStreamId())
             await waitForCondition(() => {  // TODO and implement without polling (and wrap with "withTimeout")
                 return store.has(streamMessage.groupKeyId!)

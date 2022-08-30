@@ -19,6 +19,8 @@ import { DestroySignal } from '../DestroySignal'
 import { DependencyContainer } from 'tsyringe'
 import { StreamRegistryCached } from '../registry/StreamRegistryCached'
 import { MsgChainUtil } from './MsgChainUtil'
+import { GroupKeyStoreFactory } from '../encryption/GroupKeyStoreFactory'
+import { GroupKeyRequester } from '../encryption/GroupKeyRequester'
 
 export function SubscribePipeline<T = unknown>(
     messageStream: MessageStream<T>,
@@ -56,8 +58,9 @@ export function SubscribePipeline<T = unknown>(
 
     const decrypt = new Decrypt<T>(
         context,
+        container.resolve(GroupKeyStoreFactory),
+        container.resolve(GroupKeyRequester),
         container.resolve(StreamRegistryCached),
-        container.resolve(SubscriberKeyExchange),
         container.resolve(DestroySignal),
     )
 

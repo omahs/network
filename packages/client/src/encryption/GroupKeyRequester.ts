@@ -24,7 +24,7 @@ export class GroupKeyRequester {
         this.rsaKeyPair = rsaKeyPair // TODO would it make sense to create the key pair only if it is needed (if publisher doesn't do any group key requests, we waste the CPU)
     }
 
-    async getGroupKey(groupKeyId: string, publisherId: EthereumAddress, streamPartId: StreamPartID): Promise<GroupKey | undefined> { // TODO would it make sense to reject if we don't get group key
+    async requestGroupKey(groupKeyId: string, publisherId: EthereumAddress, streamPartId: StreamPartID): Promise<void> {
         const node = await this.networkNodeFacade.getNode()
         const requestId = uuid('GroupKeyRequest')
         const rsaPublicKey = this.rsaKeyPair.getPublicKey()
