@@ -1,10 +1,9 @@
 import { EthereumAddress, GroupKeyRequest, MessageID, StreamMessage, StreamMessageType, StreamPartID, StreamPartIDUtils } from 'streamr-client-protocol'
-import { Lifecycle, scoped } from 'tsyringe'
-import { Authentication } from '../Authentication'
+import { inject, Lifecycle, scoped } from 'tsyringe'
+import { Authentication, AuthenticationInjectionToken } from '../Authentication'
 import { NetworkNodeFacade } from '../NetworkNodeFacade'
 import { createRandomMsgChainId } from '../publish/MessageChain'
 import { uuid } from '../utils/uuid'
-import { GroupKey } from './GroupKey'
 import { RSAKeyPair } from './RSAKeyPair'
 
 @scoped(Lifecycle.ContainerScoped)
@@ -16,7 +15,7 @@ export class GroupKeyRequester {
 
     constructor(
         networkNodeFacade: NetworkNodeFacade,
-        authentication: Authentication,
+        @inject(AuthenticationInjectionToken) authentication: Authentication,
         rsaKeyPair: RSAKeyPair
     ) {
         this.networkNodeFacade = networkNodeFacade

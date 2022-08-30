@@ -1,7 +1,7 @@
 import debug from 'debug'
 import { EthereumAddress, MessageID, StreamID, StreamMessage, StreamMessageType } from 'streamr-client-protocol'
-import { Lifecycle, scoped } from 'tsyringe'
-import { Authentication } from '../Authentication'
+import { inject, Lifecycle, scoped } from 'tsyringe'
+import { Authentication, AuthenticationInjectionToken } from '../Authentication'
 import { NetworkNodeFacade, NodeID } from '../NetworkNodeFacade'
 import { createRandomMsgChainId } from '../publish/MessageChain'
 import { StreamRegistryCached } from '../registry/StreamRegistryCached'
@@ -28,7 +28,7 @@ export class GroupKeyResponder {
         groupKeyStoreFactory: GroupKeyStoreFactory,
         networkNodeFacade: NetworkNodeFacade,
         streamRegistryCached: StreamRegistryCached,
-        authentication: Authentication,
+        @inject(AuthenticationInjectionToken) authentication: Authentication,
         validator: Validator,
     ) {
         this.groupKeyStoreFactory = groupKeyStoreFactory
