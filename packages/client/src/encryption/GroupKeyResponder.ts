@@ -29,7 +29,7 @@ export class GroupKeyResponder {
         networkNodeFacade: NetworkNodeFacade,
         streamRegistryCached: StreamRegistryCached,
         @inject(AuthenticationInjectionToken) authentication: Authentication,
-        validator: Validator,
+        validator: Validator
     ) {
         this.groupKeyStoreFactory = groupKeyStoreFactory
         this.networkNodeFacade = networkNodeFacade
