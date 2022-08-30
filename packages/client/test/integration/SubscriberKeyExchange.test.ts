@@ -16,13 +16,13 @@ import {
     addSubscriber,
     createMockMessage,
     createRelativeTestStreamId,
-    debuglog,
     getGroupKeyStore,
     startPublisherKeyExchangeSubscription
 } from '../test-utils/utils'
 import { StreamrClient } from '../../src/StreamrClient'
 import { NetworkNodeStub } from '../../src'
 import { waitForResponse } from '../test-utils/fake/FakeNetwork'
+import { debuglog } from '../../src/utils/debuglog'
 
 describe('SubscriberKeyExchange', () => {
 
