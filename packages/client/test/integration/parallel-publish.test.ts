@@ -46,9 +46,8 @@ describe('parallel publish', () => {
         }
         await Promise.all(publishTasks)
 
-        await waitForCondition(() => environment.getNetwork().getSentMessages().length === MESSAGE_COUNT)
-
-        const sortedMessages = clone(environment.getNetwork().getSentMessages()).sort((m1, m2) => {
+        const sentMessages = await collect(environment.getNetwork().getSentMessages(), MESSAGE_COUNT)
+        const sortedMessages = sentMessages.sort((m1, m2) => {
             const timestampDiff = m1.getTimestamp() - m2.getTimestamp()
             return (timestampDiff !== 0) ? timestampDiff : (m1.getSequenceNumber() - m2.getSequenceNumber())
         })
