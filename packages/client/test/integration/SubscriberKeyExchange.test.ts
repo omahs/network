@@ -103,9 +103,6 @@ describe('SubscriberKeyExchange', () => {
                     }
                 }
             })
-            // TODO this hack istores the initial keys
-            // @ts-expect-error private
-            await ((await publisher.groupKeyStoreFactory.getStore(StreamPartIDUtils.getStreamID(streamPartId)))).persistence.init()
             await startPublisherKeyExchangeSubscription(publisher)
             const publisherNode = await publisher.getNode()
             debuglog('SKEtest.subscribe ' + await subscriber.getAddress() + ' '  + streamPartId)

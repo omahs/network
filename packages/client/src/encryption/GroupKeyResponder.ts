@@ -14,8 +14,9 @@ import { createGroupKeyResponse } from './PublisherKeyExchange'
  * Sends a group key response when receives a group key request
  */
 
-const log = debug('StreamrClient:GroupKeyResponder')
+const log = debug('StreamrClient:PublisherKeyExchange')
 
+// TODO rename to PublisherKeyExchange
 @scoped(Lifecycle.ContainerScoped)
 export class GroupKeyResponder {
 

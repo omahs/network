@@ -18,6 +18,10 @@ describe('Subscriber', () => {
     let subscriber: StreamrClient
     let environment: FakeEnvironment
 
+    /*beforeEach(() => { // TGTEST TODO pois
+        global.console = require('console'); 
+    });*/
+
     beforeEach(async () => {
         subscriberWallet = fastWallet()
         publisherWallet = fastWallet()
@@ -28,6 +32,10 @@ describe('Subscriber', () => {
             }
         })
         stream = await subscriber.createStream('/path')
+    })
+
+    afterEach(async () => {
+        await environment.destroy()
     })
 
     it('without encryption', async () => {
