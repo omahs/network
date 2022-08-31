@@ -49,7 +49,6 @@ export class GroupKeyStore implements Context {
     }
 
     private async storeKey(groupKey: GroupKey): Promise<GroupKey> {
-        debuglog('Store ' + groupKey.id + ' to ' + this.id)
         const existingKey = await this.get(groupKey.id)
         if (existingKey) {
             if (!existingKey.equals(groupKey)) {
@@ -66,17 +65,11 @@ export class GroupKeyStore implements Context {
     }
 
     async has(id: GroupKeyId): Promise<boolean> {
-        if (this.currentGroupKeyId === id) { 
-            debuglog('GKS.has.1')
-            return true 
-        }
-        if (this.nextGroupKeys.some((nextKey) => nextKey.id === id)) { 
-            debuglog('GKS.has.2')
-            return true
-        }
-        const res = await this.persistence.has(id)
-        debuglog('GKS.has.3: ' + id + ' = ' + res)
-        return res
+        debuglog('GKS.has? ' + id)
+        if (this.currentGroupKeyId === id) { return true }
+        if (this.nextGroupKeys.some((nextKey) => nextKey.id === id)) { return true }
+        debuglog('GKS.persistence.has? ' + id)
+        return this.persistence.has(id)
     }
 
     async isEmpty(): Promise<boolean> {

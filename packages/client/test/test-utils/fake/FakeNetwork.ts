@@ -44,7 +44,7 @@ export class FakeNetwork {
         * as it expects that the EncryptedGroupKey format changes in the process.
         * TODO: should we change the serialization or the test? Or keep this hack?
         */
-        //debuglog('Send: ' + msg.messageType + ' ' + msg.getStreamPartID())
+        debuglog('Send: ' + msg.messageType + ' ' + msg.getStreamPartID())
         const serialized = msg.serialize()
         this.getNodes().forEach(async (networkNode) => {
             if (isRecipient(networkNode)) {
@@ -52,10 +52,10 @@ export class FakeNetwork {
                     // return a clone as client mutates message when it decrypts messages
                     const deserialized = StreamMessage.deserialize(serialized)
                     listener(deserialized, sender)
-                    //debuglog(msg.messageType + ' ' + msg.getStreamPartID() + ' to ' + networkNode.id)
+                    debuglog(msg.messageType + ' ' + msg.getStreamPartID() + ' to ' + networkNode.id)
                 })
             } else {
-                //debuglog('No recipient: ' + networkNode.id)
+                debuglog('No recipient: ' + networkNode.id)
             }
         })
         this.sentMessages.push(msg)
