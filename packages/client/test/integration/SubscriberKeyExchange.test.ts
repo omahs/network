@@ -19,7 +19,6 @@ import {
 import { StreamrClient } from '../../src/StreamrClient'
 import { NetworkNodeStub } from '../../src'
 import { waitForResponse } from '../test-utils/fake/FakeNetwork'
-import { debuglog } from '../../src/utils/debuglog'
 
 describe('SubscriberKeyExchange', () => {
 
@@ -28,10 +27,6 @@ describe('SubscriberKeyExchange', () => {
     let subscriber: StreamrClient
     let streamPartId: StreamPartID
     let environment: FakeEnvironment
-
-    /*beforeEach(() => { // TGTEST TODO pois
-        global.console = require('console'); 
-      });*/
 
     const createStream = async (): Promise<Stream> => {
         const s = await subscriber.createStream(createRelativeTestStreamId(module))
@@ -105,13 +100,10 @@ describe('SubscriberKeyExchange', () => {
             })
             await startPublisherKeyExchangeSubscription(publisher)
             const publisherNode = await publisher.getNode()
-            debuglog('SKEtest.subscribe ' + await subscriber.getAddress() + ' '  + streamPartId)
             await subscriber.subscribe(streamPartId, () => {})
 
-            debuglog('SKEtest.trigger')
             triggerGroupKeyRequest(groupKey, publisherNode)
             
-            debuglog('SKEtest.wait')
             const request = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST, environment.getNetwork())
             await assertGroupKeyRequest(request!, [groupKey.id])
             const keyPersistence = getGroupKeyStore(StreamPartIDUtils.getStreamID(streamPartId), subscriberWallet.address)

@@ -10,10 +10,8 @@ import { DestroySignal } from '../DestroySignal'
 import { instanceId } from '../utils/utils'
 import { GroupKeyRequester } from '../encryption/GroupKeyRequester'
 import { GroupKeyStoreFactory } from '../encryption/GroupKeyStoreFactory'
-import { debuglog } from '../utils/debuglog'
 import { ConfigInjectionToken, TimeoutsConfig } from '../Config'
 import { inject } from 'tsyringe'
-import { GroupKeyStore } from '../encryption/GroupKeyStore'
 import { GroupKey } from '../encryption/GroupKey'
 
 const waitForCondition = async ( // TODO remove this when we implement the non-polling key retrieval
@@ -99,7 +97,6 @@ export class Decrypt<T> implements Context {
             const store = await this.groupKeyStoreFactory.getStore(streamMessage.getStreamId())
             const hasGroupKey = await store.has(streamMessage.groupKeyId!)
             if (!hasGroupKey) { // TODO alternatively we could get a handle to the current ongoing GK-request (if any)
-                //debuglog('Decrypt.request ' + streamMessage.groupKeyId)
                 const requestAccepted = await this.groupKeyRequester.requestGroupKey(
                     streamMessage.groupKeyId,
                     streamMessage.getPublisherId(),
@@ -124,8 +121,6 @@ export class Decrypt<T> implements Context {
                 if (this.isStopped) { 
                     return streamMessage
                 }
-            } else {
-                //debuglog('Decrypt.already-in-store: ' + streamMessage.groupKeyId + ' ' + store.persistence.id)
             }
             const groupKey = (await store.get(streamMessage.groupKeyId!))!
 

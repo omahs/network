@@ -1,7 +1,6 @@
 import debug from 'debug'
 import { EthereumAddress, MessageID, StreamID, StreamMessage, StreamMessageType } from 'streamr-client-protocol'
 import { inject, Lifecycle, scoped } from 'tsyringe'
-import { debuglog } from '../utils/debuglog'
 import { Authentication, AuthenticationInjectionToken } from '../Authentication'
 import { NetworkNodeFacade, NodeID } from '../NetworkNodeFacade'
 import { createRandomMsgChainId } from '../publish/MessageChain'
@@ -46,7 +45,6 @@ export class GroupKeyResponder {
 
     private async onMessage(request: StreamMessage<any>, sender?: NodeID): Promise<void> {
         if (request.messageType === StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST) {
-            debuglog('Received group key request')
             try {
                 await this.validator.validate(request)  // TODO pitää päivittää tätä metodia, koska stream ei ole enää keyexchange-stream (entä onko mitään tarvetta tutkia sender-arvoa, ehkä riittääk että tutkitaan vain viestin julkaisija eli sama toteutus kuin validator-luokassa)
                 const node = await this.networkNodeFacade.getNode()
@@ -78,7 +76,6 @@ export class GroupKeyResponder {
             } catch (e) {
                 // TODO send group key response error (StreamMessage.ENCRYPTION_TYPES.NONE)
                 // TODO send an event to StreamrClient's eventEmitter so that user can observe errors?
-                debuglog('TODO ERROR IN GKR', e)
             }
         }
     }

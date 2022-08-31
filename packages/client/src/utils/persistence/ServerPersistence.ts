@@ -10,7 +10,6 @@ import { Context } from '../Context'
 
 import { Persistence } from './Persistence'
 import { StreamID } from 'streamr-client-protocol'
-import { debuglog } from '../debuglog'
 
 // eslint-disable-next-line promise/param-names
 const wait = (ms: number) => new Promise((resolveFn) => setTimeout(resolveFn, ms))
@@ -144,7 +143,6 @@ export default class ServerPersistence implements Persistence<string, string>, C
         }
 
         await Promise.all(Object.entries(this.initialData).map(async ([key, value]) => {
-            debuglog('Store initial key: ' + key)
             return this.setKeyValue(key, value)
         }))
         this.debug('init')
