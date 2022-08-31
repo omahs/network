@@ -21,7 +21,7 @@ export class GroupKeyRequester {
     private authentication: Authentication
     private validator: Validator
     private getRsaKeyPair: () => Promise<RSAKeyPair>
-    private latestTimestamps: Map<string,number>  // TODO not just groupKey but groupKeyId+streamPartId+publisher (or something), and we should limit the size of this... -> it is actually a cache
+    private latestTimestamps: Map<string, number>  // TODO not just groupKey but groupKeyId+streamPartId+publisher (or something), and we should limit the size of this... -> it is actually a cache
 
     constructor(
         networkNodeFacade: NetworkNodeFacade,

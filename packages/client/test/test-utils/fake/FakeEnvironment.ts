@@ -80,6 +80,6 @@ export class FakeEnvironment {
     }
 
     destroy(): Promise<unknown> {
-        return Promise.all(this.clients.map(client => client.destroy()))
+        return Promise.all(this.clients.map((client) => client.destroy()))
     }
 }

@@ -110,6 +110,4 @@ export class SubscriberKeyExchange implements Context { // TODO remove this clas
         await this.rsaKeyPair.onReady()
         return this.getKey(streamMessage)
     }
-
-
 }

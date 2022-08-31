@@ -36,10 +36,6 @@ describe('PubSub with multiple clients', () => {
     let environment: FakeEnvironment
     const addAfter = addAfterFn()
 
-    beforeEach(() => { // TGTEST TODO pois
-        global.console = require('console'); 
-    });
-
     beforeEach(async () => {
         environment = new FakeEnvironment()
         privateKey = fastPrivateKey()

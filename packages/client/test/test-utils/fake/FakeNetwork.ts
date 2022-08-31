@@ -67,7 +67,7 @@ export class FakeNetwork {
                 const msg = send.message
                 return (predicate.messageType === undefined) || (msg.messageType === predicate.messageType)
             })
-            .map(m => m.message)
+            .map((m) => m.message)
     }
 
     async waitForSentMessages(opts: SentMessagesFilter & { count: number }, timeout = 60 * 1000): Promise<StreamMessage[]> { 
