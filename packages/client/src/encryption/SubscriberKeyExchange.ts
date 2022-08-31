@@ -111,12 +111,5 @@ export class SubscriberKeyExchange implements Context { // TODO remove this clas
         return this.getKey(streamMessage)
     }
 
-    async addNewKey(streamMessage: StreamMessage): Promise<void> {
-        if (!streamMessage.newGroupKey) { return }
-        const streamId = streamMessage.getStreamId()
-        const groupKeyStore = await this.getGroupKeyStore(streamId)
-        // newGroupKey has been converted into GroupKey
-        const groupKey: unknown = streamMessage.newGroupKey
-        await groupKeyStore.add(groupKey as GroupKey)
-    }
+
 }

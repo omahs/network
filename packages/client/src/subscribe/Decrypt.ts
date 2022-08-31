@@ -13,6 +13,8 @@ import { GroupKeyStoreFactory } from '../encryption/GroupKeyStoreFactory'
 import { debuglog } from '../utils/debuglog'
 import { ConfigInjectionToken, TimeoutsConfig } from '../Config'
 import { inject } from 'tsyringe'
+import { GroupKeyStore } from '../encryption/GroupKeyStore'
+import { GroupKey } from '../encryption/GroupKey'
 
 const waitForCondition = async ( // TODO remove this when we implement the non-polling key retrieval
     conditionFn: () => (boolean | Promise<boolean>),
@@ -129,6 +131,10 @@ export class Decrypt<T> implements Context {
             }
             const clone = StreamMessage.deserialize(streamMessage.serialize())
             EncryptionUtil.decryptStreamMessage(clone, groupKey)
+            if (streamMessage.newGroupKey) {
+                // newGroupKey has been converted into GroupKey
+                await store.add(clone.newGroupKey as unknown as GroupKey)
+            }
             return clone as StreamMessage<T>
         } catch (err) {
             if (this.isStopped) { 
