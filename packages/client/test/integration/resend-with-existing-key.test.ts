@@ -10,7 +10,6 @@ import { EncryptionUtil } from '../../src/encryption/EncryptionUtil'
 import { collect } from '../../src/utils/GeneratorUtils'
 import { FakeStorageNode } from '../test-utils/fake/FakeStorageNode'
 import { StreamrClient } from '../../src/StreamrClient'
-import { debuglog } from '../../src/utils/debuglog'
 
 /*
  * A subscriber has some GroupKeys in the local store and reads historical data
@@ -28,10 +27,6 @@ describe('resend with existing key', () => {
     let rekeyedKey: GroupKey
     let allMessages: { timestamp: number, groupKey: GroupKey, nextGroupKey?: GroupKey }[]
     let environment: FakeEnvironment
-
-    beforeEach(() => { // TGTEST TODO pois
-        global.console = require('console'); 
-    });
 
     const storeMessage = (timestamp: number, currentGroupKey: GroupKey, nextGroupKey: GroupKey | undefined, storageNode: FakeStorageNode) => {
         const message = createMockMessage({
@@ -63,14 +58,10 @@ describe('resend with existing key', () => {
     }
 
     const assertNonDecryptable = async (fromTimestamp: number, toTimestamp: number) => {
-        debuglog('assertNonDecryptable.1')
         const messageStream = await resendRange(fromTimestamp, toTimestamp)
-        debuglog('assertNonDecryptable.2')
         const onError = jest.fn()
-        debuglog('assertNonDecryptable.3')
         messageStream.onError.listen(onError)
         await collect(messageStream)
-        debuglog('assertNonDecryptable.4')
         expect(onError).toBeCalled()
         const error = onError.mock.calls[0][0]
         expect(error.message).toContain('Unable to decrypt')
@@ -113,11 +104,7 @@ describe('resend with existing key', () => {
         }
     })
 
-    afterEach(async () => {
-        await environment.destroy()
-    })
-
-    describe.only('no keys available', () => { // TGTEST remove "only"
+    describe('no keys available', () => {
         it('can\'t decrypt', async () => {
             await assertNonDecryptable(1000, 6000)
         })
