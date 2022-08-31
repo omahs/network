@@ -277,12 +277,10 @@ export class Resends implements Context {
                 throw err
             }
 
-            console.log('QUERY')
             const resendStream = await this.resend(streamDefinition, { last: count })
             last = await resendStream.collect()
             for (const lastMsg of last) {
                 if (messageMatchFn(streamMessage, lastMsg)) {
-                    console.log('FOUND')
                     found = true
                     this.debug('last message found')
                     return
@@ -294,7 +292,6 @@ export class Resends implements Context {
                 'last 3': last.slice(-3).map(({ content }: any) => content)
             })
 
-            console.log('WAIT: ' + interval)
             await wait(interval)
         }
         /* eslint-enable no-await-in-loop */
