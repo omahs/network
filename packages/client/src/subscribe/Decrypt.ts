@@ -11,12 +11,14 @@ import { instanceId } from '../utils/utils'
 import { GroupKeyRequester } from '../encryption/GroupKeyRequester'
 import { GroupKeyStoreFactory } from '../encryption/GroupKeyStoreFactory'
 import { debuglog } from '../utils/debuglog'
+import { ConfigInjectionToken, TimeoutsConfig } from '../Config'
+import { inject } from 'tsyringe'
 
 const waitForCondition = async ( // TODO remove this when we implement the non-polling key retrieval
     conditionFn: () => (boolean | Promise<boolean>),
     timeout = 5000,
     retryInterval = 100,
-    onTimeoutContext?: () => string
+    onTimeoutContext?: () => string,
 ): Promise<void> => {
     // create error beforehand to capture more usable stack
     const err = new Error(`waitForCondition: timed out before "${conditionFn.toString()}" became true`)
@@ -65,6 +67,7 @@ export class Decrypt<T> implements Context {
         private groupKeyRequester: GroupKeyRequester,
         private streamRegistryCached: StreamRegistryCached,
         private destroySignal: DestroySignal,
+        @inject(ConfigInjectionToken.Timeouts) private timeoutsConfig: TimeoutsConfig
     ) {
         this.id = instanceId(this)
         this.debug = context.debug.extend(this.id)
@@ -105,7 +108,7 @@ export class Decrypt<T> implements Context {
                 try {
                     await waitForCondition(() => {  // TODO and implement without polling (and wrap with "withTimeout")
                         return this.isStopped || store.has(streamMessage.groupKeyId!)
-                    }, 2000)  // TODO TGTEST 2000ms is just for tests!!! (just some value)
+                    }, this.timeoutsConfig.encryptionKeyRequest)  // TODO TGTEST 2000ms is just for tests!!! (just some value)
                 } catch {
                     // waitForCondition timeouts
                     throw new UnableToDecryptError(streamMessage, [
