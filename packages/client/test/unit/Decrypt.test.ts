@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { StreamPartIDUtils } from 'streamr-client-protocol'
 import { fastWallet } from 'streamr-test-utils'
 import { GroupKey } from '../../src/encryption/GroupKey'
@@ -36,7 +37,8 @@ describe('Decrypt', () => {
                 } as any,
                 {
                     onDestroy: Signal.create()
-                } as any
+                } as any,
+                {} as any
             )
             const msg = createMockMessage({
                 streamPartId: StreamPartIDUtils.parse('stream#0'),
