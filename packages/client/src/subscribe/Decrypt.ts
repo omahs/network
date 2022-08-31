@@ -99,6 +99,7 @@ export class Decrypt<T> implements Context {
             })*/
             const store = await this.groupKeyStoreFactory.getStore(streamMessage.getStreamId())
             await waitForCondition(() => {  // TODO and implement without polling (and wrap with "withTimeout")
+                // TODO check this.isStopped?
                 return store.has(streamMessage.groupKeyId!)
             }, 500)  // TODO TGTEST 500ms is just for tests!!!
             const groupKey = await store.get(streamMessage.groupKeyId!)!
