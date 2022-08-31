@@ -19,9 +19,11 @@ import {
 import { getGroupKeysFromStreamMessage } from '../../src/encryption/SubscriberKeyExchange'
 import { FakeEnvironment } from '../test-utils/fake/FakeEnvironment'
 import { FakeNetworkNode } from '../test-utils/fake/FakeNetworkNode'
-import { fastWallet } from 'streamr-test-utils'
+import { fastWallet, waitForCondition } from 'streamr-test-utils'
 import { StreamrClient } from '../../src/StreamrClient'
 import { waitForResponse } from '../test-utils/fake/FakeNetwork'
+import { nextValue } from '../../src/utils/iterators'
+import { filter } from '../../src/utils/GeneratorUtils'
 
 describe('PublisherKeyExchange', () => {
 
@@ -133,7 +135,8 @@ describe('PublisherKeyExchange', () => {
             const request = createGroupKeyRequest(key.id)
             subscriberNode.sendMulticastMessage(request, publisherWallet.address)
 
-            const response = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE, environment.getNetwork())
+            const node = (await publisherClient.getNode()) as FakeNetworkNode 
+            const response = await nextValue(filter(node.sentMessages, (msg) => msg.messageType === StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE))
             await testSuccessResponse(response!, [key])
         })
 
