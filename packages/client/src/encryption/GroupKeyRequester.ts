@@ -11,6 +11,8 @@ import { GroupKeyStoreFactory } from './GroupKeyStoreFactory'
 import { RSAKeyPair } from './RSAKeyPair'
 import { getGroupKeysFromStreamMessage } from './SubscriberKeyExchange'
 
+const MIN_INTERVAL = 60 * 1000 // TODO some good value for this?
+
 // TODO rename to SubscriberKeyExchange
 @scoped(Lifecycle.ContainerScoped)
 export class GroupKeyRequester {
@@ -20,6 +22,7 @@ export class GroupKeyRequester {
     private authentication: Authentication
     private validator: Validator
     private getRsaKeyPair: () => Promise<RSAKeyPair>
+    private latestTimestamps: Map<string,number>  // TODO not just groupKey but groupKeyId+streamPartId+publisher (or something), and we should limit the size of this... -> it is actually a cache
 
     constructor(
         networkNodeFacade: NetworkNodeFacade,
@@ -32,6 +35,7 @@ export class GroupKeyRequester {
         this.authentication = authentication
         this.validator = validator
         this.getRsaKeyPair = pOnce(() => RSAKeyPair.create())
+        this.latestTimestamps = new Map()
         networkNodeFacade.once('start', async () => {
             const node = await networkNodeFacade.getNode()
             node.addMessageListener((msg: StreamMessage) => this.onMessage(msg))
@@ -55,7 +59,13 @@ export class GroupKeyRequester {
         }
     }
 
-    async requestGroupKey(groupKeyId: string, publisherId: EthereumAddress, streamPartId: StreamPartID): Promise<void> {
+    /**
+     * Returns false if we have very recently requested a group key and therefore we don't process this request
+     */
+    async requestGroupKey(groupKeyId: string, publisherId: EthereumAddress, streamPartId: StreamPartID): Promise<boolean> {
+        if (!this.hasRecentAcceptedRequest(groupKeyId)) {
+            return false
+        }
         debuglog('Request group key ' + groupKeyId + ' (p=' + publisherId + ', s=' + streamPartId)
         const node = await this.networkNodeFacade.getNode()
         const requestId = uuid('GroupKeyRequest')
@@ -84,5 +94,15 @@ export class GroupKeyRequester {
         request.signature = await this.authentication.createMessagePayloadSignature(request.getPayloadToSign())
         debuglog('Send group key request to ' + publisherId)
         node.sendMulticastMessage(request, publisherId)
+        return true
+    }
+
+    private hasRecentAcceptedRequest(groupKeyId: string) {
+        const latestTimestamp = this.latestTimestamps.get(groupKeyId)
+        if (latestTimestamp !== undefined) {
+            return (Date.now() - latestTimestamp) < MIN_INTERVAL
+        } else {
+            return false
+        }
     }
 }

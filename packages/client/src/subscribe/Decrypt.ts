@@ -100,13 +100,16 @@ export class Decrypt<T> implements Context {
             const hasGroupKey = await store.has(streamMessage.groupKeyId!)
             if (!hasGroupKey) { // TODO alternatively we could get a handle to the current ongoing GK-request (if any)
                 //debuglog('Decrypt.request ' + streamMessage.groupKeyId)
-                await this.groupKeyRequester.requestGroupKey(
+                const requestAccepted = await this.groupKeyRequester.requestGroupKey(
                     streamMessage.groupKeyId,
                     streamMessage.getPublisherId(),
                     streamMessage.getStreamPartID()
                 )/*TODO .catch((err) => {
                     throw new UnableToDecryptError(streamMessage, `Could not get GroupKey: ${streamMessage.groupKeyId} – ${err.stack}`)
                 })*/
+                if (!requestAccepted) {
+                    return streamMessage
+                }
                 try {
                     await waitForCondition(() => {  // TODO and implement without polling (and wrap with "withTimeout")
                         return this.isStopped || store.has(streamMessage.groupKeyId!)
