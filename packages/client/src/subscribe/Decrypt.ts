@@ -102,23 +102,24 @@ export class Decrypt<T> implements Context {
                 )/*TODO .catch((err) => {
                     throw new UnableToDecryptError(streamMessage, `Could not get GroupKey: ${streamMessage.groupKeyId} – ${err.stack}`)
                 })*/
-                await waitForCondition(() => {  // TODO and implement without polling (and wrap with "withTimeout")
-                    return this.isStopped || store.has(streamMessage.groupKeyId!)
-                }, 5000)  // TODO TGTEST 5000ms is just for tests!!! (just some value)
+                try {
+                    await waitForCondition(() => {  // TODO and implement without polling (and wrap with "withTimeout")
+                        return this.isStopped || store.has(streamMessage.groupKeyId!)
+                    }, 2000)  // TODO TGTEST 2000ms is just for tests!!! (just some value)
+                } catch {
+                    // waitForCondition timeouts
+                    throw new UnableToDecryptError(streamMessage, [
+                        `Could not get GroupKey: ${streamMessage.groupKeyId}`,
+                        'Publisher is offline, key does not exist or no permission to access key.',
+                    ].join(' '))
+                }
                 if (this.isStopped) { 
                     return streamMessage
                 }
             } else {
                 //debuglog('Decrypt.already-in-store: ' + streamMessage.groupKeyId + ' ' + store.persistence.id)
             }
-            const groupKey = await store.get(streamMessage.groupKeyId!)!
-
-            if (groupKey === undefined) { // TODO tämä ei siis tässä pollauksessa voi toteutua (paitsi jos pollaus timeouttaa)
-                throw new UnableToDecryptError(streamMessage, [
-                    `Could not get GroupKey: ${streamMessage.groupKeyId}`,
-                    'Publisher is offline, key does not exist or no permission to access key.',
-                ].join(' '))
-            }
+            const groupKey = (await store.get(streamMessage.groupKeyId!))!
 
             if (this.isStopped) { 
                 return streamMessage
