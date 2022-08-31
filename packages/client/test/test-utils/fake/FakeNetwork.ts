@@ -1,7 +1,21 @@
 import { EthereumAddress, StreamMessage, StreamMessageType } from 'streamr-client-protocol'
 import { waitForCondition } from 'streamr-test-utils'
+import { TransformStream } from 'node:stream/web'
 import { NodeID } from '../../../src/NetworkNodeFacade'
 import { FakeNetworkNode } from './FakeNetworkNode'
+import { PushBuffer } from '../../../src/utils/PushBuffer'
+
+/*export const addSubscriber = <T>(networkNodeStub: NetworkNodeStub, ...streamPartIds: StreamPartID[]): AsyncIterableIterator<StreamMessage<T>> => {
+    const messages = new TransformStream()
+    const messageWriter = messages.writable.getWriter()
+    networkNodeStub.addMessageListener((msg: StreamMessage) => {
+        if (streamPartIds.includes(msg.getStreamPartID())) {
+            messageWriter.write(msg)
+        }
+    })
+    streamPartIds.forEach((id) => networkNodeStub.subscribe(id))
+    return messages.readable[Symbol.asyncIterator]()
+}
 
 export const waitForResponse = async (messageType: StreamMessageType, network: FakeNetwork): Promise<StreamMessage> => { // TODO could use iterables (like addSubcriber)
     const predicate = (msg: StreamMessage) => msg.messageType === messageType
@@ -10,12 +24,16 @@ export const waitForResponse = async (messageType: StreamMessageType, network: F
         return messages.find(predicate) !== undefined
     })
     return network.getSentMessages().find(predicate)!
+}*/
+
+const foobar = async function*() {
+
 }
 
 export class FakeNetwork {
 
     private readonly nodes: Map<NodeID, FakeNetworkNode> = new Map()
-    private sentMessages: StreamMessage[] = []
+    private sentMessages: PushBuffer<StreamMessage> = new PushBuffer()
 
     addNode(node: FakeNetworkNode): void {
         if (!this.nodes.has(node.id)) {
@@ -53,10 +71,11 @@ export class FakeNetwork {
                 })
             }
         })
-        this.sentMessages.push(msg)
+        await this.sentMessages.writable.getWriter().write(msg)
     }
 
-    getSentMessages(): StreamMessage[] {
-        return this.sentMessages
+    private getSentMessages(): AsyncGenerator<StreamMessage> {
+        const foo = this.sentMessages.readable
+        foo[]
     }
 }

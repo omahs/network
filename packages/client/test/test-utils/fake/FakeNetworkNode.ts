@@ -14,6 +14,7 @@ export class FakeNetworkNode implements NetworkNodeStub {
     readonly subscriptions: Set<StreamPartID> = new Set()
     readonly messageListeners: MessageListener[] = []
     private readonly network: FakeNetwork
+    public sentMessages: StreamMessage[] = []
 
     constructor(opts: NetworkNodeOptions, network: FakeNetwork) {
         this.id = opts.id!
@@ -54,14 +55,17 @@ export class FakeNetworkNode implements NetworkNodeStub {
 
     publish(msg: StreamMessage): void {
         this.network.sendMessage(msg, undefined, (node: FakeNetworkNode) => node.subscriptions.has(msg.getStreamPartID()))
+        this.sentMessages.push(msg)
     }
 
     sendUnicastMessage(msg: StreamMessage, recipient: NodeID): void {
         this.network.sendMessage(msg, this.id, (node: FakeNetworkNode) => node.id === recipient)
+        this.sentMessages.push(msg)
     }
 
     sendMulticastMessage(msg: StreamMessage, recipient: UserID): void {
         this.network.sendMessage(msg, this.id, (node: FakeNetworkNode) => parseUserIdFromNodeId(node.id) === recipient.toLowerCase()) // TODO if we decide that userIds are case-sensitive, remove this toLowerCase()
+        this.sentMessages.push(msg)
     }
 
     // eslint-disable-next-line class-methods-use-this
