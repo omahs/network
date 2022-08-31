@@ -75,10 +75,6 @@ export class FakeEnvironment {
         return node
     }
 
-    startCollector(): CollectorNode {
-        new CollectorNode()
-    }
-
     getNetwork(): FakeNetwork {
         return this.network
     }
