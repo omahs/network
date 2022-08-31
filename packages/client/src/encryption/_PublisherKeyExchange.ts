@@ -21,7 +21,7 @@ import { GroupKeyStoreFactory } from './GroupKeyStoreFactory'
 
 import { GroupKey } from './GroupKey'
 import { EncryptionUtil, UnableToDecryptError } from './EncryptionUtil'
-import { KeyExchangeStream } from './KeyExchangeStream'
+import { KeyExchangeStream } from './_KeyExchangeStream'
 
 import { StreamRegistryCached } from '../registry/StreamRegistryCached'
 import { Subscription } from '../subscribe/Subscription'

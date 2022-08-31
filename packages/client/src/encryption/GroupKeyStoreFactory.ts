@@ -6,7 +6,7 @@ import { inspect } from '../utils/log'
 import { Context, ContextError } from '../utils/Context'
 import { ConfigInjectionToken, CacheConfig } from '../Config'
 
-import { EncryptionConfig, GroupKeysSerialized, parseGroupKeys } from './KeyExchangeStream'
+import { EncryptionConfig, GroupKeysSerialized, parseGroupKeys } from './_KeyExchangeStream'
 import { GroupKeyStore } from './GroupKeyStore'
 import { GroupKey } from './GroupKey'
 import { StreamID } from 'streamr-client-protocol'

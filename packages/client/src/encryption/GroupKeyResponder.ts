@@ -7,7 +7,7 @@ import { createRandomMsgChainId } from '../publish/MessageChain'
 import { StreamRegistryCached } from '../registry/StreamRegistryCached'
 import { Validator } from '../Validator'
 import { GroupKeyStoreFactory } from './GroupKeyStoreFactory'
-import { createGroupKeyResponse } from './PublisherKeyExchange'
+import { createGroupKeyResponse } from './_PublisherKeyExchange'
 
 /*
  * Sends a group key response when receives a group key request

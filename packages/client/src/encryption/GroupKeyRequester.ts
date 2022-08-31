@@ -8,7 +8,7 @@ import { uuid } from '../utils/uuid'
 import { Validator } from '../Validator'
 import { GroupKeyStoreFactory } from './GroupKeyStoreFactory'
 import { RSAKeyPair } from './RSAKeyPair'
-import { getGroupKeysFromStreamMessage } from './SubscriberKeyExchange'
+import { getGroupKeysFromStreamMessage } from './_SubscriberKeyExchange'
 
 const MIN_INTERVAL = 60 * 1000 // TODO some good value for this?
 

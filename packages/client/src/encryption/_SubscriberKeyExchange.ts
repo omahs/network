@@ -9,7 +9,7 @@ import { Context } from '../utils/Context'
 import {
     GroupKeyId,
     KeyExchangeStream,
-} from './KeyExchangeStream'
+} from './_KeyExchangeStream'
 
 import { GroupKey } from './GroupKey'
 import { EncryptionUtil } from './EncryptionUtil'

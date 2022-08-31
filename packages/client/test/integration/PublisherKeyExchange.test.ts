@@ -16,7 +16,7 @@ import {
     getGroupKeyStore,
     startPublisherKeyExchangeSubscription
 } from '../test-utils/utils'
-import { getGroupKeysFromStreamMessage } from '../../src/encryption/SubscriberKeyExchange'
+import { getGroupKeysFromStreamMessage } from '../../src/encryption/_SubscriberKeyExchange'
 import { FakeEnvironment } from '../test-utils/fake/FakeEnvironment'
 import { FakeNetworkNode } from '../test-utils/fake/FakeNetworkNode'
 import { fastWallet } from 'streamr-test-utils'

@@ -7,7 +7,7 @@ import merge from 'lodash/merge'
 
 import type { AuthConfig } from './Authentication'
 import type { EthereumConfig } from './Ethereum'
-import type { EncryptionConfig } from './encryption/KeyExchangeStream'
+import type { EncryptionConfig } from './encryption/_KeyExchangeStream'
 
 import CONFIG_SCHEMA from './config.schema.json'
 import { EthereumAddress, SmartContractRecord } from 'streamr-client-protocol'
