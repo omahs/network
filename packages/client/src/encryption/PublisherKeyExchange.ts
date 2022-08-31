@@ -10,14 +10,14 @@ import { GroupKeyStoreFactory } from './GroupKeyStoreFactory'
 import { createGroupKeyResponse } from './_PublisherKeyExchange'
 
 /*
- * Sends a group key response when receives a group key request
+ * Sends group key responses
  */
 
 const log = debug('StreamrClient:PublisherKeyExchange')
 
 // TODO rename to PublisherKeyExchange
 @scoped(Lifecycle.ContainerScoped)
-export class GroupKeyResponder {
+export class PublisherKeyExchange {
 
     private groupKeyStoreFactory: GroupKeyStoreFactory
     private networkNodeFacade: NetworkNodeFacade

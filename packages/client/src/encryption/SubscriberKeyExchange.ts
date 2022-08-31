@@ -12,9 +12,12 @@ import { getGroupKeysFromStreamMessage } from './_SubscriberKeyExchange'
 
 const MIN_INTERVAL = 60 * 1000 // TODO some good value for this?
 
-// TODO rename to SubscriberKeyExchange
+/*
+ * Sends group key requests and receives group key responses
+ */
+
 @scoped(Lifecycle.ContainerScoped)
-export class GroupKeyRequester {
+export class SubscriberKeyExchange {
 
     private networkNodeFacade: NetworkNodeFacade
     private groupKeyStoreFactory: GroupKeyStoreFactory

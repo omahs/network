@@ -25,13 +25,13 @@ describe('Decrypt', () => {
                     }
                 })
             }
-            const groupKeyRequester = {
+            const keyExchange = {
                 requestGroupKey: async () => {}
             }
             const decrypt = new Decrypt(
                 mockContext(),
                 groupKeyStoreFactory as any,
-                groupKeyRequester as any,
+                keyExchange as any,
                 {
                     clearStream: jest.fn()
                 } as any,

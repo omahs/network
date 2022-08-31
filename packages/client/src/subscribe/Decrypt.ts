@@ -8,7 +8,7 @@ import { StreamRegistryCached } from '../registry/StreamRegistryCached'
 import { Context } from '../utils/Context'
 import { DestroySignal } from '../DestroySignal'
 import { instanceId } from '../utils/utils'
-import { GroupKeyRequester } from '../encryption/GroupKeyRequester'
+import { SubscriberKeyExchange } from '../encryption/SubscriberKeyExchange'
 import { GroupKeyStoreFactory } from '../encryption/GroupKeyStoreFactory'
 import { ConfigInjectionToken, TimeoutsConfig } from '../Config'
 import { inject } from 'tsyringe'
@@ -64,7 +64,7 @@ export class Decrypt<T> implements Context {
     constructor(
         context: Context,
         private groupKeyStoreFactory: GroupKeyStoreFactory,
-        private groupKeyRequester: GroupKeyRequester,
+        private keyExchange: SubscriberKeyExchange,
         private streamRegistryCached: StreamRegistryCached,
         private destroySignal: DestroySignal,
         @inject(ConfigInjectionToken.Timeouts) private timeoutsConfig: TimeoutsConfig
@@ -97,7 +97,7 @@ export class Decrypt<T> implements Context {
             const store = await this.groupKeyStoreFactory.getStore(streamMessage.getStreamId())
             const hasGroupKey = await store.has(streamMessage.groupKeyId!)
             if (!hasGroupKey) { // TODO alternatively we could get a handle to the current ongoing GK-request (if any)
-                const requestAccepted = await this.groupKeyRequester.requestGroupKey(
+                const requestAccepted = await this.keyExchange.requestGroupKey(
                     streamMessage.groupKeyId,
                     streamMessage.getPublisherId(),
                     streamMessage.getStreamPartID()
