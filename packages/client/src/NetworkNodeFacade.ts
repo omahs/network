@@ -15,7 +15,7 @@ import { EthereumConfig, generateEthereumAccount, getMainnetProvider } from './E
 import { getTrackerRegistryFromContract } from './registry/getTrackerRegistryFromContract'
 import { Authentication, AuthenticationInjectionToken } from './Authentication'
 
-// TODO maybe we should rename addMessageListener and removeMessageListener to on('messageReceived') and off('messageReceived')
+// TODO maybe we should rename addMessageListener and removeMessageListener to on('messageReceive') and off('messageReceive')
 // so that it is more clear that the functionality has changed: it will now receive also unicast/multicast messages (that is, non-27 type messages)
 
 export type NodeID = string // TODO from network package
