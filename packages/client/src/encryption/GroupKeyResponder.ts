@@ -45,6 +45,7 @@ export class GroupKeyResponder {
 
     private async onMessage(request: StreamMessage<any>, sender?: NodeID): Promise<void> {
         if (request.messageType === StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST) {
+            //console.log('Group key request received')
             try {
                 await this.validator.validate(request)  // TODO pitää päivittää tätä metodia, koska stream ei ole enää keyexchange-stream (entä onko mitään tarvetta tutkia sender-arvoa, ehkä riittääk että tutkitaan vain viestin julkaisija eli sama toteutus kuin validator-luokassa)
                 const node = await this.networkNodeFacade.getNode()
@@ -72,8 +73,10 @@ export class GroupKeyResponder {
                     signatureType: StreamMessage.SIGNATURE_TYPES.ETH,
                 })
                 response.signature = await this.authentication.createMessagePayloadSignature(response.getPayloadToSign())
+                //console.log('Sent group key request response')
                 node.sendUnicastMessage(response, sender!)
             } catch (e) {
+                console.log('TGTEST', e)
                 // TODO send group key response error (StreamMessage.ENCRYPTION_TYPES.NONE)
                 // TODO send an event to StreamrClient's eventEmitter so that user can observe errors?
             }

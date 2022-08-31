@@ -48,6 +48,7 @@ export class GroupKeyRequester {
                 const rsaKeyPair = await this.getRsaKeyPair()
                 const keys = await getGroupKeysFromStreamMessage(msg, rsaKeyPair.getPrivateKey())
                 const store = await this.groupKeyStoreFactory.getStore(msg.getStreamId())
+                //console.log('TGTEST store group keys: ' + keys.length)
                 await Promise.all(keys.map((key) => store.add(key))) // TODO we could have a test to check that GroupKeyStore supports concurrency?
             } catch (e) {
                 // TODO log
@@ -59,9 +60,10 @@ export class GroupKeyRequester {
      * Returns false if we have very recently requested a group key and therefore we don't process this request
      */
     async requestGroupKey(groupKeyId: string, publisherId: EthereumAddress, streamPartId: StreamPartID): Promise<boolean> {
-        if (!this.hasRecentAcceptedRequest(groupKeyId)) {
+        if (this.hasRecentAcceptedRequest(groupKeyId)) {
             return false
         }
+        //console.log('TGTEST requestGroupKey')
         const node = await this.networkNodeFacade.getNode()
         const requestId = uuid('GroupKeyRequest')
         const rsaKeyPair = await this.getRsaKeyPair()
