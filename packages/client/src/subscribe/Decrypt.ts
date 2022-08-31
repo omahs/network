@@ -10,6 +10,7 @@ import { DestroySignal } from '../DestroySignal'
 import { instanceId } from '../utils/utils'
 import { GroupKeyRequester } from '../encryption/GroupKeyRequester'
 import { GroupKeyStoreFactory } from '../encryption/GroupKeyStoreFactory'
+import { debuglog } from '../utils/debuglog'
 
 const waitForCondition = async ( // TODO remove this when we implement the non-polling key retrieval
     conditionFn: () => (boolean | Promise<boolean>),
@@ -90,24 +91,29 @@ export class Decrypt<T> implements Context {
         }
 
         try {
-            // TODO TODO TODO ! first we must check whether we have the key in the store (and only if we don't have, we request the key)
-            await this.groupKeyRequester.requestGroupKey(
-                streamMessage.groupKeyId,
-                streamMessage.getPublisherId(),
-                streamMessage.getStreamPartID()
-            )/*TODO .catch((err) => {
-                throw new UnableToDecryptError(streamMessage, `Could not get GroupKey: ${streamMessage.groupKeyId} – ${err.stack}`)
-            })*/
             const store = await this.groupKeyStoreFactory.getStore(streamMessage.getStreamId())
-            await waitForCondition(() => {  // TODO and implement without polling (and wrap with "withTimeout")
-                return this.isStopped || store.has(streamMessage.groupKeyId!)
-            }, 5000)  // TODO TGTEST 5000ms is just for tests!!! (just some value)
-            if (this.isStopped) { 
-                return streamMessage
+            const hasGroupKey = await store.has(streamMessage.groupKeyId!)
+            if (!hasGroupKey) { // TODO alternatively we could get a handle to the current ongoing GK-request (if any)
+                //debuglog('Decrypt.request ' + streamMessage.groupKeyId)
+                await this.groupKeyRequester.requestGroupKey(
+                    streamMessage.groupKeyId,
+                    streamMessage.getPublisherId(),
+                    streamMessage.getStreamPartID()
+                )/*TODO .catch((err) => {
+                    throw new UnableToDecryptError(streamMessage, `Could not get GroupKey: ${streamMessage.groupKeyId} – ${err.stack}`)
+                })*/
+                await waitForCondition(() => {  // TODO and implement without polling (and wrap with "withTimeout")
+                    return this.isStopped || store.has(streamMessage.groupKeyId!)
+                }, 5000)  // TODO TGTEST 5000ms is just for tests!!! (just some value)
+                if (this.isStopped) { 
+                    return streamMessage
+                }
+            } else {
+                //debuglog('Decrypt.already-in-store: ' + streamMessage.groupKeyId + ' ' + store.persistence.id)
             }
             const groupKey = await store.get(streamMessage.groupKeyId!)!
 
-            if (!groupKey) { // TODO tämä ei siis tässä pollauksessa voi toteutua (paitsi jos pollaus timeouttaa)
+            if (groupKey === undefined) { // TODO tämä ei siis tässä pollauksessa voi toteutua (paitsi jos pollaus timeouttaa)
                 throw new UnableToDecryptError(streamMessage, [
                     `Could not get GroupKey: ${streamMessage.groupKeyId}`,
                     'Publisher is offline, key does not exist or no permission to access key.',
