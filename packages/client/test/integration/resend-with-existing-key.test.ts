@@ -107,23 +107,27 @@ describe('resend with existing key', () => {
         }
     })
 
+    afterEach(async () => {
+        await environment.destroy()
+    })
+
     describe('no keys available', () => {
         it('can\'t decrypt', async () => {
             await assertNonDecryptable(1000, 6000)
         })
     })
 
-    describe('initial key available', () => {
+    describe.only('initial key available', () => {  // TODO remove "only"
         beforeEach(async () => {
             await getGroupKeyStore(stream.id, await subscriber.getAddress()).add(initialKey)
         })
         it('can decrypt initial', async () => {
             await assertDecryptable(1000, 2000)
         })
-        it('can decrypt rotated, if key rotation message is included', async () => {
+        it.only('can decrypt rotated, if key rotation message is included', async () => { 
             await assertDecryptable(2000, 4000)
         })
-        it('can\'t decrypt rotated, if key rotation message is not included', async () => {
+        it.only('can\'t decrypt rotated, if key rotation message is not included', async () => { // TODO remove "only"
             await assertNonDecryptable(3000, 4000)
         })
         it('can\'t decrypt rekeyed', async () => {
