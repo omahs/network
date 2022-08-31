@@ -1,6 +1,6 @@
 import 'reflect-metadata'
-import { random, uniq } from 'lodash'
-import { fastWallet } from 'streamr-test-utils'
+import { clone, random, uniq } from 'lodash'
+import { fastWallet, waitForCondition } from 'streamr-test-utils'
 import { wait } from '@streamr/utils'
 import { StreamMessage } from 'streamr-client-protocol'
 import { StreamrClient } from '../../src/StreamrClient'
@@ -19,25 +19,18 @@ const MESSAGE_COUNT = 100
 describe('parallel publish', () => {
 
     const publisherWallet = fastWallet()
-    const subscriberWallet = fastWallet()
     let publisher: StreamrClient
     let stream: Stream
-    let receivedMessages: AsyncIterableIterator<StreamMessage<any>>
+    let environment: FakeEnvironment
 
     beforeAll(async () => {
-        const environment = new FakeEnvironment()
+        environment = new FakeEnvironment()
         publisher = environment.createClient({
             auth: {
                 privateKey: publisherWallet.privateKey
             }
         })
         stream = await publisher.createStream('/path')
-        await stream.grantPermissions({
-            user: subscriberWallet.address,
-            permissions: [StreamPermission.SUBSCRIBE]
-        })
-        const node = environment.startNode(subscriberWallet.address)
-        receivedMessages = addSubscriber(node, ...stream.getStreamParts())
     })
 
     it('messages in order and in same chain', async () => {
@@ -53,7 +46,9 @@ describe('parallel publish', () => {
         }
         await Promise.all(publishTasks)
 
-        const sortedMessages = (await collect(receivedMessages, MESSAGE_COUNT)).sort((m1, m2) => {
+        await waitForCondition(() => environment.getNetwork().getSentMessages().length === MESSAGE_COUNT)
+
+        const sortedMessages = clone(environment.getNetwork().getSentMessages()).sort((m1, m2) => {
             const timestampDiff = m1.getTimestamp() - m2.getTimestamp()
             return (timestampDiff !== 0) ? timestampDiff : (m1.getSequenceNumber() - m2.getSequenceNumber())
         })
@@ -70,13 +65,5 @@ describe('parallel publish', () => {
 
         const groupKeyIds = uniq(sortedMessages.map((m) => m.groupKeyId))
         expect(groupKeyIds).toHaveLength(1)
-
-        const groupKeyPersistence = getGroupKeyStore(stream.id, await publisher.getAddress())
-        const groupKey = await groupKeyPersistence.get(groupKeyIds[0]!)
-        const decryptedMessages = sortedMessages.map((m) => {
-            EncryptionUtil.decryptStreamMessage(m, groupKey!)
-            return m
-        })
-        expect(decryptedMessages.every((m, i) => m.getParsedContent().mockId === i)).toBeTrue()
     })
 })
