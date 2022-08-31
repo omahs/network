@@ -1,12 +1,12 @@
-import { EthereumAddress, StreamMessage, StreamMessageType } from 'streamr-client-protocol'
+import { StreamMessage, StreamMessageType } from 'streamr-client-protocol'
+import { NodeId } from 'streamr-network'
 import { waitForCondition } from 'streamr-test-utils'
-import { NodeID } from '../../../src/NetworkNodeFacade'
 import { FakeNetworkNode } from './FakeNetworkNode'
 
 interface Send {
     message: StreamMessage
-    sender: NodeID
-    recipients: NodeID[]
+    sender: NodeId
+    recipients: NodeId[]
 }
 
 interface SentMessagesFilter {
@@ -16,7 +16,7 @@ interface SentMessagesFilter {
 
 export class FakeNetwork {
 
-    private readonly nodes: Map<NodeID, FakeNetworkNode> = new Map()
+    private readonly nodes: Map<NodeId, FakeNetworkNode> = new Map()
     private sends: Send[] = []
 
     addNode(node: FakeNetworkNode): void {
@@ -27,27 +27,27 @@ export class FakeNetwork {
         }
     }
 
-    removeNode(address: EthereumAddress): void {
-        this.nodes.delete(address)
+    removeNode(id: NodeId): void {
+        this.nodes.delete(id)
     }
 
-    getNode(address: EthereumAddress): FakeNetworkNode | undefined {
-        return this.nodes.get(address)
+    getNode(id: NodeId): FakeNetworkNode | undefined {
+        return this.nodes.get(id)
     }
 
     getNodes(): FakeNetworkNode[] {
         return Array.from(this.nodes.values())
     }
 
-    send(msg: StreamMessage, sender: NodeID, isBroadcastMessage: boolean, isRecipient: (networkNode: FakeNetworkNode) => boolean): void {
-        const recipients = this.getNodes().filter(n => isRecipient(n))
+    send(msg: StreamMessage, sender: NodeId, isBroadcastMessage: boolean, isRecipient: (networkNode: FakeNetworkNode) => boolean): void {
+        const recipients = this.getNodes().filter((n) => isRecipient(n))
         /*
         * This serialization+serialization is needed in test/integration/Encryption.ts
         * as it expects that the EncryptedGroupKey format changes in the process.
         * TODO: should we change the serialization or the test? Or keep this hack?
         */
         const serialized = msg.serialize()
-        recipients.forEach(n => {
+        recipients.forEach((n) => {
             n.messageListeners.forEach((listener) => {
                 // return a clone as client mutates message when it decrypts messages
                 const deserialized = StreamMessage.deserialize(serialized)
@@ -57,7 +57,7 @@ export class FakeNetwork {
         this.sends.push({
             message: msg,
             sender,
-            recipients: recipients.map(n => n.id)
+            recipients: recipients.map((n) => n.id)
         })
     }
 

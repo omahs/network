@@ -119,6 +119,10 @@ describe('PublisherKeyExchange', () => {
         await startPublisherKeyExchangeSubscription(publisherClient)
     })
 
+    afterEach(async () => {
+        await environment.destroy()
+    })
+
     describe('responds to a group key request', () => {
 
         /*
