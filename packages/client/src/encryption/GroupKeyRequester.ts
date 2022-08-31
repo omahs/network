@@ -11,6 +11,7 @@ import { GroupKeyStoreFactory } from './GroupKeyStoreFactory'
 import { RSAKeyPair } from './RSAKeyPair'
 import { getGroupKeysFromStreamMessage } from './SubscriberKeyExchange'
 
+// TODO rename to SubscriberKeyExchange
 @scoped(Lifecycle.ContainerScoped)
 export class GroupKeyRequester {
 
