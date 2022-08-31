@@ -76,9 +76,10 @@ export class PublisherKeyExchange {
                 //console.log('Sent group key request response')
                 node.sendUnicastMessage(response, sender!)
             } catch (e) {
-                console.log('TGTEST', e)
                 // TODO send group key response error (StreamMessage.ENCRYPTION_TYPES.NONE)
                 // TODO send an event to StreamrClient's eventEmitter so that user can observe errors?
+                // TODO do not console.log
+                console.log('Error in PublisherKeyExchange', e)
             }
         }
     }

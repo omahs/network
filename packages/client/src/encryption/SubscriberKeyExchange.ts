@@ -51,10 +51,10 @@ export class SubscriberKeyExchange {
                 const rsaKeyPair = await this.getRsaKeyPair()
                 const keys = await getGroupKeysFromStreamMessage(msg, rsaKeyPair.getPrivateKey())
                 const store = await this.groupKeyStoreFactory.getStore(msg.getStreamId())
-                //console.log('TGTEST store group keys: ' + keys.length)
                 await Promise.all(keys.map((key) => store.add(key))) // TODO we could have a test to check that GroupKeyStore supports concurrency?
             } catch (e) {
-                // TODO log
+                // TODO do not console.log
+                console.log('Error in PublisherKeyExchange', e)
             }
         }
     }
@@ -66,7 +66,6 @@ export class SubscriberKeyExchange {
         if (this.hasRecentAcceptedRequest(groupKeyId)) {
             return false
         }
-        //console.log('TGTEST requestGroupKey')
         const node = await this.networkNodeFacade.getNode()
         const requestId = uuid('GroupKeyRequest')
         const rsaKeyPair = await this.getRsaKeyPair()
