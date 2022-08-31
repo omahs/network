@@ -152,24 +152,33 @@ export default class ServerPersistence implements Persistence<string, string>, C
 
     async get(key: string): Promise<string | undefined> {
         if (!this.initCalled) {
+            debuglog('ServerPersistence.get: initnotcalled: ' + key + ' id=' + this.id)
             // can't have if doesn't exist
             if (!(await this.exists())) { return undefined }
         }
 
+        debuglog('ServerPersistence.get2')
         await this.init()
         const value = await this.store!.get(`SELECT ${this.valueColumnName} FROM ${this.tableName} WHERE id = ? AND streamId = ?`, key, this.streamId)
-        return value?.[this.valueColumnName]
+        const res = value?.[this.valueColumnName]
+        debuglog('ServerPersistence.get3: isundefined=' + (res === undefined) + ', key=' + key)
+        return res
     }
 
     async has(key: string): Promise<boolean> {
         if (!this.initCalled) {
             // can't have if doesn't exist
-            if (!(await this.exists())) { return false }
+            if (!(await this.exists())) { 
+                debuglog('ServerPersistence.has.initNotCalled ' + key + ' in ' + this.id + ' -> return false')
+                return false 
+            }
         }
 
         await this.init()
         const value = await this.store!.get(`SELECT COUNT(*) FROM ${this.tableName} WHERE id = ? AND streamId = ?`, key, this.streamId)
-        return !!(value && value['COUNT(*)'] != null && value['COUNT(*)'] !== 0)
+        const res = !!(value && value['COUNT(*)'] != null && value['COUNT(*)'] !== 0)
+        debuglog('ServerPersistence.has? ' + key + ' in ' + this.id + ' = ' + res)
+        return res
     }
 
     private async setKeyValue(key: string, value: string): Promise<boolean> {
