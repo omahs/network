@@ -53,15 +53,15 @@ export class FakeNetworkNode implements NetworkNodeStub {
     }
 
     publish(msg: StreamMessage): void {
-        this.network.sendMessage(msg, undefined, (node: FakeNetworkNode) => node.subscriptions.has(msg.getStreamPartID()))
+        this.network.send(msg, this.id, true, (node: FakeNetworkNode) => node.subscriptions.has(msg.getStreamPartID()))
     }
 
     sendUnicastMessage(msg: StreamMessage, recipient: NodeID): void {
-        this.network.sendMessage(msg, this.id, (node: FakeNetworkNode) => node.id === recipient)
+        this.network.send(msg, this.id, false, (node: FakeNetworkNode) => node.id === recipient)
     }
 
     sendMulticastMessage(msg: StreamMessage, recipient: UserID): void {
-        this.network.sendMessage(msg, this.id, (node: FakeNetworkNode) => parseUserIdFromNodeId(node.id) === recipient.toLowerCase()) // TODO if we decide that userIds are case-sensitive, remove this toLowerCase()
+        this.network.send(msg, this.id, false, (node: FakeNetworkNode) => parseUserIdFromNodeId(node.id) === recipient.toLowerCase()) // TODO if we decide that userIds are case-sensitive, remove this toLowerCase()
     }
 
     // eslint-disable-next-line class-methods-use-this

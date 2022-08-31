@@ -1,15 +1,10 @@
 import 'reflect-metadata'
-import { clone, random, uniq } from 'lodash'
-import { fastWallet, waitForCondition } from 'streamr-test-utils'
+import { random, uniq } from 'lodash'
+import { fastWallet} from 'streamr-test-utils'
 import { wait } from '@streamr/utils'
-import { StreamMessage } from 'streamr-client-protocol'
 import { StreamrClient } from '../../src/StreamrClient'
-import { StreamPermission } from '../../src/permission'
 import { Stream } from '../../src/Stream'
 import { FakeEnvironment } from './../test-utils/fake/FakeEnvironment'
-import { EncryptionUtil } from './../../src/encryption/EncryptionUtil'
-import { collect } from '../../src/utils/iterators'
-import { addSubscriber, getGroupKeyStore } from '../test-utils/utils'
 
 const MESSAGE_COUNT = 100
 
@@ -46,9 +41,11 @@ describe('parallel publish', () => {
         }
         await Promise.all(publishTasks)
 
-        await waitForCondition(() => environment.getNetwork().getSentMessages().length === MESSAGE_COUNT)
+        const sentMessages = await environment.getNetwork().waitForSentMessages({
+            count: MESSAGE_COUNT
+        })
 
-        const sortedMessages = clone(environment.getNetwork().getSentMessages()).sort((m1, m2) => {
+        const sortedMessages = sentMessages.sort((m1, m2) => {
             const timestampDiff = m1.getTimestamp() - m2.getTimestamp()
             return (timestampDiff !== 0) ? timestampDiff : (m1.getSequenceNumber() - m2.getSequenceNumber())
         })

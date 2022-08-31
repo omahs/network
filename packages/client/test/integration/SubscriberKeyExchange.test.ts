@@ -18,7 +18,6 @@ import {
 } from '../test-utils/utils'
 import { StreamrClient } from '../../src/StreamrClient'
 import { NetworkNodeStub } from '../../src'
-import { waitForResponse } from '../test-utils/fake/FakeNetwork'
 
 describe('SubscriberKeyExchange', () => {
 
@@ -104,7 +103,9 @@ describe('SubscriberKeyExchange', () => {
 
             triggerGroupKeyRequest(groupKey, publisherNode)
             
-            const request = await waitForResponse(StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST, environment.getNetwork())
+            const request = await environment.getNetwork().waitForSentMessage({
+                messageType: StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST
+            })
             await assertGroupKeyRequest(request!, [groupKey.id])
             const keyPersistence = getGroupKeyStore(StreamPartIDUtils.getStreamID(streamPartId), subscriberWallet.address)
             await waitForCondition(async () => (await keyPersistence.get(groupKey.id)) !== undefined)

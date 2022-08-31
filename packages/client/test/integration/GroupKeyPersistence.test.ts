@@ -155,8 +155,8 @@ describe('Group Key Persistence', () => {
                 published.push(...await publishTestMessages(3)),
             ])
 
-            const groupKeyRequests = environment.getNetwork().getSentMessages().filter((m) => {
-                return m.messageType === StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST
+            const groupKeyRequests = environment.getNetwork().getSentMessages({
+                messageType: StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST
             })
             expect(groupKeyRequests.length).toBe(1)
             expect(received.map((m) => m.signature)).toEqual(published.slice(0, 1).map((m) => m.signature))
