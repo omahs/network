@@ -75,6 +75,7 @@ export class Decrypt<T> implements Context {
         })
     }
 
+    // TODO if this.isStopped is stopped, would it make sense to reject the promise and not to return the origininal encrypted message
     async decrypt(streamMessage: StreamMessage<T>): Promise<StreamMessage<T>> {
         if (this.isStopped) {
             return streamMessage
@@ -99,9 +100,11 @@ export class Decrypt<T> implements Context {
             })*/
             const store = await this.groupKeyStoreFactory.getStore(streamMessage.getStreamId())
             await waitForCondition(() => {  // TODO and implement without polling (and wrap with "withTimeout")
-                // TODO check this.isStopped?
-                return store.has(streamMessage.groupKeyId!)
-            }, 500)  // TODO TGTEST 500ms is just for tests!!!
+                return this.isStopped || store.has(streamMessage.groupKeyId!)
+            }, 5000)  // TODO TGTEST 5000ms is just for tests!!! (just some value)
+            if (this.isStopped) { 
+                return streamMessage
+            }
             const groupKey = await store.get(streamMessage.groupKeyId!)!
 
             if (!groupKey) { // TODO tämä ei siis tässä pollauksessa voi toteutua (paitsi jos pollaus timeouttaa)
