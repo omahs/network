@@ -49,6 +49,7 @@ describe('PubSub with multiple clients', () => {
             }
         })
         stream = await createTestStream(mainClient, module)
+        //TODO pois await stream.grantPermissions({ public: true, permissions: [StreamPermission.SUBSCRIBE] }) 
         const storageNode = environment.startStorageNode()
         await stream.addToStorageNode(storageNode.id)
     })
@@ -120,8 +121,8 @@ describe('PubSub with multiple clients', () => {
         })
     })
 
-    describe('multiple publishers', () => {
-        test('works with multiple publishers on a single stream', async () => {
+    describe.only('multiple publishers', () => { // TODO pois "only"
+        test.only('works with multiple publishers on a single stream', async () => { // TODO pois "only"
             // this creates two subscriber clients and multiple publisher clients
             // all subscribing and publishing to same stream
 
@@ -139,13 +140,15 @@ describe('PubSub with multiple clients', () => {
             })
 
             // subscribe to stream from main client instance
-            await mainClient.subscribe({
+            const sub = await mainClient.subscribe({
                 stream: stream.id,
             }, (_content, streamMessage) => {
                 const msgs = receivedMessagesMain[streamMessage.getPublisherId().toLowerCase()] || []
                 msgs.push(streamMessage)
                 receivedMessagesMain[streamMessage.getPublisherId().toLowerCase()] = msgs
+                console.log('received from ' + streamMessage.getPublisherId().toLowerCase() + ', now: ' + Object.values(receivedMessagesMain).map(a => a.length))
             })
+            sub.on('error', console.log) // TODO pois
 
             /* eslint-disable no-await-in-loop */
             const publishers: StreamrClient[] = []
@@ -154,11 +157,13 @@ describe('PubSub with multiple clients', () => {
             }
             /* eslint-enable no-await-in-loop */
             const published: Record<string, StreamMessage[]> = {}
+            console.log('publish')
             await Promise.all(publishers.map(async (pubClient) => {
                 const publisherId = (await pubClient.getAddress()).toLowerCase()
                 addAfter(() => {
                     counterId.clear(publisherId) // prevent overflows in counter
                 })
+                console.log('- publishing for ' + publisherId)
                 const publishTestMessages = getPublishTestStreamMessages(pubClient, stream, {
                     waitForLast: true,
                     waitForLastTimeout: 20000,
@@ -169,9 +174,12 @@ describe('PubSub with multiple clients', () => {
                     }),
                 })
                 published[publisherId] = await publishTestMessages(MAX_MESSAGES)
+                console.log('- published for ' + publisherId)
             }))
 
+            console.log('waitMessagesReceivedMain')
             await waitMessagesReceived(receivedMessagesMain, published)
+            console.log('waitMessagesReceivedOther')
             await waitMessagesReceived(receivedMessagesOther, published)
 
             checkMessages(published, receivedMessagesMain)

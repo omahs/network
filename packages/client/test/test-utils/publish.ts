@@ -104,10 +104,12 @@ export function getPublishTestStreamMessages(
         }
 
         if (waitForLast) {
+            console.log('Wait for storage')
             await getWaitForStorage(client, {
                 count: waitForLastCount,
                 timeout: waitForLastTimeout,
             })(streamMessages[streamMessages.length - 1])
+            console.log('Waited for storage')
         }
 
         return streamMessages

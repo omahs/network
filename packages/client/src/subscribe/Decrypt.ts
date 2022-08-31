@@ -108,10 +108,12 @@ export class Decrypt<T> implements Context {
                     throw new UnableToDecryptError(streamMessage, `Could not get GroupKey: ${streamMessage.groupKeyId} – ${err.stack}`)
                 })*/
                 try {
+                    console.log('Wait for key')
                     await waitForCondition(() => {  // TODO and implement without polling (and wrap with "withTimeout")
                         return this.isStopped || store.has(streamMessage.groupKeyId!)
                     }, this.timeoutsConfig.encryptionKeyRequest)  // TODO TGTEST 2000ms is just for tests!!! (just some value)
                 } catch {
+                    console.log('Unable to decrypt')
                     // waitForCondition timeouts
                     throw new UnableToDecryptError(streamMessage, [
                         `Could not get GroupKey: ${streamMessage.groupKeyId}`,
@@ -125,6 +127,7 @@ export class Decrypt<T> implements Context {
                 //debuglog('Decrypt.already-in-store: ' + streamMessage.groupKeyId + ' ' + store.persistence.id)
             }
             const groupKey = (await store.get(streamMessage.groupKeyId!))!
+            console.log('Waited for key: isIt=' + (groupKey !== undefined))
 
             if (this.isStopped) { 
                 return streamMessage
