@@ -2,7 +2,8 @@
  * Wrap a network node.
  */
 import { inject, Lifecycle, scoped } from 'tsyringe'
-import { NetworkNodeOptions, createNetworkNode as _createNetworkNode, MetricsContext, NodeId, UserId } from 'streamr-network'
+import EventEmitter from 'eventemitter3'
+import { NetworkNodeOptions, createNetworkNode as _createNetworkNode, MetricsContext } from 'streamr-network'
 import { uuid } from './utils/uuid'
 import { instanceId } from './utils/utils'
 import { pOnce } from './utils/promises'
@@ -68,7 +69,7 @@ export interface Events {
 @scoped(Lifecycle.ContainerScoped)
 export class NetworkNodeFactory {
     createNetworkNode(opts: NetworkNodeOptions): NetworkNodeStub {
-        return _createNetworkNode(opts) as any // TODO
+        return _createNetworkNode(opts)
     }
 }
 
