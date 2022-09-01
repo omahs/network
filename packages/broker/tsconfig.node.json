@@ -14,6 +14,6 @@
         { "path": "../protocol/tsconfig.node.json" },
         { "path": "../network/tsconfig.node.json" },
         { "path": "../network-tracker/tsconfig.node.json" },
-        { "path": "../client/tsconfig.jest.json" }
+        { "path": "../client/tsconfig.node.json" }
     ]
 }

@@ -6,7 +6,7 @@ import { StreamrClient } from './StreamrClient'
 import { StreamPermission } from './permission'
 import { ConfigTest } from './ConfigTest'
 import { Wallet } from 'ethers'
-import { FakeEnvironment } from '../test/test-utils/fake/FakeEnvironment'
+//import { FakeEnvironment } from '../test/test-utils/fake/FakeEnvironment'
 import { log } from './utils/timedLog'
 import { StreamID, toStreamPartID } from 'streamr-client-protocol'
 
@@ -14,8 +14,8 @@ const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
 const GRANT_PERMISSIONS = (ENVIRONMENT === 'fake')
 const MIN_PUBLISHER_ID = 100
 
-let fakeEnvironment: FakeEnvironment
-if (ENVIRONMENT === 'fake') fakeEnvironment = new FakeEnvironment()
+//let fakeEnvironment: FakeEnvironment
+//if (ENVIRONMENT === 'fake') fakeEnvironment = new FakeEnvironment()
 
 const getPublisherPrivateKey = (id: number) => '0x' + padStart(String(id), 64, '0')
 
@@ -38,13 +38,13 @@ const createClient = (privateKey: string): StreamrClient => {
                 privateKey
             }
         })
-    } else if (ENVIRONMENT === 'fake') {
+    } /*else if (ENVIRONMENT === 'fake') {
         return fakeEnvironment!.createClient({
             auth: {
                 privateKey
             }
         })
-    }
+    }*/
     throw new Error('assertion failed')
 }
 
