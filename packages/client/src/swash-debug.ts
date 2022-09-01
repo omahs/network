@@ -8,7 +8,7 @@ import { ConfigTest } from './ConfigTest'
 import { Wallet } from 'ethers'
 import { FakeEnvironment } from '../test/test-utils/fake/FakeEnvironment'
 import { log } from './utils/timedLog'
-import { StreamID, StreamIDUtils, StreamPartIDUtils, toStreamPartID } from 'streamr-client-protocol'
+import { StreamID, toStreamPartID } from 'streamr-client-protocol'
 
 const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
 const GRANT_PERMISSIONS = (ENVIRONMENT === 'fake')
@@ -65,7 +65,7 @@ const main = async () => {
     })
 
     if (GRANT_PERMISSIONS) {
-        const BATCH_COUNT = 1 
+        const BATCH_COUNT = 10
         for (let batchId = 0; batchId < BATCH_COUNT; batchId++) {
             log('Grant permissions: batch ' + batchId)
             let permissionAssignments = []
