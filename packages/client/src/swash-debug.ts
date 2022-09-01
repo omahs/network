@@ -1,5 +1,5 @@
-// run with: npx ts-node src/swash-debug.ts 5 docker-dev
-// if connecting to remote: STREAMR_DOCKER_DEV_HOST=1.2.3.4 npx ts-node src/swash-debug.ts 5 docker-dev
+// run with: npx ts-node src/swash-debug.ts 5 docker-dev publisher
+// if connecting to remote: STREAMR_DOCKER_DEV_HOST=1.2.3.4 npx ts-node src/swash-debug.ts 5 docker-dev publisher
 import { padStart } from 'lodash'
 import { KeyServer, waitForCondition } from 'streamr-test-utils'
 import fetch from 'node-fetch'
@@ -10,6 +10,7 @@ import { Wallet } from 'ethers'
 //import { FakeEnvironment } from '../test/test-utils/fake/FakeEnvironment'
 import { log } from './utils/timedLog'
 import { StreamID, toStreamPartID } from 'streamr-client-protocol'
+import { wait } from '@streamr/utils'
 
 const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
 const GRANT_PERMISSIONS = (ENVIRONMENT === 'fake')
@@ -49,15 +50,19 @@ const createClient = (privateKey: string): StreamrClient => {
     throw new Error('assertion failed')
 }
 
+const role = process.argv[4]
+const isSubscriber = () => (role === 'subscriber') || (role === 'both')
+const isPublisher = () => (role === 'publisher') || (role === 'both')
+
 const main = async () => {
     log('Init')
     const publisherCount = Number(process.argv[2])
-    if (ENVIRONMENT === 'docker-dev') await KeyServer.startIfNotRunning()
 
     const ownerPrivateKey = '0x0000000000000000000000000000000000000000000000000000000000000001'
     const subscriberPrivateKey = '0x0000000000000000000000000000000000000000000000000000000000000002'
     log('Owner: ' + new Wallet(ownerPrivateKey).address)
     log('Subscriber: ' + new Wallet(subscriberPrivateKey).address)
+    log('Roles: publisher=' + isPublisher() + ', subscriber=' + isSubscriber())
 
     log('Create stream')
     const owner = createClient(ownerPrivateKey)
@@ -86,62 +91,75 @@ const main = async () => {
         }
     }
     
-    log('Create ' + publisherCount + ' publishers')
     let publishers: { id: number, client: StreamrClient }[] = []
-    for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
-        const privateKey = getPublisherPrivateKey(publisherId)
-        log('Publisher' + publisherId + ': ' + new Wallet(privateKey).address)
-        publishers.push({
-            id: publisherId,
-            client: createClient(privateKey)
-        })
+    if (isPublisher()) {
+        log('Create ' + publisherCount + ' publishers')
+        for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
+            const privateKey = getPublisherPrivateKey(publisherId)
+            log('Publisher' + publisherId + ': ' + new Wallet(privateKey).address)
+            publishers.push({
+                id: publisherId,
+                client: createClient(privateKey)
+            })
+        }
     }
 
-    log('Create subscriber')
-    const subscriber = createClient(subscriberPrivateKey)
-    await stream.grantPermissions({
-        permissions: [StreamPermission.SUBSCRIBE],
-        user: await subscriber.getAddress()
-    })
-
     let receivedMessageCount = 0
-    await subscriber.subscribe(stream.id, (content: any) => {
-        if (content.warmUpTrigger === undefined) {
-            log('Received ' + receivedMessageCount + '/' + publisherCount + ': ' + JSON.stringify(content))
-            receivedMessageCount++
-        }
-    })
+    if (isSubscriber()) {
+        log('Create subscriber')
+        const subscriber = createClient(subscriberPrivateKey)
+        await stream.grantPermissions({
+            permissions: [StreamPermission.SUBSCRIBE],
+            user: await subscriber.getAddress()
+        })
+
+        await subscriber.subscribe(stream.id, (content: any) => {
+            if (content.warmUpTrigger === undefined) {
+                log('Received ' + receivedMessageCount + '/' + publisherCount + ': ' + JSON.stringify(content))
+                receivedMessageCount++
+            }
+        })
+    }
 
     if (ENVIRONMENT === 'docker-dev') {
         log('Wait for joins (the subscriber, and trigger publishers to join)')
-        publishers.forEach(async (p) => {
-            log('Warmup: ' + p.id)
-            p.client.publish(stream.id, {
-                warmUpTrigger: 'to-trigger-topology-join'
+        if (isPublisher()) {
+            publishers.forEach(async (p) => {
+                log('Warmup: ' + p.id)
+                p.client.publish(stream.id, {
+                    warmUpTrigger: 'to-trigger-topology-join'
+                })
             })
-        })
+        }
         await waitForCondition(async () => {
             const topologySize = await getTopologySize(stream.id)
             log('Topology size: ' + topologySize)
-            return topologySize === publishers.length + 1
+            return topologySize === publisherCount + 1
         }, 10 * 60 * 1000, 2000)
     }
+    const topologyReadyStartTime = Date.now()
 
-    const publishStartTime = Date.now()
-    publishers.forEach(async (p) => {
-        log('Publish')
-        p.client.publish(stream.id, {
-            id: p.id,
-            timestamp: new Date().toISOString(),
-            address: await p.client.getAddress()
+    if (isPublisher()) {
+        publishers.forEach(async (p) => {
+            log('Publish')
+            p.client.publish(stream.id, {
+                id: p.id,
+                timestamp: new Date().toISOString(),
+                address: await p.client.getAddress()
+            })
         })
-    })
+    }
     
-    log('Wait for ' + publishers.length + ' message')
-    await waitForCondition(() => receivedMessageCount >= publishers.length, 60 * 60 * 1000)
-
-    log('Done: all messages received ' + ((Date.now() - publishStartTime) / 1000) + ' seconds after publishers started to publish')
-    if (ENVIRONMENT === 'docker-dev') await KeyServer.stopIfRunning()
+    if (isSubscriber()) {
+        log('Wait for ' + publisherCount + ' message')
+        await waitForCondition(() => receivedMessageCount >= publisherCount, 60 * 60 * 1000)
+    
+        log('Done: all messages received ')
+        log(`- ${(Date.now() - topologyReadyStartTime) / 1000} seconds after topology ready`)
+    } else if (isPublisher()) {
+        log('Need to stay online to respond to group key requests')
+        await wait(60 * 60 * 1000)
+    }
 
     process.exit(0)
 }
