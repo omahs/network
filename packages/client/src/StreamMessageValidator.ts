@@ -171,7 +171,9 @@ export default class StreamMessageValidator {
         const sender = streamMessage.getPublisherId()
         // TODO TODO TODO takaisin const recipient = KeyExchangeStreamIDUtils.getRecipient(streamMessage.getStreamId())
 
+        const startTime = Date.now()
         await StreamMessageValidator.assertSignatureIsValid(streamMessage, this.verify)
+        console.log('- validation took ' + (Date.now() - startTime) + ' ms')
 
         // Check that the recipient of the request is a valid publisher of the stream
         /* TODO TODO TODO takaisin const recipientIsPublisher = await this.isPublisher(recipient!, groupKeyRequest.streamId)

@@ -47,7 +47,9 @@ export class PublisherKeyExchange {
         if (request.messageType === StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST) {
             console.log('Group key request received')
             try {
+                const startTime1 = Date.now()
                 await this.validator.validate(request)  // TODO pitää päivittää tätä metodia, koska stream ei ole enää keyexchange-stream (entä onko mitään tarvetta tutkia sender-arvoa, ehkä riittääk että tutkitaan vain viestin julkaisija eli sama toteutus kuin validator-luokassa)
+                console.log('- group key request validated (' + (Date.now() - startTime1) + ' ms)')
                 const node = await this.networkNodeFacade.getNode()
                 const responseContent = (await createGroupKeyResponse(
                     request,
@@ -58,6 +60,7 @@ export class PublisherKeyExchange {
                     (streamId: StreamID, address: EthereumAddress) => this.streamRegistryCached.isStreamSubscriber(streamId, address),
                     log
                 )).toArray()
+                const startTime2 = Date.now()
                 const response = new StreamMessage({
                     messageId: new MessageID(
                         request.getMessageID().streamId,
@@ -73,8 +76,9 @@ export class PublisherKeyExchange {
                     signatureType: StreamMessage.SIGNATURE_TYPES.ETH,
                 })
                 response.signature = await this.authentication.createMessagePayloadSignature(response.getPayloadToSign())
+                console.log('- group key response created (' + (Date.now() - startTime2) + ' ms)')
                 //console.log('Sent group key request response')
-                console.log('Client->Node: Send unicast message ' + sender)
+                console.log('Client->Node: Send unicast message ' + sender + '(total ' + (Date.now() - startTime1) + ' ms)')
                 node.sendUnicastMessage(response, sender!)
             } catch (e) {
                 // TODO send group key response error (StreamMessage.ENCRYPTION_TYPES.NONE)
