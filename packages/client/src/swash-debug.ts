@@ -113,11 +113,14 @@ const main = async () => {
             user: await subscriber.getAddress()
         })
 
-        await subscriber.subscribe(stream.id, (content: any) => {
+        const sub = await subscriber.subscribe(stream.id, (content: any) => {
             if (content.warmUpTrigger === undefined) {
-                log('Received ' + receivedMessageCount + '/' + publisherCount + ': ' + JSON.stringify(content))
                 receivedMessageCount++
+                log('Received ' + receivedMessageCount + '/' + publisherCount + ': ' + JSON.stringify(content))
             }
+        })
+        sub.on('error', (e) => {
+            console.log(e)
         })
     }
 

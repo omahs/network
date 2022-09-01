@@ -70,6 +70,7 @@ export class NodeToNode extends EventEmitter {
     }
 
     sendData(receiverNodeId: NodeId, streamMessage: StreamMessage): Promise<BroadcastMessage> {
+        console.log('Node->Node: message -> ' + receiverNodeId)
         return this.send(receiverNodeId, new BroadcastMessage({
             requestId: '', // TODO: how to echo here the requestId of the original SubscribeRequest?
             streamMessage,
