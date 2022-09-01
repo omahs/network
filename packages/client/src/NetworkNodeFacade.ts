@@ -14,11 +14,18 @@ import { EthereumConfig, generateEthereumAccount, getMainnetProvider } from './E
 import { getTrackerRegistryFromContract } from './registry/getTrackerRegistryFromContract'
 import { Authentication, AuthenticationInjectionToken } from './Authentication'
 
+// TODO maybe we should rename addMessageListener and removeMessageListener to on('messageReceive') and off('messageReceive')
+// so that it is more clear that the functionality has changed: it will now receive also unicast/multicast messages (that is, non-27 type messages)
+
+export type NodeID = string // TODO from network package
+export type UserID = string // TODO from network package
+export const parseUserIdFromNodeId = (nodeId: NodeID): UserID => nodeId.split('#')[0].toLowerCase() // TODO from network package (TODO we need to decide if userId is case-sensitive -> if it is, we keep this lowercase)
+
 // TODO should we make getNode() an internal method, and provide these all these services as client methods?
 export interface NetworkNodeStub {
     getNodeId: () => string
-    addMessageListener: (listener: (msg: StreamMessage) => void) => void
-    removeMessageListener: (listener: (msg: StreamMessage) => void) => void
+    addMessageListener: (listener: (msg: StreamMessage, sender?: NodeID) => void) => void
+    removeMessageListener: (listener: (msg: StreamMessage, sender?: NodeID) => void) => void
     subscribe: (streamPartId: StreamPartID) => void
     subscribeAndWaitForJoin: (streamPart: StreamPartID, timeout?: number) => Promise<number>
     waitForJoinAndPublish: (msg: StreamMessage, timeout?: number) => Promise<number>
@@ -32,6 +39,10 @@ export interface NetworkNodeStub {
     getMetricsContext: () => MetricsContext
     hasStreamPart: (streamPartId: StreamPartID) => boolean
     hasProxyConnection: (streamPartId: StreamPartID, contactNodeId: string, direction: ProxyDirection) => boolean
+    addUnicastMessageListener: (listener: (streamMessage: StreamMessage) => void) => void
+    sendUnicastMessage: (streamMessage: StreamMessage, recipient: NodeID) => void // TODO void or Promise<void>?
+    addMulticastMessageListener: (listener: (streamMessage: StreamMessage) => void) => void
+    sendMulticastMessage: (streamMessage: StreamMessage, recipient: UserID) => void // TODO void or Promise<void>?
     /** @internal */
     start: () => void
     /** @internal */
@@ -40,15 +51,15 @@ export interface NetworkNodeStub {
     openProxyConnection: (streamPartId: StreamPartID, nodeId: string, direction: ProxyDirection) => Promise<void>
     /** @internal */
     closeProxyConnection: (streamPartId: StreamPartID, nodeId: string, direction: ProxyDirection) => Promise<void>
-    sendUnicastMessage: (streamMessage: StreamMessage, recipient: NodeId) => Promise<void>
-    addUnicastMessageListener: (listener: (streamMessage: StreamMessage) => void) => void
-    sendMulticastMessage: (streamMessage: StreamMessage, recipient: UserId) => Promise<void>
-    addMulticastMessageListener: (listener: (streamMessage: StreamMessage) => void) => void
 }
 
 export const getEthereumAddressFromNodeId = (nodeId: string): string => {
     const ETHERUM_ADDRESS_LENGTH = 42
     return nodeId.substring(0, ETHERUM_ADDRESS_LENGTH)
+}
+
+export interface Events {
+    start: () => void
 }
 
 /**
@@ -57,7 +68,7 @@ export const getEthereumAddressFromNodeId = (nodeId: string): string => {
 @scoped(Lifecycle.ContainerScoped)
 export class NetworkNodeFactory {
     createNetworkNode(opts: NetworkNodeOptions): NetworkNodeStub {
-        return _createNetworkNode(opts)
+        return _createNetworkNode(opts) as any // TODO
     }
 }
 
@@ -74,6 +85,7 @@ export class NetworkNodeFacade implements Context {
     readonly debug
     private startNodeCalled = false
     private startNodeComplete = false
+    private eventEmitter: EventEmitter<Events>
 
     constructor(
         context: Context,
@@ -87,6 +99,7 @@ export class NetworkNodeFacade implements Context {
         this.ethereumConfig = ethereumConfig
         this.id = instanceId(this)
         this.debug = context.debug.extend(this.id)
+        this.eventEmitter = new EventEmitter<Events>()
         destroySignal.onDestroy.listen(this.destroy)
     }
 
@@ -193,6 +206,8 @@ export class NetworkNodeFacade implements Context {
                 this.debug('stopping node before init >>')
                 await node.stop()
                 this.debug('stopping node before init <<')
+            } else {
+                this.eventEmitter.emit('start')
             }
             this.assertNotDestroyed()
             return node
@@ -263,6 +278,10 @@ export class NetworkNodeFacade implements Context {
 
     private isStarting(): boolean {
         return !this.cachedNode || !this.startNodeComplete
+    }
+
+    once<E extends keyof Events>(eventName: E, listener: Events[E]): void {
+        this.eventEmitter.once(eventName, listener as any)
     }
 }
 

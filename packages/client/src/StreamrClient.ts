@@ -29,6 +29,7 @@ import { MessageMetadata } from './index-exports'
 import { initContainer } from './Container'
 import { Authentication, AuthenticationInjectionToken } from './Authentication'
 import { StreamStorageRegistry } from './registry/StreamStorageRegistry'
+import { PublisherKeyExchange } from './encryption/PublisherKeyExchange'
 
 /**
  * @category Important
@@ -75,6 +76,7 @@ export class StreamrClient implements Context {
         this.storageNodeRegistry = container.resolve<StorageNodeRegistry>(StorageNodeRegistry)
         this.streamIdBuilder = container.resolve<StreamIDBuilder>(StreamIDBuilder)
         this.eventEmitter = container.resolve<StreamrClientEventEmitter>(StreamrClientEventEmitter)
+        container.resolve<PublisherKeyExchange>(PublisherKeyExchange) // side effect: activates publisher key exchange
         container.resolve<MetricsPublisher>(MetricsPublisher) // side effect: activates metrics publisher
 
         const context = container.resolve<Context>(Context as any)
@@ -107,9 +109,7 @@ export class StreamrClient implements Context {
         const store = await this.groupKeyStoreFactory.getStore(streamId)
         if (opts.distributionMethod === 'rotate') {
             if (opts.key === undefined) {
-                await store.rotateGroupKey()
-            } else { // eslint-disable-line no-else-return
-                await store.setNextGroupKey(opts.key)
+                await store.rotate(opts.key)
             }
         } else if (opts.distributionMethod === 'rekey') { // eslint-disable-line no-else-return
             await store.rekey(opts.key)

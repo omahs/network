@@ -1,122 +1,106 @@
-import {
-    StreamMessage, GroupKeyRequest, GroupKeyResponse, EncryptedGroupKey, StreamID
-} from 'streamr-client-protocol'
-
+import { EthereumAddress, GroupKeyRequest, MessageID, StreamMessage, StreamMessageType, StreamPartID, StreamPartIDUtils } from 'streamr-client-protocol'
+import { inject, Lifecycle, scoped } from 'tsyringe'
+import { Authentication, AuthenticationInjectionToken } from '../Authentication'
+import { NetworkNodeFacade } from '../NetworkNodeFacade'
+import { createRandomMsgChainId } from '../publish/MessageChain'
+import { pOnce } from '../utils/promises'
 import { uuid } from '../utils/uuid'
-import { instanceId } from '../utils/utils'
-import { Context } from '../utils/Context'
-
-import {
-    GroupKeyId,
-    KeyExchangeStream,
-} from './KeyExchangeStream'
-
-import { GroupKey } from './GroupKey'
-import { EncryptionUtil } from './EncryptionUtil'
-import { RSAKeyPair } from './RSAKeyPair'
+import { Validator } from '../Validator'
 import { GroupKeyStoreFactory } from './GroupKeyStoreFactory'
-import { Lifecycle, scoped } from 'tsyringe'
-import { GroupKeyStore } from './GroupKeyStore'
-import { pLimitFn } from '../utils/promises'
+import { RSAKeyPair } from './RSAKeyPair'
+import { getGroupKeysFromStreamMessage } from './_SubscriberKeyExchange'
 
-const MAX_PARALLEL_REQUEST_COUNT = 20 // we can tweak the value if needed, TODO make this configurable?
+const MIN_INTERVAL = 60 * 1000 // TODO some good value for this?
 
-export async function getGroupKeysFromStreamMessage(streamMessage: StreamMessage, rsaPrivateKey: string): Promise<GroupKey[]> {
-    let encryptedGroupKeys: EncryptedGroupKey[] = []
-    if (GroupKeyResponse.is(streamMessage)) {
-        encryptedGroupKeys = GroupKeyResponse.fromArray(streamMessage.getParsedContent() || []).encryptedGroupKeys || []
-    }
-
-    const tasks = encryptedGroupKeys.map(async (encryptedGroupKey) => (
-        new GroupKey(
-            encryptedGroupKey.groupKeyId,
-            EncryptionUtil.decryptWithRSAPrivateKey(encryptedGroupKey.encryptedGroupKeyHex, rsaPrivateKey, true)
-        )
-    ))
-    await Promise.allSettled(tasks)
-    return Promise.all(tasks)
-}
+/*
+ * Sends group key requests and receives group key responses
+ */
 
 @scoped(Lifecycle.ContainerScoped)
-export class SubscriberKeyExchange implements Context {
-    readonly id
-    readonly debug
-    private rsaKeyPair: RSAKeyPair
-    private requestKeys: (opts: { streamId: StreamID, publisherId: string, groupKeyIds: GroupKeyId[] }) => Promise<GroupKey[]>
+export class SubscriberKeyExchange {
+
+    private networkNodeFacade: NetworkNodeFacade
+    private groupKeyStoreFactory: GroupKeyStoreFactory
+    private authentication: Authentication
+    private validator: Validator
+    private getRsaKeyPair: () => Promise<RSAKeyPair>
+    private latestTimestamps: Map<string, number>  // TODO not just groupKey but groupKeyId+streamPartId+publisher (or something), and we should limit the size of this... -> it is actually a cache
 
     constructor(
-        context: Context,
-        private keyExchangeStream: KeyExchangeStream,
-        private groupKeyStoreFactory: GroupKeyStoreFactory,
+        networkNodeFacade: NetworkNodeFacade,
+        groupKeyStoreFactory: GroupKeyStoreFactory,
+        @inject(AuthenticationInjectionToken) authentication: Authentication,
+        validator: Validator
     ) {
-        this.id = instanceId(this)
-        this.debug = context.debug.extend(this.id)
-        this.rsaKeyPair = new RSAKeyPair()
-        this.requestKeys = pLimitFn(this.doRequestKeys.bind(this), MAX_PARALLEL_REQUEST_COUNT)
+        this.networkNodeFacade = networkNodeFacade
+        this.groupKeyStoreFactory = groupKeyStoreFactory
+        this.authentication = authentication
+        this.validator = validator
+        this.getRsaKeyPair = pOnce(() => RSAKeyPair.create())
+        this.latestTimestamps = new Map()
+        networkNodeFacade.once('start', async () => {
+            const node = await networkNodeFacade.getNode()
+            node.addMessageListener((msg: StreamMessage) => this.onMessage(msg))
+        })
     }
 
-    private async doRequestKeys({ streamId, publisherId, groupKeyIds }: {
-        streamId: StreamID
-        publisherId: string
-        groupKeyIds: GroupKeyId[]
-    }): Promise<GroupKey[]> {
+    private async onMessage(msg: StreamMessage<any>): Promise<void> {
+        if (msg.messageType === StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE) { // TODO voisi kuunnella myös GROUP_KEY_RESPONSE_ERRORia
+            try {
+                await this.validator.validate(msg)  // TODO pitää päivittää tätä metodia, koska stream ei ole enää keyexchange-stream (entä onko mitään tarvetta tutkia sender-arvoa, ehkä riittääk että tutkitaan vain viestin julkaisija eli sama toteutus kuin validator-luokassa)
+                const rsaKeyPair = await this.getRsaKeyPair()
+                const keys = await getGroupKeysFromStreamMessage(msg, rsaKeyPair.getPrivateKey())
+                const store = await this.groupKeyStoreFactory.getStore(msg.getStreamId())
+                await Promise.all(keys.map((key) => store.add(key))) // TODO we could have a test to check that GroupKeyStore supports concurrency?
+            } catch (e) {
+                // TODO do not console.log
+                console.log('Error in PublisherKeyExchange', e)
+            }
+        }
+    }
+
+    /**
+     * Returns false if we have very recently requested a group key and therefore we don't process this request
+     */
+    async requestGroupKey(groupKeyId: string, publisherId: EthereumAddress, streamPartId: StreamPartID): Promise<boolean> {
+        if (this.hasRecentAcceptedRequest(groupKeyId)) {
+            return false
+        }
+        const node = await this.networkNodeFacade.getNode()
         const requestId = uuid('GroupKeyRequest')
-        const rsaPublicKey = this.rsaKeyPair.getPublicKey()
-        const msg = new GroupKeyRequest({
-            streamId,
+        const rsaKeyPair = await this.getRsaKeyPair()
+        const rsaPublicKey = rsaKeyPair.getPublicKey()
+        const requestContent = new GroupKeyRequest({
+            streamId: StreamPartIDUtils.getStreamID(streamPartId),
             requestId,
             rsaPublicKey,
-            groupKeyIds,
-        })
-        const response = await this.keyExchangeStream.request(publisherId, msg)
-        return response ? getGroupKeysFromStreamMessage(response, this.rsaKeyPair.getPrivateKey()) : []
-    }
-
-    private async getGroupKeyStore(streamId: StreamID): Promise<GroupKeyStore> {
-        return this.groupKeyStoreFactory.getStore(streamId)
-    }
-
-    private async getKey(streamMessage: StreamMessage): Promise<GroupKey | undefined> {
-        const streamId = streamMessage.getStreamId()
-        const publisherId = streamMessage.getPublisherId()
-        const { groupKeyId } = streamMessage
-        if (!groupKeyId) {
-            return undefined
-        }
-
-        const groupKeyStore = await this.getGroupKeyStore(streamId)
-
-        const existingGroupKey = await groupKeyStore.get(groupKeyId)
-
-        if (existingGroupKey) {
-            return existingGroupKey
-        }
-
-        const receivedGroupKeys = await this.requestKeys({
-            streamId,
-            publisherId,
             groupKeyIds: [groupKeyId],
+        }).toArray()
+        const request = new StreamMessage({
+            messageId: new MessageID(
+                StreamPartIDUtils.getStreamID(streamPartId),
+                StreamPartIDUtils.getStreamPartition(streamPartId),
+                Date.now(),
+                0,
+                await this.authentication.getAddress(),
+                createRandomMsgChainId()
+            ),
+            messageType: StreamMessageType.GROUP_KEY_REQUEST,
+            encryptionType: StreamMessage.ENCRYPTION_TYPES.NONE,
+            content: requestContent,
+            signatureType: StreamMessage.SIGNATURE_TYPES.ETH,
         })
-
-        await Promise.all(receivedGroupKeys.map(async (groupKey: GroupKey) => (
-            groupKeyStore.add(groupKey)
-        )))
-
-        return receivedGroupKeys.find((groupKey) => groupKey.id === groupKeyId)
+        request.signature = await this.authentication.createMessagePayloadSignature(request.getPayloadToSign())
+        node.sendMulticastMessage(request, publisherId)
+        return true
     }
 
-    async getGroupKey(streamMessage: StreamMessage): Promise<GroupKey | undefined> {
-        if (!streamMessage.groupKeyId) { return undefined }
-        await this.rsaKeyPair.onReady()
-        return this.getKey(streamMessage)
-    }
-
-    async addNewKey(streamMessage: StreamMessage): Promise<void> {
-        if (!streamMessage.newGroupKey) { return }
-        const streamId = streamMessage.getStreamId()
-        const groupKeyStore = await this.getGroupKeyStore(streamId)
-        // newGroupKey has been converted into GroupKey
-        const groupKey: unknown = streamMessage.newGroupKey
-        await groupKeyStore.add(groupKey as GroupKey)
+    private hasRecentAcceptedRequest(groupKeyId: string) {
+        const latestTimestamp = this.latestTimestamps.get(groupKeyId)
+        if (latestTimestamp !== undefined) {
+            return (Date.now() - latestTimestamp) < MIN_INTERVAL
+        } else {
+            return false
+        }
     }
 }

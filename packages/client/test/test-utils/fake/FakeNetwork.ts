@@ -39,7 +39,7 @@ export class FakeNetwork {
         return Array.from(this.nodes.values())
     }
 
-    send(msg: StreamMessage, sender: NodeId, isRecipient: (networkNode: FakeNetworkNode) => boolean): void {
+    send(msg: StreamMessage, sender: NodeId, isBroadcastMessage: boolean, isRecipient: (networkNode: FakeNetworkNode) => boolean): void {
         const recipients = this.getNodes().filter((n) => isRecipient(n))
         /*
         * This serialization+serialization is needed in test/integration/Encryption.ts
@@ -51,7 +51,7 @@ export class FakeNetwork {
             n.messageListeners.forEach((listener) => {
                 // return a clone as client mutates message when it decrypts messages
                 const deserialized = StreamMessage.deserialize(serialized)
-                listener(deserialized)
+                listener(deserialized, isBroadcastMessage ? undefined : sender)
             })
         })
         this.sends.push({

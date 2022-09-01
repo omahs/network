@@ -6,7 +6,7 @@ import { inspect } from '../utils/log'
 import { Context, ContextError } from '../utils/Context'
 import { ConfigInjectionToken, CacheConfig } from '../Config'
 
-import { EncryptionConfig, GroupKeysSerialized, parseGroupKeys } from './KeyExchangeStream'
+import { EncryptionConfig, GroupKeysSerialized, parseGroupKeys } from './_KeyExchangeStream'
 import { GroupKeyStore } from './GroupKeyStore'
 import { GroupKey } from './GroupKey'
 import { StreamID } from 'streamr-client-protocol'
@@ -54,12 +54,18 @@ export class GroupKeyStoreFactory implements Context {
         }
 
         const clientId = await this.authentication.getAddress()
+        const initialKeys = [...parseGroupKeys(this.initialGroupKeys[streamId]).entries()]
         const store = new GroupKeyStore({
             context: this,
             clientId,
             streamId,
-            groupKeys: [...parseGroupKeys(this.initialGroupKeys[streamId]).entries()]
+            groupKeys: initialKeys
         })
+        if (initialKeys.length > 0) {
+            // TODO this hack to stores the initial keys (do not merge to main!!!)
+            // @ts-expect-error private
+            await store.persistence.init()
+        }
         this.cleanupFns.push(async () => {
             try {
                 await store.close()

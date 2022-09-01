@@ -3,10 +3,10 @@ import { pull } from 'lodash'
 import { ProxyDirection, StreamMessage, StreamPartID } from 'streamr-client-protocol'
 import { MetricsContext, NodeId } from 'streamr-network'
 import { NetworkNodeOptions } from 'streamr-network'
-import { NetworkNodeFactory, NetworkNodeStub } from '../../../src/NetworkNodeFacade'
+import { NetworkNodeFactory, NetworkNodeStub, NodeID, UserID, parseUserIdFromNodeId } from '../../../src/NetworkNodeFacade'
 import { FakeNetwork } from './FakeNetwork'
 
-type MessageListener = (msg: StreamMessage) => void
+type MessageListener = (msg: StreamMessage, sender?: NodeID) => void
 
 export class FakeNetworkNode implements NetworkNodeStub {
 
@@ -53,7 +53,15 @@ export class FakeNetworkNode implements NetworkNodeStub {
     }
 
     publish(msg: StreamMessage): void {
-        this.network.send(msg, this.id, (node: FakeNetworkNode) => node.subscriptions.has(msg.getStreamPartID()))
+        this.network.send(msg, this.id, true, (node: FakeNetworkNode) => node.subscriptions.has(msg.getStreamPartID()))
+    }
+
+    sendUnicastMessage(msg: StreamMessage, recipient: NodeId): void {
+        this.network.send(msg, this.id, false, (node: FakeNetworkNode) => node.id === recipient)
+    }
+
+    sendMulticastMessage(msg: StreamMessage, recipient: UserID): void {
+        this.network.send(msg, this.id, false, (node: FakeNetworkNode) => parseUserIdFromNodeId(node.id) === recipient.toLowerCase()) // TODO if we decide that userIds are case-sensitive, remove this toLowerCase()
     }
 
     // eslint-disable-next-line class-methods-use-this

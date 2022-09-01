@@ -1,7 +1,7 @@
+import 'reflect-metadata'
 import { StreamPartIDUtils } from 'streamr-client-protocol'
 import { fastWallet } from 'streamr-test-utils'
 import { GroupKey } from '../../src/encryption/GroupKey'
-import { SubscriberKeyExchange } from '../../src/encryption/SubscriberKeyExchange'
 import { Decrypt } from '../../src/subscribe/Decrypt'
 import { Signal } from '../../src/utils/Signal'
 import { createMockMessage, mockContext } from '../test-utils/utils'
@@ -13,31 +13,39 @@ describe('Decrypt', () => {
         [false, /Could not get GroupKey.*no permission/]
     ])('group key not available', (isError: boolean, expectedErrorMessage: RegExp) => {
         it(`error: ${isError}`, async () => {
-            const keyExchange: Partial<SubscriberKeyExchange> = {
-                getGroupKey: jest.fn().mockImplementation(async () => {
-                    if (isError) {
-                        throw new Error('mock-error')
-                    } else {
-                        return undefined
+            const groupKeyStoreFactory = {
+                getStore: () => ({
+                    has: async () => true, // TODO as there is no key, this should be return false
+                    get: async () => {
+                        if (isError) {
+                            throw new Error('mock-error')
+                        } else {
+                            return undefined
+                        }
                     }
                 })
             }
+            const keyExchange = {
+                requestGroupKey: async () => {}
+            }
             const decrypt = new Decrypt(
                 mockContext(),
+                groupKeyStoreFactory as any,
+                keyExchange as any,
                 {
                     clearStream: jest.fn()
                 } as any,
-                keyExchange as any,
                 {
                     onDestroy: Signal.create()
-                } as any
+                } as any,
+                {} as any
             )
             const msg = createMockMessage({
                 streamPartId: StreamPartIDUtils.parse('stream#0'),
                 publisher: fastWallet(),
                 encryptionKey: GroupKey.generate()
             })
-            expect(() => decrypt.decrypt(msg)).rejects.toThrow(expectedErrorMessage)
+            await expect(() => decrypt.decrypt(msg)).rejects.toThrow(expectedErrorMessage)
         })
     })
 })

@@ -1,6 +1,5 @@
 import 'reflect-metadata'
 import {
-    KeyExchangeStreamIDUtils,
     StreamMessage,
     StreamPartID,
     StreamPartIDUtils,
@@ -46,11 +45,10 @@ describe('SubscriberKeyExchange', () => {
     }
 
     const assertGroupKeyRequest = async (request: StreamMessage, expectedRequestedKeyIds: string[]): Promise<void> => {
-        const publisherKeyExchangeStreamPartId = KeyExchangeStreamIDUtils.formStreamPartID(publisherWallet.address)
         expect(request).toMatchObject({
             messageId: {
-                streamId: StreamPartIDUtils.getStreamID(publisherKeyExchangeStreamPartId),
-                streamPartition:  StreamPartIDUtils.getStreamPartition(publisherKeyExchangeStreamPartId),
+                streamId: StreamPartIDUtils.getStreamID(streamPartId),
+                streamPartition:  StreamPartIDUtils.getStreamPartition(streamPartId),
                 publisherId: subscriberWallet.address.toLowerCase()
             },
             messageType: StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST,

@@ -44,7 +44,7 @@ export function parseGroupKeys(groupKeys: GroupKeysSerialized = {}): Map<GroupKe
 const { GROUP_KEY_RESPONSE, GROUP_KEY_ERROR_RESPONSE } = StreamMessage.MESSAGE_TYPES
 
 @scoped(Lifecycle.ContainerScoped)
-export class KeyExchangeStream implements Context {
+export class KeyExchangeStream implements Context { // TODO remove this class
     readonly id
     readonly debug
     public subscribe: (() => Promise<Subscription<unknown>>) & { reset(): void }

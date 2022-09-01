@@ -7,7 +7,7 @@ import { StreamPermission } from '../../src/permission'
 import { GroupKey } from '../../src/encryption/GroupKey'
 import { FakeEnvironment } from '../test-utils/fake/FakeEnvironment'
 import { fastPrivateKey } from 'streamr-test-utils'
-import { PublisherKeyExchange } from '../../src/encryption/PublisherKeyExchange'
+import { PublisherKeyExchange } from '../../src/encryption/_PublisherKeyExchange'
 import { StreamMessage } from 'streamr-client-protocol'
 import { FakeStorageNode } from '../test-utils/fake/FakeStorageNode'
 
