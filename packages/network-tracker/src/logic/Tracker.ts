@@ -164,6 +164,7 @@ export class Tracker extends EventEmitter {
         attachMessageRelaying(this.trackerServer)
         this.trackerServer.on(TrackerServerEvent.UNICAST_MESSAGE_RECEIVED, async (message: UnicastMessage) => {
             try {
+                this.logger.info('Tracker->node: Send unicast message ' + message.senderNodeId + ' -> ' + message.recipientNodeId)
                 await this.trackerServer.send(message.recipientNodeId, message)
             } catch (e) {
                 this.logger.warn('Unable to send unicast message to %s, reason: %s', message.recipientNodeId, e)
@@ -174,6 +175,7 @@ export class Tracker extends EventEmitter {
             const recipientNodeIds = overlay.getNodeIds((nodeId: NodeId) => {
                 return parseUserIdFromNodeId(nodeId) === message.recipientUserId 
             })
+            this.logger.info('Tracker->node: Send multicast message ' + message.senderNodeId + ' -> ' + recipientNodeIds.join(','))
             for (const recipientNodeId of recipientNodeIds) {
                 try {
                     await this.trackerServer.send(recipientNodeId, message)

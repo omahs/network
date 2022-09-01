@@ -254,6 +254,7 @@ export class TrackerManager {
     }
 
     async sendUnicastMessage(streamMessage: StreamMessage, sender: NodeId, recipient: NodeId): Promise<void> {
+        logger.info('Node->tracker: Send unicast message ' + sender + ' -> ' + recipient)
         const tracker = this.trackerRegistry.getTracker(streamMessage.getStreamPartID())
         await this.trackerConnector.createSignallingOnlyTrackerConnection(tracker.id, tracker.ws)
         await this.nodeToTracker.sendUnicastMessage(tracker.id, streamMessage, sender, recipient)
@@ -261,6 +262,7 @@ export class TrackerManager {
     }
 
     async sendMulticastMessage(streamMessage: StreamMessage, sender: NodeId, recipient: UserId): Promise<void> {
+        logger.info('Node->tracker: Send multicast message ' + sender + ' -> ' + recipient)
         const tracker = this.trackerRegistry.getTracker(streamMessage.getStreamPartID())
         await this.trackerConnector.createSignallingOnlyTrackerConnection(tracker.id, tracker.ws)
         await this.nodeToTracker.sendMulticastMessage(tracker.id, streamMessage, sender, recipient)

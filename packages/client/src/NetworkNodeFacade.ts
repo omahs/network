@@ -3,7 +3,7 @@
  */
 import { inject, Lifecycle, scoped } from 'tsyringe'
 import EventEmitter from 'eventemitter3'
-import { NetworkNodeOptions, createNetworkNode as _createNetworkNode, MetricsContext } from 'streamr-network'
+import { NetworkNodeOptions, createNetworkNode as _createNetworkNode, MetricsContext, NodeId } from 'streamr-network'
 import { uuid } from './utils/uuid'
 import { instanceId } from './utils/utils'
 import { pOnce } from './utils/promises'
@@ -40,9 +40,9 @@ export interface NetworkNodeStub {
     getMetricsContext: () => MetricsContext
     hasStreamPart: (streamPartId: StreamPartID) => boolean
     hasProxyConnection: (streamPartId: StreamPartID, contactNodeId: string, direction: ProxyDirection) => boolean
-    addUnicastMessageListener: (listener: (streamMessage: StreamMessage) => void) => void
+    addUnicastMessageListener: (listener: (streamMessage: StreamMessage, sender: NodeId) => void) => void
     sendUnicastMessage: (streamMessage: StreamMessage, recipient: NodeID) => void // TODO void or Promise<void>?
-    addMulticastMessageListener: (listener: (streamMessage: StreamMessage) => void) => void
+    addMulticastMessageListener: (listener: (streamMessage: StreamMessage, sender: NodeId) => void) => void
     sendMulticastMessage: (streamMessage: StreamMessage, recipient: UserID) => void // TODO void or Promise<void>?
     /** @internal */
     start: () => void

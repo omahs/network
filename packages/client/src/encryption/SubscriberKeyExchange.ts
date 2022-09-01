@@ -40,12 +40,13 @@ export class SubscriberKeyExchange {
         this.latestTimestamps = new Map()
         networkNodeFacade.once('start', async () => {
             const node = await networkNodeFacade.getNode()
-            node.addMessageListener((msg: StreamMessage) => this.onMessage(msg))
+            node.addUnicastMessageListener((msg: StreamMessage) => this.onMessage(msg))
         })
     }
 
     private async onMessage(msg: StreamMessage<any>): Promise<void> {
         if (msg.messageType === StreamMessage.MESSAGE_TYPES.GROUP_KEY_RESPONSE) { // TODO voisi kuunnella myös GROUP_KEY_RESPONSE_ERRORia
+            console.log('Group key response received')
             try {
                 await this.validator.validate(msg)  // TODO pitää päivittää tätä metodia, koska stream ei ole enää keyexchange-stream (entä onko mitään tarvetta tutkia sender-arvoa, ehkä riittääk että tutkitaan vain viestin julkaisija eli sama toteutus kuin validator-luokassa)
                 const rsaKeyPair = await this.getRsaKeyPair()
@@ -91,6 +92,7 @@ export class SubscriberKeyExchange {
             signatureType: StreamMessage.SIGNATURE_TYPES.ETH,
         })
         request.signature = await this.authentication.createMessagePayloadSignature(request.getPayloadToSign())
+        console.log('Client->Node: Send multicast message ' + publisherId)
         node.sendMulticastMessage(request, publisherId)
         return true
     }

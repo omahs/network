@@ -39,13 +39,13 @@ export class PublisherKeyExchange {
         this.validator = validator
         networkNodeFacade.once('start', async () => {
             const node = await networkNodeFacade.getNode()
-            node.addMessageListener((msg: StreamMessage, sender?: NodeID) => this.onMessage(msg, sender))
+            node.addMulticastMessageListener((msg: StreamMessage, sender?: NodeID) => this.onMessage(msg, sender))
         })
     }
 
     private async onMessage(request: StreamMessage<any>, sender?: NodeID): Promise<void> {
         if (request.messageType === StreamMessage.MESSAGE_TYPES.GROUP_KEY_REQUEST) {
-            //console.log('Group key request received')
+            console.log('Group key request received')
             try {
                 await this.validator.validate(request)  // TODO pitää päivittää tätä metodia, koska stream ei ole enää keyexchange-stream (entä onko mitään tarvetta tutkia sender-arvoa, ehkä riittääk että tutkitaan vain viestin julkaisija eli sama toteutus kuin validator-luokassa)
                 const node = await this.networkNodeFacade.getNode()
@@ -74,6 +74,7 @@ export class PublisherKeyExchange {
                 })
                 response.signature = await this.authentication.createMessagePayloadSignature(response.getPayloadToSign())
                 //console.log('Sent group key request response')
+                console.log('Client->Node: Send unicast message ' + sender)
                 node.sendUnicastMessage(response, sender!)
             } catch (e) {
                 // TODO send group key response error (StreamMessage.ENCRYPTION_TYPES.NONE)
