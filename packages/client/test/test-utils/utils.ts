@@ -7,10 +7,10 @@ import {
     StreamMessage,
     StreamPartID,
     StreamPartIDUtils,
-    toStreamPartID,
-    MAX_PARTITION_COUNT,
     StreamMessageOptions,
-    MessageID
+    MessageID,
+    EthereumAddress,
+    StreamID
 } from 'streamr-client-protocol'
 import { sign } from '../../src/utils/signingUtils'
 import { StreamrClient } from '../../src/StreamrClient'
@@ -18,7 +18,6 @@ import { counterId } from '../../src/utils/utils'
 import { Debug } from '../../src/utils/log'
 import { Stream, StreamProperties } from '../../src/Stream'
 import { ConfigTest } from '../../src/ConfigTest'
-import { StreamPermission } from '../../src/permission'
 import { padEnd } from 'lodash'
 import { Context } from '../../src/utils/Context'
 import { StreamrClientConfig } from '../../src/Config'
@@ -27,6 +26,8 @@ import { EncryptionUtil } from '../../src/encryption/EncryptionUtil'
 import { addAfterFn } from './jest-utils'
 import { TransformStream } from 'node:stream/web'
 import { NetworkNodeStub } from '../../src/NetworkNodeFacade'
+import { GroupKeyStore } from '../../src/encryption/GroupKeyStore'
+import { PublisherKeyExchange } from '../../src/encryption/PublisherKeyExchange'
 
 const testDebugRoot = Debug('test')
 const testDebug = testDebugRoot.extend.bind(testDebugRoot)
@@ -103,39 +104,6 @@ export const createEthereumAddress = (id: number): string => {
     return '0x' + padEnd(String(id), 40, '0')
 }
 
-// eslint-disable-next-line no-undef
-export const createPartitionedTestStream = async (module: NodeModule, userAddress: string): Promise<Stream> => {
-    const client = new StreamrClient({
-        ...ConfigTest,
-        auth: {
-            privateKey: await fetchPrivateKeyWithGas()
-        }
-    })
-    const stream = await createTestStream(client, module, {
-        partitions: MAX_PARTITION_COUNT
-    })
-    await stream.grantPermissions({
-        user: userAddress,
-        permissions: [StreamPermission.PUBLISH, StreamPermission.SUBSCRIBE]
-    })
-    await client.destroy()
-    return stream
-}
-
-export async function* createStreamPartIterator(stream: Stream): AsyncGenerator<StreamPartID> {
-    for (let partition = 0; partition < stream.partitions; partition++) {
-        yield toStreamPartID(stream.id, partition)
-    }
-}
-
-export const toStreamDefinition = (streamPart: StreamPartID): { id: string, partition: number } => {
-    const [id, partition] = StreamPartIDUtils.getStreamIDAndPartition(streamPart)
-    return {
-        id,
-        partition
-    }
-}
-
 type CreateMockMessageOptionsBase = Omit<Partial<StreamMessageOptions<any>>, 'messageId' | 'signatureType'> & {
     publisher: Wallet
     msgChainId?: string
@@ -148,6 +116,7 @@ export const createMockMessage = (
     opts: CreateMockMessageOptionsBase
     & ({ streamPartId: StreamPartID, stream?: never } | { stream: Stream, streamPartId?: never })
 ): StreamMessage<any> => {
+    const DEFAULT_CONTENT = {}
     const [streamId, partition] = StreamPartIDUtils.getStreamIDAndPartition(
         opts.streamPartId ?? opts.stream.getStreamParts()[0]
     )
@@ -161,7 +130,7 @@ export const createMockMessage = (
             opts.msgChainId ?? `mockMsgChainId-${opts.publisher.address}`
         ),
         signatureType: StreamMessage.SIGNATURE_TYPES.ETH,
-        content: {},
+        content: DEFAULT_CONTENT,
         prevMsgRef: opts.prevMsgRef,
         ...opts
     })
@@ -182,4 +151,19 @@ export const addSubscriber = <T>(networkNodeStub: NetworkNodeStub, ...streamPart
     })
     streamPartIds.forEach((id) => networkNodeStub.subscribe(id))
     return messages.readable[Symbol.asyncIterator]()
+}
+
+export const getGroupKeyStore = (streamId: StreamID, userAddress: EthereumAddress): GroupKeyStore => {
+    return new GroupKeyStore({ 
+        context: mockContext(), 
+        clientId: userAddress.toLowerCase(), 
+        streamId, 
+        groupKeys: []
+    })
+}
+
+export const startPublisherKeyExchangeSubscription = async (publisherClient: StreamrClient): Promise<void> => {
+    // @ts-expect-error private
+    const publisherKeyExchange = publisherClient.container.resolve(PublisherKeyExchange)
+    await publisherKeyExchange.useGroupKey(`mock-${Date.now()}` as StreamID)
 }

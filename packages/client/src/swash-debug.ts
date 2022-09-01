@@ -6,7 +6,7 @@ import { StreamrClient } from './StreamrClient'
 import { StreamPermission } from './permission'
 import { ConfigTest } from './ConfigTest'
 import { Wallet } from 'ethers'
-import { ClientFactory, createClientFactory } from '../test/test-utils/fake/fakeEnvironment'
+import { FakeEnvironment } from '../test/test-utils/fake/FakeEnvironment'
 import { log } from './utils/timedLog'
 import { StreamID, StreamIDUtils, StreamPartIDUtils, toStreamPartID } from 'streamr-client-protocol'
 
@@ -14,8 +14,8 @@ const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
 const GRANT_PERMISSIONS = (ENVIRONMENT === 'fake')
 const MIN_PUBLISHER_ID = 100
 
-let fakeClientFactory: ClientFactory
-if (ENVIRONMENT === 'fake') fakeClientFactory = createClientFactory()
+let fakeEnvironment: FakeEnvironment
+if (ENVIRONMENT === 'fake') fakeEnvironment = new FakeEnvironment()
 
 const getPublisherPrivateKey = (id: number) => '0x' + padStart(String(id), 64, '0')
 
@@ -39,7 +39,7 @@ const createClient = (privateKey: string): StreamrClient => {
             }
         })
     } else if (ENVIRONMENT === 'fake') {
-        return fakeClientFactory!.createClient({
+        return fakeEnvironment!.createClient({
             auth: {
                 privateKey
             }

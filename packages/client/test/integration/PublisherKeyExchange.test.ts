@@ -1,5 +1,4 @@
 import 'reflect-metadata'
-import { DependencyContainer } from 'tsyringe'
 import { v4 as uuid } from 'uuid'
 import {
     GroupKeyErrorResponse,
@@ -7,39 +6,38 @@ import {
     StreamMessage,
     StreamPartIDUtils,
 } from 'streamr-client-protocol'
-import { StreamRegistry } from '../../src/registry/StreamRegistry'
-import { GroupKeyStoreFactory } from '../../src/encryption/GroupKeyStoreFactory'
 import { GroupKey } from '../../src/encryption/GroupKey'
-import { PublisherKeyExchange } from '../../src/encryption/PublisherKeyExchange'
 import { Wallet } from 'ethers'
 import { RSAKeyPair } from '../../src/encryption/RSAKeyPair'
 import { Stream } from '../../src/Stream'
 import { StreamPermission } from '../../src/permission'
+import { 
+    addSubscriber,
+    createMockMessage,
+    createRelativeTestStreamId,
+    getGroupKeyStore,
+    startPublisherKeyExchangeSubscription
+} from '../test-utils/utils'
 import { getGroupKeysFromStreamMessage } from '../../src/encryption/SubscriberKeyExchange'
-import { addFakeNode, createFakeContainer } from '../test-utils/fake/fakeEnvironment'
+import { FakeEnvironment } from '../test-utils/fake/FakeEnvironment'
 import { FakeNetworkNode } from '../test-utils/fake/FakeNetworkNode'
-import { addSubscriber, createMockMessage, createRelativeTestStreamId } from '../test-utils/utils'
 import { nextValue } from '../../src/utils/iterators'
 import { fastWallet } from 'streamr-test-utils'
+import { StreamrClient } from '../../src/StreamrClient'
 
 describe('PublisherKeyExchange', () => {
 
     let publisherWallet: Wallet
+    let publisherClient: StreamrClient
     let subscriberWallet: Wallet
     let subscriberRSAKeyPair: RSAKeyPair
     let subscriberNode: FakeNetworkNode
     let mockStream: Stream
-    let fakeContainer: DependencyContainer
-
-    const startPublisherKeyExchangeSubscription = async (): Promise<void> => {
-        const publisherKeyExchange = fakeContainer.resolve(PublisherKeyExchange)
-        await publisherKeyExchange.useGroupKey(mockStream.id)
-    }
+    let environment: FakeEnvironment
 
     const createStream = async () => {
-        const streamRegistry = fakeContainer.resolve(StreamRegistry)
-        const stream = await streamRegistry.createStream(createRelativeTestStreamId(module))
-        await streamRegistry.grantPermissions(stream.id, {
+        const stream = await publisherClient.createStream(createRelativeTestStreamId(module))
+        await publisherClient.grantPermissions(stream.id, {
             permissions: [StreamPermission.SUBSCRIBE],
             user: subscriberWallet.address
         })
@@ -114,14 +112,15 @@ describe('PublisherKeyExchange', () => {
         publisherWallet = fastWallet()
         subscriberWallet = fastWallet()
         subscriberRSAKeyPair = await RSAKeyPair.create()
-        fakeContainer = createFakeContainer({
+        environment = new FakeEnvironment()
+        publisherClient = environment.createClient({
             auth: {
                 privateKey: publisherWallet.privateKey
             }
         })
         mockStream = await createStream()
-        subscriberNode = addFakeNode(subscriberWallet.address, fakeContainer)
-        await startPublisherKeyExchangeSubscription()
+        subscriberNode = environment.startNode(subscriberWallet.address)
+        await startPublisherKeyExchangeSubscription(publisherClient)
     })
 
     describe('responds to a group key request', () => {
@@ -132,8 +131,7 @@ describe('PublisherKeyExchange', () => {
          */
         it('happy path', async () => {
             const key = GroupKey.generate()
-            const store = await (fakeContainer.resolve(GroupKeyStoreFactory)).getStore(mockStream.id)
-            await store.add(key)
+            await getGroupKeyStore(mockStream.id, publisherWallet.address).add(key)
 
             const receivedResponses = addSubscriber(subscriberNode, KeyExchangeStreamIDUtils.formStreamPartID(subscriberWallet.address))
 
@@ -157,7 +155,7 @@ describe('PublisherKeyExchange', () => {
         it('request from non-subscriber', async () => {
             const groupKey = GroupKey.generate()
             const otherWallet = fastWallet()
-            const otherNode = addFakeNode(otherWallet.address, fakeContainer)
+            const otherNode = environment.startNode(otherWallet.address)
             const receivedResponses = addSubscriber(otherNode, KeyExchangeStreamIDUtils.formStreamPartID(otherWallet.address))
 
             const request = createGroupKeyRequest(groupKey.id, otherWallet, (await RSAKeyPair.create()).getPublicKey())
