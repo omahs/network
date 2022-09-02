@@ -58,7 +58,7 @@ const role = process.argv[4]
 const isSubscriber = () => (role === 'subscriber') || (role === 'both')
 const isPublisher = () => (role === 'publisher') || (role === 'both')
 const myPublisherShard = Number(process.argv[5] ?? 0)
-const publisherShardCount = Number(process.argv[5] ?? 1)
+const publisherShardCount = Number(process.argv[6] ?? 1)
 const isMyPublisherShard = (publisherId: number) => (publisherId % publisherShardCount) === myPublisherShard
 
 const main = async () => {
