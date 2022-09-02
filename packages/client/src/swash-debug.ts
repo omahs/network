@@ -1,5 +1,5 @@
-// run with: npx ts-node src/swash-debug.ts 5 docker-dev publisher 1 1
-// if connecting to remote: STREAMR_DOCKER_DEV_HOST=1.2.3.4 npx ts-node src/swash-debug.ts 5 docker-dev publisher 1 1
+// run with: npx ts-node src/swash-debug.ts 5 docker-dev publisher 0 1
+// if connecting to remote: STREAMR_DOCKER_DEV_HOST=1.2.3.4 npx ts-node src/swash-debug.ts 5 docker-dev publisher 0 1
 import { padStart } from 'lodash'
 import { KeyServer, waitForCondition } from 'streamr-test-utils'
 import fetch from 'node-fetch'
@@ -57,7 +57,7 @@ const createClient = (privateKey: string): StreamrClient => {
 const role = process.argv[4]
 const isSubscriber = () => (role === 'subscriber') || (role === 'both')
 const isPublisher = () => (role === 'publisher') || (role === 'both')
-const myPublisherShard = Number(process.argv[5] ?? 1)
+const myPublisherShard = Number(process.argv[5] ?? 0)
 const publisherShardCount = Number(process.argv[5] ?? 1)
 const isMyPublisherShard = (publisherId: number) => (publisherId % publisherShardCount) === myPublisherShard
 
