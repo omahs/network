@@ -1,5 +1,5 @@
-// run with: npx ts-node src/swash-debug.ts 5 docker-dev publisher
-// if connecting to remote: STREAMR_DOCKER_DEV_HOST=1.2.3.4 npx ts-node src/swash-debug.ts 5 docker-dev publisher
+// run with: npx ts-node src/swash-debug.ts 5 docker-dev publisher 1 1
+// if connecting to remote: STREAMR_DOCKER_DEV_HOST=1.2.3.4 npx ts-node src/swash-debug.ts 5 docker-dev publisher 1 1
 import { padStart } from 'lodash'
 import { KeyServer, waitForCondition } from 'streamr-test-utils'
 import fetch from 'node-fetch'
@@ -57,6 +57,9 @@ const createClient = (privateKey: string): StreamrClient => {
 const role = process.argv[4]
 const isSubscriber = () => (role === 'subscriber') || (role === 'both')
 const isPublisher = () => (role === 'publisher') || (role === 'both')
+const myPublisherShard = Number(process.argv[5] ?? 1)
+const publisherShardCount = Number(process.argv[5] ?? 1)
+const isMyPublisherShard = (publisherId: number) => (publisherId % publisherShardCount) === myPublisherShard
 
 const main = async () => {
     log('Init')
@@ -99,12 +102,14 @@ const main = async () => {
     if (isPublisher()) {
         log('Create ' + publisherCount + ' publishers')
         for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
-            const privateKey = getPublisherPrivateKey(publisherId)
-            log('Publisher' + publisherId + ': ' + new Wallet(privateKey).address)
-            publishers.push({
-                id: publisherId,
-                client: createClient(privateKey)
-            })
+            if (isMyPublisherShard(publisherId)) {
+                const privateKey = getPublisherPrivateKey(publisherId)
+                log('Publisher' + publisherId + ': ' + new Wallet(privateKey).address)
+                publishers.push({
+                    id: publisherId,
+                    client: createClient(privateKey)
+                })    
+            }
         }
     }
 
