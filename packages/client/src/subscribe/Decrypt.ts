@@ -97,7 +97,7 @@ export class Decrypt<T> implements Context {
             const store = await this.groupKeyStoreFactory.getStore(streamMessage.getStreamId())
             const hasGroupKey = await store.has(streamMessage.groupKeyId!)
             if (!hasGroupKey) { // TODO alternatively we could get a handle to the current ongoing GK-request (if any)
-                const requestAccepted = await this.keyExchange.requestKey(
+                const requestAccepted = await this.keyExchange.requestGroupKey(
                     streamMessage.groupKeyId,
                     streamMessage.getPublisherId(),
                     streamMessage.getStreamPartID()

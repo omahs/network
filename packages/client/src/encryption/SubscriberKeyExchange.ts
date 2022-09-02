@@ -3,14 +3,13 @@ import { inject, Lifecycle, scoped } from 'tsyringe'
 import { Authentication, AuthenticationInjectionToken } from '../Authentication'
 import { NetworkNodeFacade } from '../NetworkNodeFacade'
 import { createRandomMsgChainId } from '../publish/MessageChain'
-import { pLimitFn, pOnce } from '../utils/promises'
+import { pOnce } from '../utils/promises'
 import { uuid } from '../utils/uuid'
 import { Validator } from '../Validator'
 import { GroupKeyStoreFactory } from './GroupKeyStoreFactory'
 import { RSAKeyPair } from './RSAKeyPair'
 import { getGroupKeysFromStreamMessage } from './_SubscriberKeyExchange'
 
-const MAX_PARALLEL_REQUEST_COUNT = 20 // we can tweak the value if needed, TODO make this configurable?
 const MIN_INTERVAL = 60 * 1000 // TODO some good value for this?
 
 /*
@@ -26,7 +25,6 @@ export class SubscriberKeyExchange {
     private validator: Validator
     private getRsaKeyPair: () => Promise<RSAKeyPair>
     private latestTimestamps: Map<string, number>  // TODO not just groupKey but groupKeyId+streamPartId+publisher (or something), and we should limit the size of this... -> it is actually a cache
-    requestKey: (groupKeyId: string, publisherId: EthereumAddress, streamPartId: StreamPartID) => Promise<boolean>
 
     constructor(
         networkNodeFacade: NetworkNodeFacade,
@@ -40,7 +38,6 @@ export class SubscriberKeyExchange {
         this.validator = validator
         this.getRsaKeyPair = pOnce(() => RSAKeyPair.create())
         this.latestTimestamps = new Map()
-        this.requestKey = pLimitFn(this.doRequestKey.bind(this), MAX_PARALLEL_REQUEST_COUNT)
         networkNodeFacade.once('start', async () => {
             const node = await networkNodeFacade.getNode()
             node.addUnicastMessageListener((msg: StreamMessage) => this.onMessage(msg))
@@ -66,7 +63,7 @@ export class SubscriberKeyExchange {
     /**
      * Returns false if we have very recently requested a group key and therefore we don't process this request
      */
-    private async doRequestKey(groupKeyId: string, publisherId: EthereumAddress, streamPartId: StreamPartID): Promise<boolean> {
+    async requestGroupKey(groupKeyId: string, publisherId: EthereumAddress, streamPartId: StreamPartID): Promise<boolean> {
         if (this.hasRecentAcceptedRequest(groupKeyId)) {
             return false
         }
