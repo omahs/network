@@ -38,6 +38,10 @@ const createClient = (privateKey: string): StreamrClient => {
             ...ConfigTest,
             auth: {
                 privateKey
+            },
+            network: {
+                ...ConfigTest.network,
+                stunUrls: ['stun:stun.streamr.network:5349']
             }
         })
     } /*else if (ENVIRONMENT === 'fake') {
