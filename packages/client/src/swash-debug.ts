@@ -65,7 +65,8 @@ const isSubscriber = () => (role === 'subscriber') || (role === 'both')
 const isPublisher = () => (role === 'publisher') || (role === 'both')
 const myPublisherShard = Number(process.argv[5] ?? 0)
 const publisherShardCount = Number(process.argv[6] ?? 1)
-const isMyPublisherShard = (publisherId: number) => (publisherId % publisherShardCount) === myPublisherShard
+const getPublisherShard = (publisherId: number) => (publisherId % publisherShardCount)
+const isMyPublisherShard = (publisherId: number) => getPublisherShard(publisherId) === myPublisherShard
 
 const main = async () => {
     log('Init')
@@ -155,7 +156,8 @@ const main = async () => {
                 await wait(DELAYS.keyRequest)
                 subscriber.publish(stream.id, {
                     simulationMessageType: 'keyRequest',
-                    publisherId: content.publisherId
+                    publisherId: content.publisherId,
+                    timestamp: Date.now()
                 })
                 keyRequestSentCount++
                 ignorable = false
@@ -182,12 +184,13 @@ const main = async () => {
                     let ignorable = true
                     if (content.simulationMessageType === 'keyRequest') {
                         if (content.publisherId === p.id) {
-                            log('Received keyRequest from ' + content.publisherId + ', publishing key response')
+                            log('Received keyRequest from ' + content.publisherId + '(shardId=' + getPublisherShard(content.publisherId) + ') after ' + (Date.now() - content.timestamp))
                             keyResponseSentCount++
                             await wait(DELAYS.keyResponse)
                             p.client.publish(stream.id, {
                                 simulationMessageType: 'keyResponse',
-                                publisherId: p.id
+                                publisherId: p.id,
+                                timestamp: Date.now()
                             })
                             ignorable = false
                         }
@@ -219,7 +222,7 @@ const main = async () => {
             p.client.publish(stream.id, {
                 simulationMessageType: 'actualMessage',
                 publisherId: p.id,
-                timestamp: new Date().toISOString(),
+                timestamp: Date.now(),
                 address: await p.client.getAddress()
             })
             actualMessageSentCount++
