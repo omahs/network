@@ -206,7 +206,7 @@ const main = async () => {
     const topologyReadyStartTime = Date.now()
 
     if (isPublisher()) {
-        publishers.forEach(async (p) => {
+        for await (const p of publishers) {
             log('Publish')
             p.client.publish(stream.id, {
                 simulationMessageType: 'actualMessage',
@@ -215,7 +215,8 @@ const main = async () => {
                 address: await p.client.getAddress()
             })
             actualMessageSentCount++
-        })
+            await wait(5)
+        }
     }
     
     if (isSubscriber()) {
