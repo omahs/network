@@ -14,7 +14,7 @@ import { wait } from '@streamr/utils'
 
 const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
 const PUBLIC_STREAM = true
-const GRANT_PRIVATE_PERMISSIONS = false // (ENVIRONMENT === 'fake')
+const GRANT_PERMISSIONS = false // (ENVIRONMENT === 'fake')
 const MIN_PUBLISHER_ID = 100
 
 //let fakeEnvironment: FakeEnvironment
@@ -86,33 +86,33 @@ const main = async () => {
         log(`actualMessageSentCount=${actualMessageSentCount}, keyRequestSentCount=${keyRequestSentCount}, keyResponseSentCount=${keyResponseSentCount}`)
     }, 1000)
 
-    if (PUBLIC_STREAM) {
-        await stream.grantPermissions({
-            permissions: [StreamPermission.PUBLISH, StreamPermission.SUBSCRIBE],
-            public: true
-        })
-    }
-
-    if (GRANT_PRIVATE_PERMISSIONS) {
-        const BATCH_COUNT = 5
-        for (let batchId = 0; batchId < BATCH_COUNT; batchId++) {
-            log('Grant permissions: batch ' + batchId)
-            let permissionAssignments = []
-            for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
-                const privateKey = getPublisherPrivateKey(publisherId)
-                if (publisherId % BATCH_COUNT === batchId) {
-                    permissionAssignments.push({
-                        permissions: [StreamPermission.PUBLISH, StreamPermission.SUBSCRIBE],
-                        user: new Wallet(privateKey).address
+    if (GRANT_PERMISSIONS) {
+        if (PUBLIC_STREAM) {
+            await stream.grantPermissions({
+                permissions: [StreamPermission.PUBLISH, StreamPermission.SUBSCRIBE],
+                public: true
+            })
+        } else {
+            const BATCH_COUNT = 5
+            for (let batchId = 0; batchId < BATCH_COUNT; batchId++) {
+                log('Grant permissions: batch ' + batchId)
+                let permissionAssignments = []
+                for (let publisherId = MIN_PUBLISHER_ID; publisherId < MIN_PUBLISHER_ID + publisherCount; publisherId++) {
+                    const privateKey = getPublisherPrivateKey(publisherId)
+                    if (publisherId % BATCH_COUNT === batchId) {
+                        permissionAssignments.push({
+                            permissions: [StreamPermission.PUBLISH, StreamPermission.SUBSCRIBE],
+                            user: new Wallet(privateKey).address
+                        })
+                    }
+                }
+                if (permissionAssignments.length > 0) {
+                    log('- publishers: ' + permissionAssignments.map(a => a.user).join(', '))
+                    await owner.setPermissions({
+                        streamId: stream.id,
+                        assignments: permissionAssignments
                     })
                 }
-            }
-            if (permissionAssignments.length > 0) {
-                log('- publishers: ' + permissionAssignments.map(a => a.user).join(', '))
-                await owner.setPermissions({
-                    streamId: stream.id,
-                    assignments: permissionAssignments
-                })
             }
         }
     }
@@ -136,7 +136,7 @@ const main = async () => {
     if (isSubscriber()) {
         log('Create subscriber')
         const subscriber = createClient(subscriberPrivateKey)
-        if (GRANT_PRIVATE_PERMISSIONS) {
+        if (GRANT_PERMISSIONS) {
             await stream.grantPermissions({
                 permissions: [StreamPermission.PUBLISH, StreamPermission.SUBSCRIBE],
                 user: await subscriber.getAddress()
