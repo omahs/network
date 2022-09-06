@@ -184,7 +184,7 @@ const main = async () => {
                     let ignorable = true
                     if (content.simulationMessageType === 'keyRequest') {
                         if (content.publisherId === p.id) {
-                            log('Received keyRequest from ' + content.publisherId + '(shardId=' + getPublisherShard(content.publisherId) + ') after ' + (Date.now() - content.timestamp))
+                            log('Received keyRequest from ' + content.publisherId + ' after ' + (Date.now() - content.timestamp) + 'ms')
                             keyResponseSentCount++
                             await wait(DELAYS.keyResponse)
                             p.client.publish(stream.id, {
