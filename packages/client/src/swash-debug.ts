@@ -148,7 +148,9 @@ const main = async () => {
                 log('ActualMessage ' + receivedMessageCount + '/' + publisherCount + ': ' + JSON.stringify(content))
                 ignorable = false
             }
-            log('Msg sent to subscriber: ' + content.simulationMessageType + ' from ' + content.publisherId + ' ignorable=' + ignorable)
+            if (!ignorable) {
+                log('Msg sent to subscriber: ' + content.simulationMessageType + ' from ' + content.publisherId + ' ignorable=' + ignorable)
+            }
         })
         sub.on('error', (e) => {
             console.log(e)

@@ -84,7 +84,7 @@ export function SubscribePipeline<T = unknown>(
         })
         // validate
         .forEach(async (streamMessage: StreamMessage) => {
-            log('Ignore validation')
+            //log('Ignore validation')
             /*const startTime = Date.now()
             await validate.validate(streamMessage)
             console.log('validated message: ' + (Date.now() - startTime))*/
