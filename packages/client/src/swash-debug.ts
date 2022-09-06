@@ -72,7 +72,7 @@ const main = async () => {
     log('Subscriber: ' + new Wallet(subscriberPrivateKey).address)
     log('Roles: publisher=' + isPublisher() + ', subscriber=' + isSubscriber())
 
-    log('Create stream')
+    log('Get or create stream')
     const owner = createClient(ownerPrivateKey)
     const stream = await owner.getOrCreateStream({
         id: '/test1'
