@@ -19,7 +19,8 @@ const MIN_PUBLISHER_ID = 100
 const DELAYS = {
     actualMessage: 50,
     keyRequest: 200,
-    keyResponse: 200
+    keyResponse: 200,
+    publisherSubscribe: 200
 }
 
 //let fakeEnvironment: FakeEnvironment
@@ -192,7 +193,7 @@ const main = async () => {
     if (ENVIRONMENT === 'docker-dev') {
         log('Wait for joins (the subscriber, and trigger publishers to join)')
         if (isPublisher()) {
-            publishers.forEach(async (p) => {
+            for await (const p of publishers) {
                 log('Subscribe for key request')
                 p.client.subscribe(stream.id, async (content: any) => {
                     let ignorable = true
@@ -213,7 +214,8 @@ const main = async () => {
                         log('Msg sent to publisher' + p.id + ': ' + content.simulationMessageType + ' from ' + content.publisherId + ' ignorable=' + ignorable)
                     }
                 })
-            })
+                await wait(DELAYS.publisherSubscribe)
+            }
             /*publishers.forEach(async (p) => {
                 log('Warmup: ' + p.id)
                 p.client.publish(stream.id, {
