@@ -149,6 +149,12 @@ const main = async () => {
                 user: await subscriber.getAddress()
             })
         }
+        const deliveries: Map<number,any> = new Map()
+        setInterval(() => {
+            deliveries.forEach((value, key) => {
+                log('Delivery: ' + value + ': ' + JSON.stringify(key))
+            }) 
+        }, 10000)
         const sub = await subscriber.subscribe(stream.id, async (content: any) => {
             let ignorable = true
             if (content.simulationMessageType === 'actualMessage') {
@@ -161,9 +167,17 @@ const main = async () => {
                 })
                 keyRequestSentCount++
                 ignorable = false
+                deliveries.set(content.publisherId, {
+                    shardId: getPublisherShard(content.publisherId),
+                    actualMessageSent: content.timestamp,
+                    actualMessageReceived: Date.now()
+                })
             } else if (content.simulationMessageType === 'keyResponse') {
                 receivedMessageCount++
                 log('ActualMessage ' + receivedMessageCount + '/' + publisherCount + ': ' + JSON.stringify(content))
+                const item = deliveries.get(content.publisherId)
+                item.keyResponseReceived = Date.now()
+                item.totalTime = item.keyResponseReceived - item.actualMessageSent
                 ignorable = false
             }
             if (!ignorable) {
