@@ -20,7 +20,7 @@ const DELAYS = {
     actualMessage: 50,
     keyRequest: 200,
     keyResponse: 200,
-    publisherSubscribe: 200
+    publisherSubscribe: 100
 }
 
 //let fakeEnvironment: FakeEnvironment
@@ -153,7 +153,7 @@ const main = async () => {
         const deliveries: Map<number,any> = new Map()
         setInterval(() => {
             deliveries.forEach((value, key) => {
-                log('Delivery: ' + value + ': ' + JSON.stringify(key))
+                log('Delivery: ' + key + ': ' + JSON.stringify(value))
             }) 
         }, 10000)
         const sub = await subscriber.subscribe(stream.id, async (content: any) => {
