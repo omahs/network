@@ -19,6 +19,7 @@ import { DestroySignal } from '../DestroySignal'
 import { DependencyContainer } from 'tsyringe'
 import { StreamRegistryCached } from '../registry/StreamRegistryCached'
 import { MsgChainUtil } from './MsgChainUtil'
+import { log } from '../utils/timedLog'
 
 export function SubscribePipeline<T = unknown>(
     messageStream: MessageStream<T>,
@@ -83,7 +84,10 @@ export function SubscribePipeline<T = unknown>(
         })
         // validate
         .forEach(async (streamMessage: StreamMessage) => {
+            log('Ignore validation')
+            /*const startTime = Date.now()
             await validate.validate(streamMessage)
+            console.log('validated message: ' + (Date.now() - startTime))*/
         })
         // decrypt
         .pipe(async function* (src: AsyncGenerator<StreamMessage<T>>) {
