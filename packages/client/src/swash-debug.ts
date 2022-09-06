@@ -128,10 +128,12 @@ const main = async () => {
     if (isSubscriber()) {
         log('Create subscriber')
         const subscriber = createClient(subscriberPrivateKey)
-        await stream.grantPermissions({
-            permissions: [StreamPermission.PUBLISH, StreamPermission.SUBSCRIBE],
-            user: await subscriber.getAddress()
-        })
+        if (GRANT_PRIVATE_PERMISSIONS) {
+            await stream.grantPermissions({
+                permissions: [StreamPermission.PUBLISH, StreamPermission.SUBSCRIBE],
+                user: await subscriber.getAddress()
+            })
+        }
         const sub = await subscriber.subscribe(stream.id, (content: any) => {
             let ignorable = true
             if (content.simulationMessageType === 'actualMessage') {
