@@ -69,6 +69,13 @@ const publisherShardCount = Number(process.argv[6] ?? 1)
 const getPublisherShard = (publisherId: number) => (publisherId % publisherShardCount)
 const isMyPublisherShard = (publisherId: number) => getPublisherShard(publisherId) === myPublisherShard
 
+const deliveries: any[] = []
+const printDeliveryStatistics = () => {
+    for (const delivery of deliveries) {
+        log('Delivery: ' + JSON.stringify(delivery))
+    }
+}
+
 const main = async () => {
     log('Init')
     const publisherCount = Number(process.argv[2])
@@ -150,11 +157,8 @@ const main = async () => {
                 user: await subscriber.getAddress()
             })
         }
-        const deliveries: any[] = []
         setInterval(() => {
-            for (const delivery of deliveries) {
-                log('Delivery: ' + JSON.stringify(delivery))
-            }
+            printDeliveryStatistics()
         }, 20000)
         const sub = await subscriber.subscribe(stream.id, async (content: any) => {
             let ignorable = true
@@ -250,7 +254,10 @@ const main = async () => {
     if (isSubscriber()) {
         log('Wait for ' + publisherCount + ' message')
         await waitForCondition(() => receivedMessageCount >= publisherCount, 60 * 60 * 1000)
-    
+
+        log('Delivery statistics:')
+        printDeliveryStatistics()
+
         log('Done: all messages received ')
         log(`- ${(Date.now() - topologyReadyStartTime) / 1000} seconds after topology ready`)
     } else if (isPublisher()) {
