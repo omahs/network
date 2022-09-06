@@ -14,8 +14,8 @@ import { wait } from '@streamr/utils'
 
 const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
 const PUBLIC_STREAM = true
-const GRANT_PERMISSIONS = true // (ENVIRONMENT === 'fake')
-const MIN_PUBLISHER_ID = 0
+const GRANT_PERMISSIONS = false // (ENVIRONMENT === 'fake')
+const MIN_PUBLISHER_ID = 1
 const DELAYS = {
     actualMessage: 50,
     keyRequest: 200,
