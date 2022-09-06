@@ -92,7 +92,7 @@ const main = async () => {
 
     setInterval(() => {
         log(`actualMessageSentCount=${actualMessageSentCount}, keyRequestSentCount=${keyRequestSentCount}, keyResponseSentCount=${keyResponseSentCount}`)
-    }, 1000)
+    }, 6000)
 
     if (GRANT_PERMISSIONS) {
         if (PUBLIC_STREAM) {
@@ -150,12 +150,12 @@ const main = async () => {
                 user: await subscriber.getAddress()
             })
         }
-        const deliveries: Map<number,any> = new Map()
+        const deliveries: any[] = []
         setInterval(() => {
-            deliveries.forEach((value, key) => {
-                log('Delivery: ' + key + ': ' + JSON.stringify(value))
-            }) 
-        }, 10000)
+            for (const delivery of deliveries) {
+                log('Delivery: ' + JSON.stringify(delivery))
+            }
+        }, 20000)
         const sub = await subscriber.subscribe(stream.id, async (content: any) => {
             let ignorable = true
             if (content.simulationMessageType === 'actualMessage') {
@@ -168,7 +168,8 @@ const main = async () => {
                 })
                 keyRequestSentCount++
                 ignorable = false
-                deliveries.set(content.publisherId, {
+                deliveries.push({
+                    publisherId: content.publisherId,
                     shardId: getPublisherShard(content.publisherId),
                     actualMessageSent: content.timestamp,
                     actualMessageReceived: Date.now()
@@ -176,7 +177,7 @@ const main = async () => {
             } else if (content.simulationMessageType === 'keyResponse') {
                 receivedMessageCount++
                 log('ActualMessage ' + receivedMessageCount + '/' + publisherCount + ': ' + JSON.stringify(content))
-                const item = deliveries.get(content.publisherId)
+                const item: any = deliveries.find((d => d.publisherId === content.publisherId))!
                 item.keyResponseReceived = Date.now()
                 item.totalTime = item.keyResponseReceived - item.actualMessageSent
                 ignorable = false
