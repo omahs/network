@@ -29,7 +29,7 @@ const DELAYS = {
 const getPublisherPrivateKey = (id: number) => '0x' + padStart(String(id), 64, '0')
 
 const getTopologySize = async (streamId: StreamID): Promise<number> => {
-    const url = `http://${process.env.STREAMR_DOCKER_DEV_HOST || '10.200.10.1'}:30301/topology/${encodeURIComponent(streamId)}`
+    const url = `http://${process.env.STREAMR_DOCKER_DEV_HOST || '10.200.10.1'}:30302/topology/${encodeURIComponent(streamId)}`
     const topology = await (await fetch(url)).json()
     const nodes = topology[toStreamPartID(streamId, 0)]
     if (nodes !== undefined) {
