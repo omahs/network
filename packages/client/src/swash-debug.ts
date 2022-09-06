@@ -14,7 +14,7 @@ import { wait } from '@streamr/utils'
 
 const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
 const PUBLIC_STREAM = true
-const GRANT_PERMISSIONS = false // (ENVIRONMENT === 'fake')
+const GRANT_PERMISSIONS = true // (ENVIRONMENT === 'fake')
 const MIN_PUBLISHER_ID = 0
 const DELAYS = {
     actualMessage: 50,
@@ -73,8 +73,8 @@ const main = async () => {
     log('Init')
     const publisherCount = Number(process.argv[2])
 
-    const ownerPrivateKey = '0x0000000000000000000000000000000000000000000000000000000000000998'
-    const subscriberPrivateKey = '0x0000000000000000000000000000000000000000000000000000000000000999'
+    const ownerPrivateKey = '0x00000000000000000000000000000000000000000000000000000000000003E6'
+    const subscriberPrivateKey = '0x00000000000000000000000000000000000000000000000000000000000003E7'
     log('Owner: ' + new Wallet(ownerPrivateKey).address)
     log('Subscriber: ' + new Wallet(subscriberPrivateKey).address)
     log('Roles: publisher=' + isPublisher() + ', subscriber=' + isSubscriber())
