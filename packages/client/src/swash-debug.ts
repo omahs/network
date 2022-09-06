@@ -161,12 +161,31 @@ const main = async () => {
         log('Wait for joins (the subscriber, and trigger publishers to join)')
         if (isPublisher()) {
             publishers.forEach(async (p) => {
+                log('Subscribe for key request')
+                p.client.subscribe(stream.id, (content: any) => {
+                    let ignorable = true
+                    if (content.simulationMessageType === 'keyRequest') {
+                        if (content.publisherId === p.id) {
+                            log('Received keyRequest from ' + content.publisherId + ', publishing key response')
+                            p.client.publish(stream.id, {
+                                simulationMessageType: 'keyResponse',
+                                publisherId: p.id
+                            })
+                            ignorable = false
+                        }
+                    }
+                    if (!ignorable) {
+                        log('Msg sent to publisher' + p.id + ': ' + content.simulationMessageType + ' from ' + content.publisherId + ' ignorable=' + ignorable)
+                    }
+                })
+            })
+            /*publishers.forEach(async (p) => {
                 log('Warmup: ' + p.id)
                 p.client.publish(stream.id, {
                     simulationMessageType: 'warmup',
                     publisherId: p.id
                 })
-            })
+            })*/
         }
         await waitForCondition(async () => {
             const topologySize = await getTopologySize(stream.id)
@@ -177,25 +196,6 @@ const main = async () => {
     const topologyReadyStartTime = Date.now()
 
     if (isPublisher()) {
-        publishers.forEach(async (p) => {
-            log('Subscribe for key request')
-            p.client.subscribe(stream.id, (content: any) => {
-                let ignorable = true
-                if (content.simulationMessageType === 'keyRequest') {
-                    if (content.publisherId === p.id) {
-                        log('Received keyRequest from ' + content.publisherId + ', publishing key response')
-                        p.client.publish(stream.id, {
-                            simulationMessageType: 'keyResponse',
-                            publisherId: p.id
-                        })
-                        ignorable = false
-                    }
-                }
-                if (!ignorable) {
-                    log('Msg sent to publisher' + p.id + ': ' + content.simulationMessageType + ' from ' + content.publisherId + ' ignorable=' + ignorable)
-                }
-            })
-        })
         publishers.forEach(async (p) => {
             log('Publish')
             p.client.publish(stream.id, {
