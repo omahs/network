@@ -78,6 +78,14 @@ const main = async () => {
         id: '/test1'
     })
 
+    let actualMessageSentCount = 0
+    let keyRequestSentCount = 0
+    let keyResponseSentCount = 0
+
+    setInterval(() => {
+        log(`actualMessageSentCount=${actualMessageSentCount}, keyRequestSentCount=${keyRequestSentCount}, keyResponseSentCount=${keyResponseSentCount}`)
+    }, 1000)
+
     if (PUBLIC_STREAM) {
         await stream.grantPermissions({
             permissions: [StreamPermission.PUBLISH, StreamPermission.SUBSCRIBE],
@@ -142,6 +150,7 @@ const main = async () => {
                     simulationMessageType: 'keyRequest',
                     publisherId: content.publisherId
                 })
+                keyRequestSentCount++
                 ignorable = false
             } else if (content.simulationMessageType === 'keyResponse') {
                 receivedMessageCount++
@@ -167,6 +176,7 @@ const main = async () => {
                     if (content.simulationMessageType === 'keyRequest') {
                         if (content.publisherId === p.id) {
                             log('Received keyRequest from ' + content.publisherId + ', publishing key response')
+                            keyResponseSentCount++
                             p.client.publish(stream.id, {
                                 simulationMessageType: 'keyResponse',
                                 publisherId: p.id
@@ -204,6 +214,7 @@ const main = async () => {
                 timestamp: new Date().toISOString(),
                 address: await p.client.getAddress()
             })
+            actualMessageSentCount++
         })
     }
     
