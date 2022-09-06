@@ -191,7 +191,9 @@ const main = async () => {
                         ignorable = false
                     }
                 }
-                log('Msg sent to publisher' + p.id + ': ' + content.simulationMessageType + ' from ' + content.publisherId + ' ignorable=' + ignorable)
+                if (!ignorable) {
+                    log('Msg sent to publisher' + p.id + ': ' + content.simulationMessageType + ' from ' + content.publisherId + ' ignorable=' + ignorable)
+                }
             })
         })
         publishers.forEach(async (p) => {
