@@ -16,6 +16,11 @@ const ENVIRONMENT: 'docker-dev' | 'fake' = process.argv[3] as any
 const PUBLIC_STREAM = true
 const GRANT_PERMISSIONS = false // (ENVIRONMENT === 'fake')
 const MIN_PUBLISHER_ID = 100
+const DELAYS = {
+    actualMessage: 50,
+    keyRequest: 200,
+    keyResponse: 200
+}
 
 //let fakeEnvironment: FakeEnvironment
 //if (ENVIRONMENT === 'fake') fakeEnvironment = new FakeEnvironment()
@@ -71,6 +76,7 @@ const main = async () => {
     log('Owner: ' + new Wallet(ownerPrivateKey).address)
     log('Subscriber: ' + new Wallet(subscriberPrivateKey).address)
     log('Roles: publisher=' + isPublisher() + ', subscriber=' + isSubscriber())
+    log('Delays: ' + JSON.stringify(DELAYS))
 
     log('Get or create stream')
     const owner = createClient(ownerPrivateKey)
@@ -142,10 +148,11 @@ const main = async () => {
                 user: await subscriber.getAddress()
             })
         }
-        const sub = await subscriber.subscribe(stream.id, (content: any) => {
+        const sub = await subscriber.subscribe(stream.id, async (content: any) => {
             let ignorable = true
             if (content.simulationMessageType === 'actualMessage') {
                 log('Publish keyRequest')
+                await wait(DELAYS.keyRequest)
                 subscriber.publish(stream.id, {
                     simulationMessageType: 'keyRequest',
                     publisherId: content.publisherId
@@ -171,12 +178,13 @@ const main = async () => {
         if (isPublisher()) {
             publishers.forEach(async (p) => {
                 log('Subscribe for key request')
-                p.client.subscribe(stream.id, (content: any) => {
+                p.client.subscribe(stream.id, async (content: any) => {
                     let ignorable = true
                     if (content.simulationMessageType === 'keyRequest') {
                         if (content.publisherId === p.id) {
                             log('Received keyRequest from ' + content.publisherId + ', publishing key response')
                             keyResponseSentCount++
+                            await wait(DELAYS.keyResponse)
                             p.client.publish(stream.id, {
                                 simulationMessageType: 'keyResponse',
                                 publisherId: p.id
@@ -215,7 +223,7 @@ const main = async () => {
                 address: await p.client.getAddress()
             })
             actualMessageSentCount++
-            await wait(5)
+            await wait(DELAYS.actualMessage)
         }
     }
     
